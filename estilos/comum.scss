@@ -61,6 +61,23 @@ mjx-container[display="true"] {
   padding: 0.25rem 0;
 }
 
+// ---------- Listas a), b), c) como nas notas ----------
+main ol[type="a"] {
+  list-style: none;
+  counter-reset: alinea;
+  padding-left: 2.1em;
+  > li {
+    counter-increment: alinea;
+    position: relative;
+    &::before {
+      content: counter(alinea, lower-alpha) ")";
+      position: absolute;
+      left: -1.9em;
+    }
+  }
+}
+main ol > li + li { margin-top: 0.4rem; }
+
 // ---------- Blocos de teorema, definição, exemplo, exercício ----------
 .theorem, .lemma, .corollary, .proposition, .conjecture, .definition, .example, .exercise {
   margin: 1.75rem 0;

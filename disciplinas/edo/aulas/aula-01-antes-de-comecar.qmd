@@ -1,0 +1,79 @@
+---
+title: "Aula 1: Antes de começar"
+pdf-aula: pdf/aula-01.pdf
+---
+
+A disciplina de Introdução às Equações Diferenciais possui dois pré-requisitos, Cálculo M3 e Álgebra Linear M1. A priori, poderíamos achar essa lista de pré-requisitos como exagerada demais.
+
+A comparação mais natural de EDO é com a disciplina de Cálculo M2 (ou a primeira metade de Cálculo N2, caso não sejam da Licenciatura em Matemática): vamos estudar diversos tipos de equações, cada uma com um método próprio de resolução. O mesmo que acontecia com os diversos tipos de técnicas de integração.
+
+Inclusive, na grandessíssima maioria do tempo, estaremos integrando e derivando. Principalmente integrando! Portanto, é fundamental que vocês estejam seguras e seguros de como resolver. No início, ainda dá tempo de revisar com alguma calma. Mas essa confiança de como integrar tem de chegar logo!
+
+Neste primeiro encontro, precisamos focar na revisão das habilidades fundamentais e pré-requisitos.
+
+::: {#exr-a01-1}
+Calcule a derivada das seguintes funções, em que $y$ é uma função de $x$:
+
+a)  $\displaystyle y= \sqrt{x}+\dfrac{1}{\sqrt[3]{x^4}}$
+b)  $\displaystyle y= \dfrac{\tan x}{1+\cos x}$
+c)  $\displaystyle y= \ln(x \ln x)$
+d)  $y= \ln(x^2+1)\cdot \cos(2x)$
+:::
+
+::: {#exr-a01-2}
+Encontre os pontos sobre a elipse $x^2+2y^2=1$ onde a reta tangente tem inclinação 1.
+:::
+
+::: {#exr-a01-3}
+Uma equação de movimento da forma $s=Ae^{ct} \cos (\omega t + \delta)$ representa a oscilação amortecida de um objeto. Encontre a velocidade e aceleração do objeto.
+:::
+
+Nestas primeiras questões, o objetivo fundamental é revisar as técnicas básicas de derivação, o significado geométrico principal do que é uma derivada e do significado físico mais básico desta operação, inclusive trabalhando com funções associadas a outras letras para além de $x$ e $y$.
+
+As próximas questões tem por objetivo de repetir o mesmo processo, mas com as integrais de funções a uma variável.
+
+::: {#exr-a01-4}
+Determine a solução das seguintes integrais:
+
+a)  $\displaystyle \int \ln (1+x^2) \ dx$
+b)  $\displaystyle \int \dfrac{y-1}{y^4+y^2} \ dy$
+c)  $\displaystyle \int \dfrac{\sec \theta \tan \theta}{\sec^2 \theta - \sec \theta} \ d\theta$
+d)  $\displaystyle \int \sin 6z \cos 3z \ dz$
+e)  $\displaystyle \int \dfrac{dx}{x^3 \sqrt{x^2-1}}$
+:::
+
+::: {#exr-a01-5}
+Dada a função $g(x)=\int_{2}^{\ln x} \cos t \ dt$, calcule $g'(x)$.
+:::
+
+Além das habilidades fundamentais de identificar quais são as técnicas mais adequadas para iniciar a resolução de uma integral e calcular integrais indefinidas, a questão anterior trabalha, implicitamente, conceitos fundamentais envolvendo a derivação e a integração.
+
+Em seguida, é necessário revisar técnicas e propriedades das derivadas de funções a várias variáveis, conteúdo visto em Cálculo M3 (ou na segunda metade de Cálculo N2). Apesar de aparecer pouco em nossa disciplina, precisaremos deste conhecimento para trabalhar com a ideia básica de que o plano $XY$ um dos planos no espaço tridimensional. (Neste momento, aproveitaremos essa "brecha" pra resolver problemas de modo mais simples!)
+
+::: {#exr-a01-6}
+Dada a função $f(x,y)=x^3+y^2+4x\sin y$, calcule $\dfrac{\partial f}{\partial x}$ e $\dfrac{\partial f}{\partial y}$.
+:::
+
+::: {#exr-a01-7}
+Dada a função $\displaystyle h(x,y) = \frac{xy(x^2-y^2)}{x^2 + y^2},$ calcule $\dfrac{\partial^2 h}{\partial x \partial y}$ e $\dfrac{\partial^2 h}{\partial y \partial x}$, justificando o por quê destes resultados serem diferentes em $(0,0)$.
+:::
+
+Boa parte da segunda metade da disciplina se baseia no espaço vetorial de soluções de uma equação homogênea. E para trabalharmos com tranquilidade este tema, precisamos revisar aspectos básicos de Álgebra Linear, principalmente os conceitos de dependência linear e as propriedades dos espaços vetoriais.
+
+::: {#exr-a01-8}
+Qual a definição formal de um espaço vetorial? Quantas e quais propriedades deve satisfazer?
+:::
+
+::: {#exr-a01-9}
+Os vetores $v_1=(1,2,3), v_2=(4, 5, 6)$ e $v_3=(7,8,9)$ são linearmente dependentes ou independentes? E os vetores $u_1=\begin{bmatrix} 1 & 2 \\ -2 & 3 \end{bmatrix}, u_2=\begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$ e $u_3=\begin{bmatrix} -1 & 0 \\ 0 & -3 \end{bmatrix}$?
+:::
+
+Por fim, nossa revisão termina com uma habilidade que costuma ser negligenciada ao longo da formação matemática, que é a da conversão de problemas em texto para equações e vice-versa. Ao longo de nossa disciplina, teremos vários momentos para trabalhar este ponto.
+
+::: {#exr-a01-10}
+A taxa de variação de um investimento é proporcional ao valor presente do investimento. Se você investe 1000 reais, escreva a equação que descreve o crescimento do investimento ao longo do tempo.
+:::
+
+::: {#exr-a01-11}
+Uma arena de esportes tem capacidade para 15 mil espectadores sentados. Com o preço do ingresso a R\$ 12, a média de público tem sido de 11 mil espectadores. Uma pesquisa de mercado indica que, para cada dólar que o preço do ingresso é diminuído a média de público aumenta em mil. Como os donos do time devem definir o preço do bilhete para maximizar seus lucros com a venda de ingressos?
+:::

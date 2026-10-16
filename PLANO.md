@@ -16,20 +16,22 @@ Fases combinadas com o Wanderson. Ao terminar cada fase: mostrar o resultado, re
 
 ## Próximas fases
 
-### Fase 0: reconhecimento
-- [ ] Perguntar ao Wanderson os itens de `PENDENCIAS.md` (pelo menos: caminho dos .tex de EDO e usuário do GitHub).
-- [ ] Verificar o computador dele: git, Quarto, TeX Live, um conversor PDF→SVG (`pdftocairo` vem no pacote `poppler-utils`). Ver `COMO-USAR.md`.
-- [ ] Analisar os .tex de EDO: preâmbulo, macros, ambientes, como os exercícios estão marcados, quantas figuras TikZ e de que tipo. Entregar relatório curto e plano de conversão.
+### Fase 0: reconhecimento (feita em 16/10)
+- [x] Caminho dos .tex e repositório (`wandersonufrpe/wanderson.github.io`) informados.
+- [x] Computador dele é Windows; guia ajustado em `COMO-USAR.md`.
+- [x] Análise dos .tex: 22 aulas (01–13, 16–24; não existem 14 e 15), exercícios no ambiente `question` sem soluções, exemplos em `tcolorbox`, 18 figuras TikZ (quase todas candidatas a applet). Conversor `ferramentas/tex_para_qmd.py` testado em todas: contagens batem.
 
 ### Fase 1: revisão do visual
 - [ ] Mostrar o site com `quarto preview` e ajustar cores, fontes e navegação ao gosto dele.
 
 ### Fase 2: aula piloto
-- [ ] Converter só a Aula 01 de EDO com `/nova-aula` e parar para revisão. Ajustar o padrão de conversão até ele aprovar.
+- [x] Aulas 01 e 02 convertidas (a 01 não tem teoria nem figuras; a 02 mostra todos os tipos de bloco). Campo de direções da Aula 02 virou applet.
+- [ ] Revisão do Wanderson e ajustes no padrão de conversão.
 
 ### Fase 3: restante de EDO
 - [ ] Converter as demais aulas em lotes, com resumo por lote do que não converteu bem.
-- [ ] Apagar `aula-00-modelo.qmd`.
+- [x] Página-modelo movida para `_modelo-de-aula.qmd` (não é publicada).
+- [ ] Decidir onde entra "Aula 17 - demonstração de Abel-Liouville.tex".
 
 ### Fase 4: interatividade
 - [ ] Trocar figuras de famílias de soluções e campos de direções por applets (ver `candidata_a_applet` nos manifestos).
@@ -44,7 +46,9 @@ Fases combinadas com o Wanderson. Ao terminar cada fase: mostrar o resultado, re
 - [ ] Ativar o espaço de dúvidas (Giscus) nas aulas, explicando que é preciso conta no GitHub para comentar.
 
 ### Fase 7: publicação
-- [ ] Criar o repositório, enviar, ativar o Pages (Source: GitHub Actions) e conferir o site no ar.
+- [x] Repositório criado e site enviado.
+- [ ] Ativar o Pages (Settings → Pages → Source: GitHub Actions) e conferir o site no ar.
+- [ ] Decidir se renomeia o repositório para `wandersonufrpe.github.io` (endereço curto).
 - [ ] Se a UFRPE ceder um subdomínio, configurar o domínio próprio.
 
 ### Fase 8: manutenção

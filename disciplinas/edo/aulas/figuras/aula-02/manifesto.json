@@ -1,0 +1,17 @@
+{
+  "origem": "/mnt/user-data/uploads/Notas de aula/Introdução às equações ordinárias/txt/Aula 02.tex",
+  "figuras": [
+    {
+      "arquivo": "fig-01.svg",
+      "linha_no_tex": 169,
+      "ok": true,
+      "mensagem": "ok",
+      "assinatura": "1922d4a3fb59",
+      "candidata_a_applet": true,
+      "pistas": [
+        "laço \\foreach (várias curvas)"
+      ],
+      "inicio_do_codigo": "\\begin{tikzpicture}[declare function={diff(\\x,\\y) = 0.5*\\y+1;}, scale=0.4] \\draw[red!40!white] (-5.2,-2) -- (5.2,-2); \\draw[->] (-5.2, 0) -- (5.2, 0) node[right"
+    }
+  ]
+}

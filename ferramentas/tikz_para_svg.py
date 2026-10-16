@@ -31,7 +31,11 @@ LINHAS_MINIMAS = re.compile(
     r"^\s*\\(usepackage|RequirePackage|usetikzlibrary|usepgfplotslibrary|pgfplotsset|tikzset|"
     r"definecolor|colorlet|newcommand|renewcommand|providecommand|DeclareMathOperator|def)\b"
 )
-EVITAR = re.compile(r"\\usepackage(\[[^\]]*\])?\{(geometry|fancyhdr|titlesec|hyperref|tocloft|enumitem)\}")
+EVITAR = re.compile(
+    r"\\usepackage(\[[^\]]*\])?\{[^}]*\b(geometry|fancyhdr|titlesec|hyperref|tocloft|enumitem|exsheets|sectsty|"
+    r"mdframed|tcolorbox|listings|eulervm|systeme)\b"
+    r"|\\(input|include)\{|\\SetupExSheets|\\(chapter|section)font|\\mdfdefinestyle|\\addto\\captions"
+)
 PISTAS_APPLET = [
     (r"\\foreach", "laço \\foreach (várias curvas)"),
     (r"exp\s*\(|e\^", "exponencial"),
@@ -58,7 +62,16 @@ def preambulo(texto: str, minimo: bool) -> str:
     return "\n".join(saida)
 
 
+def sem_comentarios(texto: str) -> str:
+    linhas = []
+    for linha in texto.splitlines():
+        m = re.search(r"(?<!\\)%", linha)
+        linhas.append(linha[: m.start()] if m else linha)
+    return "\n".join(linhas)
+
+
 def figuras(texto: str):
+    texto = sem_comentarios(texto)
     padrao = re.compile(r"\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}", re.S)
     for m in padrao.finditer(texto):
         linha = texto.count("\n", 0, m.start()) + 1
@@ -109,6 +122,8 @@ def main():
     ap.add_argument("tex", type=pathlib.Path, help="arquivo .tex da aula (não é modificado)")
     ap.add_argument("saida", type=pathlib.Path, help="pasta onde os SVG serão gravados")
     ap.add_argument("--forcar", action="store_true", help="recompila mesmo as figuras que não mudaram")
+    ap.add_argument("--preambulo", type=pathlib.Path,
+                    help="arquivo principal com o preâmbulo (as aulas incluídas com \\include não têm preâmbulo próprio)")
     args = ap.parse_args()
 
     ferramenta = conversor()
@@ -116,8 +131,10 @@ def main():
         sys.exit("Preciso de pdflatex e de um conversor (dvisvgm, pdf2svg ou pdftocairo). Veja COMO-USAR.md.")
 
     texto = args.tex.read_text(encoding="utf-8", errors="replace")
-    pre_completo = preambulo(texto, minimo=False)
-    pre_minimo = preambulo(texto, minimo=True)
+    fonte_pre = args.preambulo.read_text(encoding="utf-8", errors="replace") if args.preambulo else texto
+    fonte_pre = sem_comentarios(fonte_pre)
+    pre_completo = preambulo(fonte_pre, minimo=False)
+    pre_minimo = preambulo(fonte_pre, minimo=True)
     args.saida.mkdir(parents=True, exist_ok=True)
     arq_manifesto = args.saida / "manifesto.json"
     anterior = {}

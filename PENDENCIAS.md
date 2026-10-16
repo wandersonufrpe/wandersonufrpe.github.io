@@ -2,11 +2,21 @@
 
 Marque com [x] quando resolver. No site, cada lacuna aparece destacada em amarelo com "A PREENCHER".
 
-## Para começar a conversão (Fase 0)
-- [ ] Caminho da pasta com os .tex de Introdução às EDOs no seu computador
-- [ ] Seu usuário do GitHub e o nome que quer dar ao repositório
-  - `SEU-USUARIO.github.io` → o site fica em `https://SEU-USUARIO.github.io`
-  - qualquer outro nome (ex.: `site`) → `https://SEU-USUARIO.github.io/site`
+## Publicação
+- [ ] Ativar o GitHub Pages: Settings → Pages → Source: **GitHub Actions** (passo a passo em `COMO-USAR.md`)
+- [ ] Endereço: manter `wandersonufrpe.github.io/wanderson.github.io/` ou renomear o repositório para `wandersonufrpe.github.io` (endereço curto)
+
+## Conferir nas notas de EDO (possíveis erros de digitação, mantidos como estão no site)
+- [ ] Aula 02, Teorema de Existência e Unicidade: "Suponha $f$ e $\partial f/\partial x$ contínuas". O usual é $\partial f/\partial y$.
+- [ ] Aula 02, último exercício, item b): "$x^2y-x$, dado $y(0)=0$" está sem o "$y'=$".
+- [ ] Aula 02: "Por agora, sabemos resolver alguns problemas simples)" tem um parêntese solto.
+- [ ] Aula 02: o PDF tem "Exemplo 04" e "Exemplo 05" repetidos; no site a numeração é automática (1 a 9).
+
+## Aulas de EDO
+- [ ] Aulas 14 e 15 não existem na pasta. São avaliações? Devem aparecer no cronograma?
+- [ ] "Aula 17 - demonstração de Abel-Liouville.tex": é parte da Aula 17 (ex.: um apêndice no fim) ou uma página separada?
+- [ ] Objetivos e pré-requisitos de cada aula (opcional; aparecem numa caixa no topo da aula)
+- [ ] PDFs das aulas: os do site foram compilados sem a fonte Euler (não disponível aqui). Se quiser, substitua pelos seus em `disciplinas/edo/aulas/pdf/`, com o mesmo nome.
 
 ## Página inicial e Currículo
 - [ ] Minibiografia (duas ou três frases)
@@ -29,7 +39,7 @@ Marque com [x] quando resolver. No site, cada lacuna aparece destacada em amarel
 - [ ] Datas das avaliações
 
 ## Disciplinas
-- [ ] EDO: curso e período em que é oferecida, carga horária, ementa, bibliografia, cronograma
+- [ ] EDO: curso e período em que é oferecida, carga horária, ementa, bibliografia, cronograma (as notas citam Boyce e DiPrima, Zill e Stewart; confirme a bibliografia oficial)
 - [ ] Lógica, Cálculo N1, Otimização Combinatória: ementa e bibliografia (quando quiser)
 
 ## Portfólio

@@ -1,43 +1,48 @@
 # Como usar o site no dia a dia
 
-Guia curto para o Linux Mint. Na prática, você pode pedir quase tudo isto ao Claude Code ("publica o site", "mostra a prévia"); o guia serve para entender o que acontece.
+Guia curto para Windows. Na prática, você pode pedir quase tudo isto ao Claude ("converte a Aula 03", "publica o site"); o guia serve para entender o que acontece.
 
-## 1. Instalar (uma vez)
+## Onde fica cada coisa
 
-Abra o Terminal e rode:
+- **Seus .tex** continuam em `D:\Coisas no Drive\Aula a aula (1)\Notas de aula`. Nada é alterado lá.
+- **O site** fica no GitHub, em `wandersonufrpe/wanderson.github.io`. Essa é a cópia oficial.
+- **No seu computador**, uma cópia do site serve para você abrir, mexer e ver a prévia (passo 2).
 
-```bash
-sudo apt install git poppler-utils
-```
+## 1. Publicar (ativar uma vez)
 
-- **Quarto**: baixe o arquivo `.deb` para Linux em <https://quarto.org/docs/get-started/> e instale com
-  `sudo apt install ./quarto-*-linux-amd64.deb` (na pasta de Downloads).
-- **LaTeX**: você já usa. O conversor de figuras precisa de `pdflatex` e do `pdftocairo` (vem no `poppler-utils`).
+1. Abra o repositório no GitHub e vá em **Settings → Pages**.
+2. Em **Build and deployment → Source**, escolha **GitHub Actions**.
+3. Vá em **Actions**, abra o último "Publicar site" e clique em **Re-run all jobs**. Em um ou dois minutos o site está no ar.
 
-Confira com `quarto check`.
+Depois disso, cada alteração enviada ao GitHub é publicada sozinha.
 
-## 2. Ver o site no seu computador
+**Endereço do site:** com o repositório chamado `wanderson.github.io`, o site fica em
+`https://wandersonufrpe.github.io/wanderson.github.io/`.
+Para ter o endereço curto `https://wandersonufrpe.github.io`, renomeie o repositório para `wandersonufrpe.github.io` em **Settings → General → Repository name**. O GitHub só usa o endereço curto quando o nome do repositório é igual ao seu usuário seguido de `.github.io`.
 
-Dentro da pasta do projeto:
+## 2. Ter o site no seu computador (opcional)
 
-```bash
-quarto preview
-```
+1. Instale o **GitHub Desktop** (<https://desktop.github.com>) e entre com sua conta.
+2. **File → Clone repository**, escolha `wanderson.github.io` e uma pasta **fora** do Google Drive (por exemplo `C:\Users\SeuNome\Documents\GitHub`). Pastas do Git dentro do Drive podem gerar conflitos de sincronização.
+3. Para receber o que o Claude enviou: botão **Fetch origin**, depois **Pull origin**.
+4. Para enviar o que você mudou: escreva um resumo no canto inferior esquerdo, **Commit to main**, depois **Push origin**.
 
-O navegador abre com o site. Cada vez que você salva um arquivo, a página atualiza sozinha. Para parar, `Ctrl+C` no terminal.
+A pasta `D:\Coisas no Drive\SiteGithub\site-portfolio` foi só o pacote inicial. Depois de clonar, pode apagá-la.
 
-Para ver também as dicas em rascunho (sugeridas pelo Claude Code e ainda não aprovadas):
+## 3. Ver o site antes de publicar (opcional)
 
-```bash
-quarto preview --profile revisao
-```
+1. Instale o **Quarto** para Windows: <https://quarto.org/docs/get-started/>.
+2. No GitHub Desktop: **Repository → Open in Command Prompt** (ou Terminal).
+3. Digite `quarto preview`. O navegador abre o site; cada arquivo salvo atualiza a página. Para parar: `Ctrl+C`.
+4. Para ver também as dicas em rascunho: `quarto preview --profile revisao`.
 
-## 3. Onde editar cada coisa
+## 4. Onde editar cada coisa
 
 | Quero mudar... | Arquivo |
 |---|---|
 | Texto da página inicial | `index.qmd` |
 | Uma aula | `disciplinas/edo/aulas/aula-NN-....qmd` |
+| PDF de uma aula | `disciplinas/edo/aulas/pdf/aula-NN.pdf` (troque pelo seu, mesmo nome) |
 | Ementa, bibliografia, cronograma de EDO | `disciplinas/edo/index.qmd` |
 | Turmas, horários, avisos | `semestre/index.qmd` |
 | Projetos, publicações etc. | `projetos/`, `publicacoes.qmd`, `orientacoes.qmd`... |
@@ -45,48 +50,24 @@ quarto preview --profile revisao
 | Cores | `estilos/claro.scss` e `estilos/escuro.scss` |
 | Macros de matemática | `macros.tex` |
 
-Os arquivos `.qmd` são Markdown com matemática em LaTeX (`$...$` e `$$...$$`). O formato dos exercícios está em `CLAUDE.md`.
+Os `.qmd` são texto com matemática em LaTeX (`$...$` e `$$...$$`). Abra com qualquer editor (o Bloco de Notas serve; o VS Code é mais confortável). O formato dos exercícios está em `CLAUDE.md`.
 
-## 4. Publicar pela primeira vez
+## 5. Desfazer um erro
 
-1. No GitHub, crie um repositório vazio (botão **New**). Se o nome for `SEU-USUARIO.github.io`, o endereço do site fica mais curto.
-2. Na pasta do projeto:
-   ```bash
-   git remote add origin https://github.com/SEU-USUARIO/NOME-DO-REPOSITORIO.git
-   git push -u origin main
-   ```
-3. No repositório, vá em **Settings → Pages → Build and deployment → Source** e escolha **GitHub Actions**.
-4. Em **Actions** aparece "Publicar site" rodando. Quando ficar verde (um ou dois minutos), o site está no ar.
+No GitHub Desktop, aba **History**: clique com o botão direito numa alteração e escolha **Revert changes in commit**. Depois **Push origin**. Nada se perde de vez: o Git guarda todas as versões.
 
-## 5. Publicar alterações
-
-```bash
-git add -A
-git commit -m "Aula 03 publicada"
-git push
-```
-
-Ou peça ao Claude Code: `/publicar`.
-
-## 6. Desfazer um erro
-
-- Antes de publicar, para voltar um arquivo à última versão salva no Git: `git restore caminho/do/arquivo.qmd`
-- Depois de publicar, para desfazer o último envio: `git revert HEAD` e depois `git push`
-
-Nada se perde de vez: o Git guarda todas as versões.
-
-## 7. Domínio próprio (opcional)
+## 6. Domínio próprio (opcional)
 
 Endereços `.edu` e `.edu.br` são só para instituições. Se a TI da UFRPE aceitar criar um subdomínio para você:
 
-1. Peça que criem um registro **CNAME** do subdomínio apontando para `SEU-USUARIO.github.io`.
+1. Peça que criem um registro **CNAME** do subdomínio apontando para `wandersonufrpe.github.io`.
 2. No repositório: **Settings → Pages → Custom domain**, digite o subdomínio e salve.
 3. Quando o GitHub confirmar, marque **Enforce HTTPS**.
 
-## 8. Espaço de dúvidas nas aulas (opcional)
+## 7. Espaço de dúvidas nas aulas (opcional)
 
 Usa as Discussions do GitHub, pelo Giscus. Quem quiser comentar precisa de conta no GitHub.
 
 1. No repositório: **Settings → General → Features**, marque **Discussions** e crie uma categoria "Dúvidas".
 2. Instale o app em <https://github.com/apps/giscus> só para este repositório.
-3. Em `disciplinas/edo/aulas/_metadata.yml`, tire os `#` do bloco `comments` e troque `SEU-USUARIO/SEU-REPOSITORIO`.
+3. Em `disciplinas/edo/aulas/_metadata.yml`, tire os `#` do bloco `comments`.

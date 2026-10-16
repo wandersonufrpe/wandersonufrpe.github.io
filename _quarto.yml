@@ -75,6 +75,15 @@ format:
     toc: true
     toc-title: "Nesta página"
     html-math-method: mathjax
+    # Equações longas quebram linha sozinhas no celular, em vez de sair da tela.
+    include-in-header:
+      text: |
+        <script>
+        window.MathJax = {
+          output: { displayOverflow: "linebreak", linebreaks: { inline: true } },
+          chtml: { displayOverflow: "linebreak" }
+        };
+        </script>
     anchor-sections: true
     smooth-scroll: true
     link-external-newwindow: true

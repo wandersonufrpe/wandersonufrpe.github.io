@@ -2,7 +2,9 @@
 
 Site em Quarto que é ao mesmo tempo o portfólio de professor universitário (UFRPE, desde 2013) e o lugar das notas de aula, convertidas dos arquivos LaTeX dele. Publicado no GitHub Pages por GitHub Actions. O plano completo e o que já foi feito estão em `PLANO.md`; o que falta ele informar está em `PENDENCIAS.md`.
 
-O Wanderson está aprendendo Quarto e Git agora: explique em português, sem jargão, e mostre o resultado (`quarto preview`) antes de seguir para a próxima etapa.
+O Wanderson está aprendendo Quarto e Git agora: explique em português, sem jargão, e mostre o resultado (`quarto preview`) antes de seguir para a próxima etapa. O computador dele é Windows.
+
+Repositório: `wandersonufrpe/wanderson.github.io` (a cópia oficial). Os .tex de EDO ficam em `D:\Coisas no Drive\Aula a aula (1)\Notas de aula\Introdução às equações ordinárias\txt` (um arquivo por aula, `Aula NN.tex`; preâmbulo em `Notas de aula - EDO.tex` e `config.tex`).
 
 ## Regras que não mudam
 
@@ -23,7 +25,8 @@ macros.tex                \newcommand de matemática usados em todas as páginas
 filtros/componentes.lua   dicas, resposta, solução, rascunho, fonte, quiz, objetivos, PDF
 assets/js/                campo-direcoes.js (applet) e quiz.js
 estilos/                  claro.scss, escuro.scss (cores) e comum.scss (regras)
-ferramentas/              tikz_para_svg.py
+ferramentas/              tex_para_qmd.py (conversor de aulas), conversao.lua, tikz_para_svg.py
+_modelo-de-aula.qmd       todos os componentes funcionando (não é publicado: começa com _)
 disciplinas/<sigla>/      index.qmd (apresentação) e aulas/aula-NN-assunto.qmd
 semestre/                 semestre atual e semestres anteriores
 projetos/                 visão geral, ensino, pesquisa, extensão
@@ -62,9 +65,23 @@ pdf-aula: pdf/aula-03.pdf
 ---
 ```
 
-`aula-00-modelo.qmd` mostra todos os componentes funcionando; apague-a quando a Aula 01 real estiver publicada.
+`_modelo-de-aula.qmd` mostra todos os componentes funcionando (dicas, rascunhos, quiz, applet). Arquivos que começam com `_` não viram páginas.
 
 ### Conversão LaTeX → Quarto
+
+Use o conversor, feito para o formato das notas dele:
+
+```
+python3 ferramentas/tex_para_qmd.py "CAMINHO/Aula 03.tex" --disciplina edo
+```
+
+Ele gera a página, as figuras TikZ em SVG e um relatório (contagem .tex × página e o que não converteu). Rodar de novo **sobrescreve** a página: se ela já foi editada à mão (applet, dicas), use `--saida /tmp/nova.qmd --sem-figuras` e copie só o que mudou.
+
+Ambientes das notas dele e o que viram: `question` → exercício (`#exr-`), `tcolorbox` com título "Exemplo NN" → exemplo numerado automaticamente (a caixa sem título logo depois é continuação), `definition`, `theorem`, `proposicao`, `corolario`, `lema` → blocos numerados, `demonstration`/`proof` → `.proof`, `note` → nota, `discussion` → "Texto complementar". `\sin`, `\tan`, `\arctan`, `\arcsin` aparecem como sen, tg, arctg, arcsen (em `macros.tex`).
+
+Notas não têm soluções nem objetivos: dicas e respostas entram depois como rascunho (`/sugerir-dicas`); objetivos ficam pendentes até ele escrever.
+
+Tabela geral, para outros formatos:
 
 | LaTeX | Quarto |
 |---|---|

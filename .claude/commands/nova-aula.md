@@ -6,8 +6,8 @@ argument-hint: <caminho/da/aula.tex> [sigla-da-disciplina]
 Converta a aula `$ARGUMENTS` para o site, seguindo `CLAUDE.md` (leia antes, se ainda não leu nesta sessão) e, se existir, `GUIA-DE-ESTILO-DIDATICO.md`.
 
 1. **Identificar**: descubra a disciplina (pasta em `disciplinas/`; padrão `edo`), o número e o assunto da aula. Nome do arquivo: `disciplinas/<sigla>/aulas/aula-NN-assunto.qmd`. Se o número ou a disciplina não estiverem claros, pergunte.
-2. **Figuras**: rode `python3 ferramentas/tikz_para_svg.py <tex> disciplinas/<sigla>/aulas/figuras/aula-NN` e leia o `manifesto.json`. Figuras com erro: tente corrigir o preâmbulo; se não der, anote. Figuras marcadas como `candidata_a_applet`: liste-as no relatório com uma proposta de applet, mas use o SVG por enquanto.
-3. **Macros**: leve para `macros.tex` os `\newcommand` de matemática que ainda não estão lá.
+2. **Converter**: rode `python3 ferramentas/tex_para_qmd.py "<tex>" --disciplina <sigla>`. Ele já gera as figuras e mostra o relatório. Leia o `manifesto.json` das figuras. Figuras com erro: tente corrigir o preâmbulo; se não der, anote. Figuras marcadas como `candidata_a_applet`: liste-as no relatório com uma proposta de applet, mas use o SVG por enquanto.
+3. **Revisar a conversão** (passos 3 a 6 são ajustes sobre o que o conversor gerou). **Macros**: leve para `macros.tex` os `\newcommand` de matemática que ainda não estão lá.
 4. **Texto**: converta seguindo a tabela de `CLAUDE.md`. Preserve toda a matemática e a ordem do texto. Não reescreva as explicações do professor; só adapte a marcação.
 5. **Exercícios**: use o formato de `CLAUDE.md`. Dicas, respostas ou soluções que já estão nas notas entram normalmente. Não crie dicas novas aqui (isso é com `/sugerir-dicas`).
 6. **Cabeçalho**: `title`, `description`, `objetivos` e `pre-requisitos` (se as notas trazem; se não, registre em `PENDENCIAS.md`), `pdf-aula`.

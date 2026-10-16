@@ -1,0 +1,303 @@
+---
+title: "Aula 2: Introdução às equações diferenciais ordinárias"
+pdf-aula: pdf/aula-02.pdf
+---
+
+O nosso objeto central de estudo nesta disciplina é a equação diferencial ordinária. Para iniciarmos as discussões, o que vocês entendem pelos termos a seguir?
+
+- equação
+- equação diferencial
+- equação diferencial ordinária
+- ordem de uma equação diferencial
+- equação linear
+- solução de uma equação diferencial
+- condição inicial de uma equação diferencial
+- problema de valor inicial
+- campo de direções de uma equação diferencial
+- solução de equilíbrio de uma equação diferencial
+
+De modo grosseiro, uma **equação diferencial** é qualquer equação que, como o nome indica, envolve derivação. Dada uma equação, nosso objetivo principal é determinar quais funções $y=y(x)$ satisfazem as condições dadas.
+
+::: {#exm-a02-1}
+As equações $\displaystyle \dfrac{dy}{dx}=-x+1$ e $\displaystyle \dfrac{dy}{dx}=-y+1$ são equações diferenciais. Embora se pareçam bastante, suas soluções são completamente diferentes!
+:::
+
+Para algumas delas, aprenderemos técnicas de resolução e como utilizá-las para modelar problemas da matemática aplicada. Outros tipos de equações diferenciais não são objeto de estudo desta disciplina.
+
+## Tipos de equações diferenciais
+
+Podemos classificar as equações diferenciais de algumas formas.
+
+### As EDOs e as EDPs
+
+A primeira forma de diferenciar equações diz respeito à quantidade de variáveis independentes da equação a ser resolvida.
+
+::: {#def-a02-1}
+Uma equação diferencial é dita **ordinária** se a função da equação diferencial depende de apenas uma variável independente. Caso contrário, ou seja, caso a função dependa de mais de uma variável independente, dizemos que ela é uma equação diferencial **parcial**.
+:::
+
+Perceba que, no caso das equações diferenciais ordinárias (EDOs), há apenas a derivada com relação a uma variável, mesmo que seja uma derivada de ordem superior. Já nas equações diferenciais parciais (EDPs), é possível derivar a função com relação a qualquer das variáveis independentes -- ou seja, sempre haverá derivadas parciais.
+
+As funções de uma variável estudadas em Cálculo M1 e Cálculo M2 (ou Cálculo N1 e a primeira metade de Cálculo N2) estão sempre ligadas a EDOs, caso haja alguma equação a ser resolvida. Por outro lado, as funções de várias variáveis estudadas em Cálculo M3 e Cálculo M4 (ou na segunda metade de Cálculo N2 e a primeira metade de Cálculo N3), frequentemente estão ligadas a problemas de EDPs, embora isto não ocorra sempre.
+
+As estratégias para a resolução de EDPs não serão apresentadas nesta disciplina.
+
+::: {#exm-a02-2}
+Observe as duas equações diferenciais.
+
+$$\alpha^2 \dfrac{\partial^2 u(x,t)}{\partial x^2}=\dfrac{\partial u(x,t)}{\partial t} \qquad \qquad \qquad L \dfrac{d^2 Q(t)}{dt^2}+R\dfrac{dQ(t)}{dt}+\dfrac{1}{C}Q(t)=E(t)$$
+
+- A primeira equação é uma EDP, pois há derivação parcial com respeito às variáveis independentes $x$ e $t$. O objetivo é identificar qual função $u(x,t)$ satisfaz as condições. Este problema clássico é conhecido como **equação do calor**.
+- A segunda equação é uma EDO, pois há derivação com respeito à única variável $t$, mesmo que envolva derivação de primeira e segunda ordens. Neste problema, o objetivo é determinar que função $Q(t)$ satisfaz as condições a depender dos parâmetros $L, R$ e $C$ e da função $E(t)$.[^1]
+:::
+
+### A ordem de uma equação diferencial ordinária
+
+::: {#def-a02-2}
+A **ordem** de uma equação diferencial é a ordem da derivada de maior ordem que aparece na equação, ou seja, a maior quantidade de vezes que a função a ser explicitada foi derivada.
+:::
+
+::: {#exm-a02-3}
+As EDOs $$\dfrac{d^3y}{dx^3}+2e^x\dfrac{d^2y}{dx^2}+y\dfrac{dy}{dx}=x^4 \qquad \mbox {e} \qquad y''''+4y'''+3y=x$$ tem ordem  3 e 4, respectivamente.
+:::
+
+Caso desejemos apontar ordens superiores, utilizamos a notação $y^{(n)}$ para evitar o excesso de uso de apóstrofos.
+
+Na primeira metade da disciplina, as equações serão todas de primeira ordem. Para estas, são diversas técnicas que se aplicam a cada tipo de equação que possa aparecer. Já na segunda metade, as equações terão ordem superior a 1 -- as técnicas são mais gerais, porém requerem bem mais pré-requisitos e, frequentemente, recaem em equações de primeira ordem.
+
+### Linearidade
+
+::: {#def-a02-3}
+Uma EDO é dita **linear** se, em sua expressão, os coeficientes da variável dependente (em geral, $y$, já que costumeiramente adota-se $y=f(x)$) e de suas derivadas são apenas constantes ou são funções dependentes apenas de $x$. Caso contrário, é uma equação diferencial **não-linear**.
+:::
+
+Assim, se tiverem qualquer das partes abaixo, não são lineares:
+
+- alguma potência de $y$ ou de suas derivadas com grau maior que 1, como em $(y''')^2$;
+- a variável dependente ou uma de suas derivadas participar de uma composição com uma função não linear, como em $\sin y$ ou $\ln y'$;
+- houver qualquer produto entre expressões envolvendo $y$, como em $y\cdot y'$.
+
+Importante ressaltar que uma EDO ainda é linear caso tenha como coeficientes funções da variável dependente (geralmente $x$), mesmo que não seja uma função linear nesta variável.
+
+::: {#exm-a02-4}
+$$\alpha^2 \dfrac{\partial^2 u(x,t)}{\partial x^2}=\dfrac{\partial u(x,t)}{\partial t} \qquad \qquad \mbox{e} \qquad \qquad \dfrac{d^3y}{dx^3}+2e^x\dfrac{d^2y}{dx^2}+y\dfrac{dy}{dx}=x^4$$
+
+- A primeira equação é linear, pois os coeficientes são números reais ($\alpha^2$ e 1).
+- A segunda equação é não-linear, pois o coeficiente de $y'$ é uma função dependente de $y$. Perceba que o coeficiente de $y''$, por si só, ainda deixaria a EDO como sendo linear pois depende apenas de $x$.
+:::
+
+Na primeira metade da disciplina, nos concentraremos nas equações de primeira ordem, enquanto o foco da segunda parte será nas de ordem superior.
+
+::: {#exr-a02-1}
+Determine a ordem das equações diferenciais a seguir e as classifique como linear ou não-linear.
+
+a)  $\displaystyle x^2\dfrac{d^2y}{dx^2}+x\dfrac{dy}{dx}+2y=\sin x$
+b)  $\displaystyle (1+y^2)\dfrac{d^2y}{dx^2}+x\dfrac{dy}{dx}+y=e^x$
+c)  $\dfrac{d^4y}{dx^4}+\dfrac{d^3y}{dx^3}+\dfrac{d^2y}{dx^2}+\dfrac{dy}{dx}+y=1$
+d)  $\dfrac{dy}{dx}+xy^2=0$
+e)  $\dfrac{d^2y}{dx^2}+\sin(x+y)=\sin x$
+f)  $\dfrac{d^3y}{dx^3}+x\dfrac{dy}{dx}+(\cos^2 x)y=x^3$
+:::
+
+### Outros termos importantes
+
+::: {#def-a02-4}
+Uma **solução** $\phi(x)$ de uma equação diferencial ordinária $E(x, y, y', \ldots, y^{(n)})=0$ em um intervalo $]a,b[$ é uma função real tal que $\phi', \phi'', \ldots, \phi^{(n)}$ existem e satisfazem $$E(x, \phi(x), \phi'(x), \ldots(x), \phi^{(n)}(x))=0.$$
+:::
+
+É importante frisar que, necessariamente, o domínio de validade da solução $\phi$ deve conter o intervalo $]a,b[$.
+
+Neste material, tentarei ao máximo diferenciar a variável dependente $y(x)$ de uma solução $y=\phi(x)$. A ideia central para isto é que qualquer função $y(x)$ pode ser utilizada em uma equação, mas apenas uma solução $\phi(x)$, aquela que satisfaz a equação, a deixa correta.
+
+::: {#exm-a02-5}
+Considere $y'=xy$. A função $y=x^2$ pode ser considerada e substituída na equação. $$\left(x^2\right)'=x(x^2) \iff 2x=x^3,$$ o que é falso. Já a função $\phi(x)=e^{x^2/2}$ é tal que $$\left(e^{x^2/2}\right)'=x(e^{x^2/2}) \iff (e^{x^2/2})\cdot x=xe^{x^2/2},$$ o que é verdadeiro.
+:::
+
+::: {#exr-a02-2}
+Verifique a(s) solução(ções) das equações diferenciais.
+
+a)  As funções $y_1(x)=e^{-3x}$ e $y_2(x)=e^x$ são soluções de $y''+2y'-3y=0$.
+b)  $ty'-y=t^2$ têm, dentre suas soluções, $y(t)=3t+t^2$
+c)  A função $\displaystyle y=e^{t^2} \int_0^t e^{-s^2} \ ds + e^{t^2}$ é solução de $y'-2ty=1$.
+:::
+
+::: {#exr-a02-3}
+Determine os valores de $r$ para que a equação diferencial dada tenha uma solução da forma $\phi(x)=e^{rx}$.
+
+a)  $y'+2y=0$
+b)  $y''-y=0$
+c)  $y''+y'-6y=0$.
+d)  $y'''-3y''+2y'=0$.
+:::
+
+::: {#def-a02-5}
+Uma **condição inicial** de uma equação diferencial é um par ordenado $(x_0, y_0)$ de números reais que deve pertencer ao conjunto solução. Um **problema de valor inicial** é uma solução da EDO que satisfaz a condição inicial dada.
+:::
+
+Duas considerações importantes:
+
+- Novamente é importante frisar que o intervalo de validade da solução deve passar pelo ponto $(x_0, y_0)$. Por vezes, descontinuidades das funções envolvidas podem complicar a determinação de tal intervalo, mas há formas simples de analisar cada cenário.
+- É possível fazer uma comparação natural entre encontrar as soluções de uma EDO e resolver um problema de valor inicial: em Cálculo M2, isto equivale às soluções de uma integral indefinida e a solução de uma integral definida.
+
+::: {#def-a02-6}
+O **campo de direções** de uma EDO do tipo $\dfrac{dy}{dx}=f(x,y)$ é um gráfico que esboça as direções que as soluções da equação dada se movem. Uma **solução de equilíbrio**, neste contexto, é uma solução constante para a equação diferencial.
+:::
+
+Para construir o campo de direções de uma equação diferencial, não é necessário resolvê-la. Basta analisar o comportamento de $y'$ em termos dos pontos $(x,y)$ do plano cartesiano.
+
+Geralmente, um campo de direções é útil para que possamos perceber intuitivamente, o comportamento geral das soluções da EDO e, possivelmente, algumas propriedades que o modelo possui.
+
+::: {#exm-a02-6}
+O campo de direções para $y'=0,5y+1$ é o gráfico a seguir:
+
+```{ojs}
+//| echo: false
+import { campoDirecoes } from "../../../assets/js/campo-direcoes.js"
+
+campoDirecoes({
+  f: (x, y) => 0.5 * y + 1,
+  t: [-5, 5],
+  y: [-6, 6],
+  largura: width,
+  solucoes: [[0, -2]],
+  chave: "a02-campo",
+  rotulos: { t: "x", y: "y" },
+  descricao: "Campo de direções de y' = 0,5y + 1, com a solução de equilíbrio y = −2",
+  legenda: "A reta y = −2 é a solução de equilíbrio. Toque no campo para traçar outras soluções."
+})
+```
+:::
+
+Para construir o campo acima, podemos perceber que $y'=0,5y+1$ tem uma expressão algébrica dependente apenas de $y$, ou seja, a inclinação (derivada) depende apenas de $y$. Com isto, todos os pontos sobre uma mesma horizontal $y=y_0$ possuem a mesma inclinação.
+
+Analisando o gráfico e a própria equação, é possível perceber que se houver uma solução constante $\phi(x)=k$, então $\phi'(x)=0$. Substituindo na equação, temos $0=0,5\phi(x)+1$ e, consequentemente, $\phi(x)=-2$. No gráfico, isto significa que as inclinações das retas tangentes às soluções da EDO são sempre constantes quando $y=-2$.
+
+Nesta disciplina, aprenderemos as principais técnicas de resolução de equações diferenciais ordinárias. Por agora, sabemos resolver alguns problemas simples).
+
+::: {#exr-a02-4}
+Desenhe um campo de direções para cada uma das equações a seguir. Em seguida, determine o comportamento de $y$ quando $x \to \infty$. Se esse comportamento depender do valor inicial de $y$ em $x=0$, descreva essa dependência.
+
+a)  $y'=3-2y$
+b)  $y'=2y-3$
+c)  $y'=y+2$
+d)  $y'=-1-2y$
+:::
+
+## De volta às integrais de Cálculo M2
+
+::: {#exm-a02-7}
+Do Cálculo M2 (ou N2), sabemos que a solução da EDO $y'=-x+1$ é a família de funções  $y=-\dfrac{x^2}{2}+x+c$, com $c \in \mathbb{R}$.
+
+Caso, adicionalmente, tivéssemos a condição que $y(0)=3$, então, necessariamente, $c=3$ e, consequentemente, $y=-\dfrac{x^2}{2}+x+3$ seria a solução desejada para o problema de valor inicial.
+:::
+
+Isto funciona para qualquer EDO da forma $y'=f(x)$? A resposta é sim! Se integrarmos ambos lados da função com relação à variável $x$, temos:
+
+$$y'=f(x) \implies \int y' \ dx = \int f(x) \ dx \implies y=\int f(x) \ dx.$$
+
+A última implicação acima está ligada ao Teorema Fundamental do Cálculo: "Se $f$ for contínua em $[a,b]$, então a função $g(x)$ definida por $\displaystyle g(x)=\int_a^x f(t) \ dt$, com $a \leq x \leq b$, é contínua em $[a, b]$ e derivável em $]a, b[$ e $g'(x)=f(x)$." (Stewart, vol. 1, p. 348)
+
+Outras equações demandam técnicas mais elaboradas. Mas nem sempre! Algumas podem ser intuitivas a depender do quão bem estudamos Cálculo M1 (ou N1).
+
+::: {#exm-a02-8}
+Para resolver intuitivamente $y'=-y+1$, lembramos as propriedades da derivação das diferentes classes de funções.  O primeiro palpite de solução deve envolver uma função cuja derivada seja ela mesma multiplicada por $-1$, ou seja,  uma exponencial. Por exemplo, palpitando $y=e^{-x}$, tem-se
+
+$$y'=-e^{-x} \qquad \mbox{e} \qquad -y+1=-e^{-x}+1.$$
+
+As expressões ainda não são iguais, mas são próximas. Por outro lado, lembremos que a derivada de uma constante é 0 e que qualquer coeficiente que multiplique a exponencial não altera a derivada.
+
+Nas próximas aulas, verificaremos que uma solução geral para este problema tem a forma $y=ce^{-x}+1$, sendo $c \in \mathbb{R}$.
+:::
+
+## Existência e unicidade de soluções para EDOs
+
+Nas próximas etapas da disciplina, investigaremos as soluções das equações diferenciais ordinárias de primeira ordem.
+
+- Será que toda EDO de primeira ordem tem solução?
+- Como determinar?
+- Esta solução é única?
+
+Naturalmente, o que nos dá a garantia da resposta a estas perguntas é uma proposição fundamental para o estudo das equações diferenciais ordinárias.
+
+As possíveis respostas dependem, principalmente, do comportamento das funções presentes na equação e se estamos com um problema amplo (ou seja, resolver uma EDO genérica) ou se é um problema mais restrito (de valor inicial).
+
+Faremos uma breve discussão a seguir.
+
+::: {#thm-a02-1 name="Existência e Unicidade (Picard-Lindelöf)"}
+Seja $f: \Omega \subset \mathbb{R}^2 \to \mathbb{R}, \Omega$ aberto e seja $(x_0,y_0) \in \Omega$. Suponha $f$ e $\dfrac{\partial f}{\partial x}$ contínuas em $\Omega$.
+
+I. [Existência]{.smallcaps}
+
+Nestas condições, a equação $y'=f(x,y)$ admite solução $y=y(x)$ definida em um intervalo $[x_0-r, x_0+r]$ e satisfazendo a condição inicial $y(x_0)=y_0$.
+
+II\. [Unicidade]{.smallcaps}
+
+Sejam $y_1(x), x \in I$ e $y_2(x), x \in J$ duas soluções de $y'=f(x,y)$, em que $I$ e $J$ são intervalos abertos contendo $x_0$ e tais que $y_1(x_0)=y_2(x_0)=y_0$.
+
+Nestas condições, existe $d>0$ tal que $y_1(x)=y_2(x)$ no intervalo $[x_0-d, x_0+d]$.
+:::
+
+A demonstração deste teorema fundamental tem diversos pré-requisitos que fogem ao já estudado anteriormente. Por exemplo, é necessário, para além dos pré-requisitos desta disciplina:
+
+- Análise real
+
+  O procedimento geral utiliza sequências de funções, para utilizarmos que tal sequência converge para uma solução.
+
+  Isto acontece porque é necessário construir uma sequência de Cauchy a partir de um procedimento conhecido como *método das aproximações sucessivas* ou *método de iteração de Picard*.
+
+  O conceito de função lipschiziana também é necessário na demonstração da convergência da sequência criada pelo método das aproximações sucessivas.
+
+- Espaços métricos
+
+  Nesta disciplina, é possível mostrar que o Teorema de Existência e Unicidade para as EDOs de primeira ordem é uma aplicação do Teorema do Ponto Fixo de Banach.
+
+Percebam que, no texto da existência, o disco onde conseguimos verificar a existência é, necessariamente, ao redor do ponto $x_0$. Na unicidade, os intervalos $I$ e $J$ também são intervalos (contínuos) que contêm o ponto $x_0$.
+
+Com isto, é importante reforçar que o Teorema de Existência e Unicidade, garante que essa solução existe e é única mas apenas em um intervalo contínuo que contenha o ponto $x_0$ da condição dada de um problema de valor inicial.
+
+::: {#exr-a02-5}
+Determine um intervalo no qual $y^2-2y=x^2-x-1$ define uma solução para $2(y-1) dy + (1-2x) dx=0$. Para responder esta questão, analise as condições postas por $y'$ e analise o intervalo em que a função $y(x)$ está bem definida.
+:::
+
+::: {#exr-a02-6}
+Explique porque a equação diferencial $\displaystyle \left(\dfrac{dy}{dx}\right)^2=\dfrac{4-y^2}{4-x^2}$ não possui solução real em $|x|<2, |y|>2$. Há outras regiões do plano em que a equação não possui solução?
+:::
+
+## Introdução ao Método de Picard
+
+Embora, nesta disciplina, o foco seja nas técnicas de como determinar precisamente as soluções de uma equação, é importante que vejamos pelo menos uma vez como o método iterativo de Picard (ou método das aproximações sucessiva) funciona. Para detalhes mais aprofundados sobre este tema, conferir Zill (p. 88).
+
+Partindo do problema de valor inicial $y'(x)=f(x,y)$ dado $y(x_0)=y_0$, integramos ambos lados e eliminamos a constante para obter $$y(x)=y_0+\int_{x_0}^x f(t, y(t)) \ dt.$$
+
+Nossa meta é determinar quem é a função $y(x)$. Para isto, utilizamos aproximações sucessivas de funções, começando com um "palpite" $y_0(x)$ e substituindo na integral (no lugar de $y(t)$). Resolvendo todos os cálculos, obtemos um novo valor para $y(x)$, que chamaremos de $y_1(x)$. Repetimos tantas vezes quanto necessário o procedimento para observar o comportamento da função $y$ e obter o resultado desejado.
+
+::: {#exm-a02-9}
+Aplicar o Método de Picard para determinar a solução de $y'=-y$ satisfazendo $y(0)=1$.
+
+No primeiro momento, podemos tomar $y_0(x)=1$ e que a relação de recorrência tem a forma
+
+$$y_n(x)=1+\int_0^x -y_{n-1}(t) \ dt.$$
+
+- Para $n=1$, temos $\displaystyle y_1(x)=1+\int_0^x -1 \ dt = 1 -x.$
+- Para $n=2$, temos $\displaystyle y_2(x)=1+\int_0^x -(1-t) \ dt = 1+ \int_0^x -1+t \ dt = 1-x+\dfrac{x^2}{2}$.
+- Para $n=3$, temos $\displaystyle y_3(x)=1+\int_0^x -\left(1-t+\dfrac{t^2}{2}\right) \ dt = 1+ \int_0^x -1+t-\dfrac{t^2}{2} \ dt = 1-x+\dfrac{x^2}{2}-\dfrac{x^3}{3\cdot 2}$.
+
+Prosseguindo com mais etapas deste processo, obtemos uma expressão cada vez mais próxima da função desejada. Em especial, é possível verificar que
+
+$$y_n(x)=1-x+\dfrac{x^2}{2!}-\dfrac{x^3}{3!}+\dfrac{x^4}{4!}+\ldots+\dfrac{(-1)^nx^n}{n!}.$$
+
+Por fim, tomando o limite quando $n$ tende a infinito e observando que o comportamento da expressão coincide com a expansão em série de Taylor da função exponencial $e^{-x}$, temos que a solução converge para $y(x)=e^{-x}$, a função que desejávamos determinar.
+:::
+
+O exercício a seguir, utilizando o método de Picard, é bastante interessante para quem fez um bom curso de Sequências e Séries e reconhece as principais formas das expansões em séries de Taylor.
+
+::: {#exr-a02-7}
+Nos problemas a seguir, defina $y_0(x)=0$ e utilize o método das aproximações sucessivas para resolver o problema de valor inicial dado. Para isto, determine $y_1(x), y_2(x), \ldots$ e esboce o gráfico de $y_n(x)$, observando se as iterações parecem estar convergindo.
+
+a)  $y'=xy+1$, com $y(0)=0$;
+b)  $x^2y-x$, dado $y(0)=0$;
+c)  $y'=x^2+y^2$, dado $y(0)=0$;
+d)  $y'=1-y^3$, com $y(0)=0$.
+:::
+
+[^1]: Neste problema, $Q$ é a função carga elétrica e os parâmetros estão associados a um capacitor em um circuito. Respectivamente, representam a indutância, resistência e capacitância. Para mais detalhes, consultar Boyce & DiPrima, p. 11.

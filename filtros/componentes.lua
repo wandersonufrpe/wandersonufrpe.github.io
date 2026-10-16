@@ -104,7 +104,9 @@ local function processar_blocos(blocos)
       elseif rascunho then
         alterou = true
         if revisao then
-          novos:insert(pandoc.Div(bloco.content, pandoc.Attr("", { "rascunho-visivel" })))
+          -- mantém o bloco inteiro (um quiz em rascunho continua sendo quiz)
+          bloco.classes:insert("rascunho-visivel")
+          novos:insert(bloco)
         end
       else
         novos:insert(bloco)
