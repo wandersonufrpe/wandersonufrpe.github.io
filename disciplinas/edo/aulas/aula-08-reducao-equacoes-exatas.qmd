@@ -1,0 +1,189 @@
+---
+title: "Aula 8: Redução a equações exatas"
+pdf-aula: pdf/aula-08.pdf
+---
+
+Caso uma equação no formato $\displaystyle p(x,y)+q(x,y)y'=0$ não seja exata, então ela não satisfaz a condição $\dfrac{\partial p}{\partial y}=\dfrac{\partial q}{\partial x}$. Neste cenário, podemos utilizar a ideia de um fator integrante (tal como usamos anteriormente para resolver EDOs lineares).
+
+Suponha que exista um fator integrante que deixe a equação acima exata, ou seja, $$\mu(x,y)p(x,y)+\mu(x,y)q(x,y)y'=0 \qquad \mbox{ e } \qquad \dfrac{\partial (\mu p)}{\partial y}=\dfrac{\partial (\mu q)}{\partial x}$$
+
+Da condição acima, temos $$\dfrac{\partial \mu}{\partial y}\cdot p+\mu \cdot \dfrac{\partial p}{\partial y}=\dfrac{\partial \mu}{\partial x}\cdot q+\mu \cdot \dfrac{\partial q}{\partial x} \iff \boxed{\dfrac{\partial \mu}{\partial y}\cdot p-\dfrac{\partial \mu}{\partial x}\cdot q=\mu \left(\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}\right)}$$
+
+Determinar uma $\mu(x,y)$ que satisfaça a condição acima é bastante complicado, uma vez que precisamos determinar uma função dependente de duas derivadas parciais diferentes (e que ainda satisfaçam uma equação!).
+
+Alternativamente, podemos procurar por um fator integrante mais simples, que dependa apenas de uma variável (ou $x$ ou $y$). Vejamos quais as condições são necessárias.
+
+## Caso 1: Um fator integrante dependente apenas de $x$
+
+Se o fator integrante tem o formato $\mu(x)$, então sua derivada com respeito a $y$ é $0$. Assim, a condição sobre $\mu$ é reescrita como $$\cancel{\dfrac{\partial \mu}{\partial y}}\cdot p-\dfrac{\partial \mu}{\partial x}\cdot q=\mu \left(\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}\right)\implies -\dfrac{d\mu}{dx}\cdot q=\mu \left(\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}\right) \implies \dfrac{d\mu}{dx}=-\mu \cdot \dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{q}.$$
+
+Como, neste caso, $\mu$ depende apenas de $x$, então $\mu'$ também só depende de $x$.
+
+Assim, uma condição suficiente para termos um fator integrante $\mu(x)$ é que exista uma função $f(x)$ tal que $$f(x)=\dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{q}.$$
+
+Caso exista tal função, a equação que $\mu$ e $\mu'$ devem satisfazer se reduz a $$\dfrac{d\mu}{dx}=-\mu f(x) \iff \dfrac{d\mu}{\mu}=-f(x) \ dx \implies \mu = e^{-\int f(x) \ dx}=e^{-F(x)},$$ em que $F(x)$ representa uma primitiva para $f(x)$.
+
+Com a multiplicação por este fator integrante, a nova equação diferencial é exata e o procedimento que já aprendemos poderá ser usado! Mas lembre-se que isto só vale se o resultado do quociente no topo deste slide for uma função apenas de $x$!
+
+::: {#exm-a08-1}
+Determinar todas soluções de $(3xy+y^2)+(x^2+xy)y'=0$.
+
+Primeiro, verificamos se $\dfrac{\partial q}{\partial x}=\dfrac{\partial p}{\partial y}$.
+
+$$\dfrac{\partial q}{\partial x}=2x+y \qquad \qquad \dfrac{\partial p}{\partial y}=3x+2y.$$
+
+Como são diferentes, procuramos por um fator integrante. O numerador a ser analisado é da forma $$\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}=(2x+y)-(3x+2y)=-(x+y)$$
+
+Observando atentamente, percebemos que este é um divisor de $q(x,y)$. Assim, nosso fator integrante é da forma $\mu(x)$.
+
+Nosso problema se reduz a determinar $\mu(x)=e^{-F(x)}$, em que $F(x)$ representa uma primitiva para $$f(x)=\dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{q}=\dfrac{-(x+y)}{x^2+xy}=\dfrac{-(x+y)}{x(x+y)}=-\dfrac{1}{x}.$$
+
+Como $F(x)=-\ln x$ é uma primitiva para a $f(x)$ acima, então nosso fator integrante é $\mu(x)=e^{-\ln x}=x$. Agora podemos procurar as soluções da nova equação diferencial, agora exata! $$(3x^2y+xy^2)+(x^3+x^2y)y'=0$$
+
+Integrando $p(x,y)$ com respeito a $x$, temos $$\phi(x,y)=\left( \int p(x,y) \ dx \right) + c(y)=\left( \int 3x^2y+xy^2 \ dx \right) + c(y)=x^3y+\dfrac{x^2y^2}{2}+c(y).$$
+
+Em seguida, derivando com relação a $y$ e comparando a $q(x,y)$, temos $$q(x,y)=\begin{cases} \dfrac{\partial \phi }{\partial y} = x^3+x^2y+c'(y) \\ x^3+x^2y \end{cases}$$ $$\implies c'(y)=0 \implies c(y)=0.$$
+
+Juntando todas as informações à constante para concluir, obtemos que toda solução da EDO tem o formato $$x^3y+\dfrac{x^2y^2}{2}=k, \mbox{ com }k \in \mathbb{R}.$$
+:::
+
+## Caso 2: Um fator integrante dependente apenas de $y$
+
+Se o fator integrante tem o formato $\mu(y)$, então sua derivada com respeito a $x$ é $0$. Assim, a condição sobre $\mu$ é reescrita como $$\dfrac{\partial \mu}{\partial y}\cdot p-\cancel{\dfrac{\partial \mu}{\partial x}}\cdot q=\mu \left(\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}\right)\implies \dfrac{d\mu}{dy}\cdot p=\mu \left(\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}\right) \implies \dfrac{d\mu}{dy}=\mu \cdot \dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{p}.$$
+
+A análise é similar ao caso anterior. Como $\mu$ depende apenas de $y$, então $\mu'$ também só depende da variável dependente $y$. Assim, uma condição suficiente para termos um fator integrante $\mu(y)$ é que exista uma função $g(y)$ tal que $$g(y)=\dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{p}.$$
+
+Caso exista tal função, a equação que $\mu$ e $\mu'$ devem satisfazer se reduz a $$\dfrac{d\mu}{dy}=\mu g(y) \iff \dfrac{d\mu}{\mu}=g(y) \ dy \implies \mu = e^{\int g(y) \ dy}=e^{G(y)},$$ em que $G(y)$ representa uma primitiva para $g(y)$.
+
+Com a multiplicação por este fator integrante, a nova equação diferencial é exata e o procedimento que já aprendemos poderá ser usado! Mas lembre-se que isto só vale se o resultado do quociente no fim do slide anterior for uma função apenas de $y$!
+
+::: {#exm-a08-2}
+Determinar todas soluções de $1 \ dx+\left(\dfrac{x}{y}\right) \ dy=0$.
+
+Sempre começamos com a verificação da condição de existência $\dfrac{\partial q}{\partial x}=\dfrac{\partial p}{\partial y}$: $$\dfrac{\partial q}{\partial x}=2x+y \qquad \qquad \dfrac{\partial p}{\partial y}=3x+2y.$$
+
+Como são diferentes, procuramos por um fator integrante. O numerador a ser analisado é da forma $$\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}=\left(\dfrac{1}{y}\right)-(0)=\dfrac{1}{y}$$
+
+Observando atentamente, percebemos que este é um divisor de $p(x,y)$. Assim, nosso fator integrante é da forma $\mu(y)$.
+
+Agora, precisamos determinar $\mu(y)=e^{-G(y)}$, em que $G(y)$ representa uma primitiva para $$g(y)=\dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{p}=\dfrac{1}{y}.$$
+
+Como $G(y)=\ln y$ é uma primitiva para a $g(y)$ acima, então $\mu(y)=e^{\ln y}=y$ é o fator integrante desejado. Com isto, multiplicamos a equação toda por $\mu$ e podemos procurar as soluções da nova equação diferencial, agora exata! $$y \ dx+ x \ dy=0.$$
+
+Integrando $p(x,y)$ com respeito a $x$, temos $$\phi(x,y)=\left( \int p(x,y) \ dx \right) + c(y)=\left( \int y \ dx \right) + c(y)=xy+c(y).$$
+
+Em seguida, derivando com relação a $y$ e comparando a $q(x,y)$, temos $$q(x,y)=\begin{cases} \dfrac{\partial \phi }{\partial y} = x+c'(y) \\ x \end{cases}$$ $$\implies c'(y)=0 \implies c(y)=0.$$
+
+Juntando todas as informações à constante para concluir, obtemos que toda solução da EDO tem o formato $$xy=k, \mbox{ com }k \in \mathbb{R}.$$
+
+Uma observação importantíssima: esta equação é, também, separável, homogênea e linear! Treinar os olhos (e testar hipóteses) sobre outras possíveis classificações que uma equação admite sempre é uma boa estratégia.
+:::
+
+A pergunta mais natural, neste momento, é: em que momento vamos usar um fator integrante dependente de $x$ ou dependente de $y$? A resposta (simples) depende apenas de observarmos o que as expressões de $f(x)$ e $g(y)$ devem satisfazer.
+
+Observemos as duas expressões lado a lado.
+
+$$f(x)=\dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{q} \qquad \qquad  \qquad g(y)=\dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{p}$$
+
+Perceba que o numerador de ambas é o mesmo, é a condição de exatidão! Assim, podemos calculá-lo e atentar caso este resultado dividido por $q$ é uma função de $x$ ou se dividirmos por $p$ é uma função de $y$. Mas cuidado pra não confundir a ordem!
+
+## Caso 3: Um fator integrante dependente do produto $t=xy$
+
+Nos livros didáticos sobre equações diferenciais, há um destaque para algumas transformadas comuns, como é o caso de $xy$. Neste cenário, $\mu(x,y)=\mu(t),$ em que $t=xy.$
+
+Neste cenário, a regra da cadeia nos fornece $$\dfrac{\partial \mu}{\partial x}=\dfrac{d \mu}{dt}\cdot \dfrac{\partial t}{\partial x}=\mu'(t)\cdot y \qquad \qquad \dfrac{\partial \mu}{\partial y}=\dfrac{d \mu}{dt}\cdot \dfrac{\partial t}{\partial y}=\mu'(t)\cdot x$$
+
+Retornando à condição sobre o fator integrante posta no início da seção e substituindo as informações acima, obtemos:
+
+$$\dfrac{\partial \mu}{\partial y}\cdot p-\dfrac{\partial \mu}{\partial x}\cdot q=\mu \left(\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}\right) \iff 
+    (\mu'x)p-(\mu'y)q=\mu \left(\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}\right)$$
+
+Logo, se existe um fator integrante dependente apenas de $t$, então sua derivada também depende somente de $t$ e, portanto, $$\mu'(t)=\mu \cdot \dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{xp-yq}=h(t).$$
+
+Se existir tal $h(t)$, então a equação do fim do slide anterior se reduz a $\mu'(t)=\mu(t)\cdot h(t)$, o que dá origem a uma EDO separável de solução $\mu(t)=e^{H(t)},$ em que $H(t)$ representa uma primitiva para $h(t)$.
+
+::: {#exm-a08-3}
+Determine todas as soluções de $\left(3x+\dfrac{6}{y}\right)+\left(\dfrac{x^2}{y}+\dfrac{3y}{x}\right)y'=0$, com $x>0$ e $y>0$.
+
+Calculando as derivadas parciais necessárias, temos $$\dfrac{\partial q}{\partial x}=\dfrac{2x}{y}-\dfrac{3y}{x^2} \qquad \qquad \dfrac{\partial p}{\partial y}=-\dfrac{6}{y^2}.$$
+
+A diferença entre as derivadas é $\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}=\dfrac{2x}{y}-\dfrac{3y}{x^2}+\dfrac{6}{y^2}=\dfrac{2x^3y-3y^3+6x^2}{x^2y^2}$, que não é divisível por $p(x,y)$ nem $q(x,y)$.
+
+Para um fator integrante dependente apenas de $t=xy$, testamos o valor de $xp-yq$. $$xp-yq=x\left(3x+\dfrac{6}{y}\right)-y\left(\dfrac{x^2}{y}+\dfrac{3y}{x}\right)=3x^2+\dfrac{6x}{y}-x^2-\dfrac{3y^2}{x}=\dfrac{2x^3y-3y^3+6x^2}{xy}.$$
+
+Perceba que o numerador de ambas frações são similares e os denominadores são potências de $xy$. Com isto, observamos que $$\mu'(t)=\dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{xp-yq}=\dfrac{\dfrac{\cancel{2x^3y-3y^3+6x^2}}{x^2y^2}}{\dfrac{\cancel{2x^3y-3y^3+6x^2}}{xy}}=\dfrac{xy}{x^2y^2}=\dfrac{1}{xy}==\dfrac{1}{t}=h(t)$$
+
+O nosso fator integrante é o resultado de $\mu'(t)= \mu(t)\cdot \dfrac{1}{t}$. Após resolver esta EDO separável simples, obtemos $\mu(t)=t$.
+
+Multiplicando a equação original por $t=xy$, teremos a equação exata $$\left(3x^2y+6x\right)+\left(x^3+3y^2\right)y'=0.$$
+
+Agora, aplicamos o procedimento padrão para resolução deste tipo de EDO.
+
+- Integrando $p(x,y)$ com respeito a $x$, temos $$\phi(x,y)=\left( \int p(x,y) \ dx \right) + c(y)=\left( \int 3x^2y+6x \ dx \right) + c(y)=x^3y+3x^2+c(y).$$
+- Derivando com relação a $y$ e comparando a $q(x,y)$, temos $$q(x,y)=\begin{cases} \dfrac{\partial \phi }{\partial y} = x^3+c'(y) \\ x^3+3y^2 \end{cases} \implies c'(y)=3y^2 \implies c(y)=y^3.$$
+- Juntando todas as informações à constante para concluir, obtemos que toda solução da EDO tem o formato $$x^3y+3x^2+y^3=k, \mbox{ com }k \in \mathbb{R}.$$
+:::
+
+## Caso 4: Um fator integrante dependente de uma função $t=v(x,y)$ qualquer
+
+O procedimento adotado para o Caso 3 pode ser generalizado para qualquer expressão do tipo $t=v(x,y)$. Basta atentarmos a qual é a relação entre as derivadas parciais de $\mu(t)$ com relação a esta mudança de variáveis.
+
+::: {#exm-a08-4}
+Para que o fator integrante seja do tipo $\mu(t)$, em que $t=xy^2$, precisamos que $$\dfrac{\partial \mu}{\partial x}=\dfrac{d \mu}{dt}\cdot \dfrac{\partial t}{\partial x}=\mu'(t)\cdot y^2 \qquad \qquad \dfrac{\partial \mu}{\partial y}=\dfrac{d \mu}{dt}\cdot \dfrac{\partial t}{\partial y}=\mu'(t)\cdot 2xy$$
+
+Retornando à condição sobre o fator integrante posta no início da seção e substituindo as informações acima, obtemos:
+
+$$\dfrac{\partial \mu}{\partial y}\cdot p-\dfrac{\partial \mu}{\partial x}\cdot q=\mu \left(\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}\right) \iff 
+        \mu'\cdot 2xyp-\mu'\cdot y^2q=\mu \left(\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}\right)$$
+
+Assim, para que $\mu(t)$ seja realmente um fator integrante, é necessário que a expressão a seguir dependa apenas de $t$. $$\mu'(t)=\mu \cdot \dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{2xyp-y^2q}=h(t).$$
+:::
+
+Como cada mudança de variável dá origem a uma expressão diferente, os exercícios desta disciplina focarão apenas em questões que recaem nos Casos 1, 2 e 3.
+
+::: {.callout-note icon="false" appearance="simple"}
+[Algoritmo de redução a uma EDO exata]{.smallcaps}
+
+Dada uma equação na forma $p(x,y)+q(x,y)\cdot y'=0$ não exata:
+
+1.  Calculamos $$\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}.$$
+
+2.  Avaliamos a expressão acima
+
+    - Se $q(x,y)$ divide a expressão acima e é uma função apenas de $x$ (ou seja, no formato $f(x)$), então o fator integrante tem a forma $\mu(x)=e^{-F(x)}$, em que $F(x)$ é uma primitiva qualquer para $$f(x)=\dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{q}.$$
+    - Se $p(x,y)$ divide a expressão acima e é uma função apenas de $y$ (ou seja, no formato $g(y)$), então o fator integrante tem a forma $\mu(y)=e^{G(y)}$, em que $G(y)$ é uma primitiva qualquer para $$g(y)=\dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{p}.$$
+    - Se $xp(x,y)-yq(x,y)$ divide a expressão acima e é uma função apenas de $t=xy$ (ou seja, no formato $h(t)$), então o fator integrante tem a forma $\mu(t)=e^{H(t)}$, em que $H(t)$ é uma primitiva qualquer para $$h(t)=\dfrac{\dfrac{\partial q}{\partial x}-\dfrac{\partial p}{\partial y}}{xp-yq}.$$
+
+3.  Multiplicamos a EDO original pelo fator integrante $\mu$ acima para obter uma equação exata e a resolvemos.
+:::
+
+::: {#exr-a08-1}
+Para cada uma das equações da questão 7.1 que não são exatas, verifique se elas admitem fator integrante do tipo $f(x)$ ou $g(y)$.
+:::
+
+::: {#exr-a08-2}
+Em cada item, utilize o fator integrante adequado para transformar a equação em uma exata e, em seguida, a resolva.
+
+a)  $(3y^2 - x^2 + 1) \, dx + 2xy \, dy = 0$, considerando $x > 0$.
+b)  $3y \, dx - x \, dy = 0$, dado que $x > 0$ e $y > 0$.
+c)  $(3xy - 4y) \, dx + (2x^2 - 4x) \, dy = 0$, dados $x > 0$ e $y > 0$.
+d)  $(2x + 3y) \, dx + x \, dy = 0$, com $x > 0$.
+:::
+
+::: {#exr-a08-3}
+Determine condições para que a equação $p(x,y) \ dx + q(x,y) \ dy = 0$ admita fator integrante da forma $\mu(x,y)=h(t)$, em que $t=x^2+y^2$.
+:::
+
+::: {#exr-a08-4}
+Verifique que a equação de Bernoulli $\dfrac{dy}{dx}+xy=y^2$, com $y \neq 0$, é equivalente a $(xy^{-1}-1) \ dx + y^{-2} \ dy=0$. Procure um fator integrante e resolva.
+:::
+
+As questões envolvem aspectos mais amplos sobre as equações diferenciais de primeira ordem e envolvem interpretações usando aplicações da integral e o Teorema Fundamental do Cálculo.
+
+::: {#exr-a08-5}
+Determine uma função $y=f(x)$, com $f(1)=2$, tal que para todo $t>0$, com $t$ no domínio de $f$, a área do conjunto $$\left\{(x,y) \in \mathbb{R}^2; 0 \leq x \leq t \mbox{ e } 0 \leq y \leq (f(x))^2\right\}$$ seja igual a $tf(t)$.
+:::
+
+::: {#exr-a08-6}
+Determine uma função $y=f(x)$ definida em um intervalo $I$, cujo gráfico passe pelo ponto $\left(0,\dfrac{5}{4}\right)$ e tal que, para todo $t>0$, $t \in I$, o comprimento do gráfico de $y=f(x), 0 \leq y \leq t$ seja igual à área do conjunto $\left\{(x,y) \in \mathbb{R}^2; 0 \leq x \leq t \mbox{ e } 0 \leq y \leq f(x)\right\}$.
+:::

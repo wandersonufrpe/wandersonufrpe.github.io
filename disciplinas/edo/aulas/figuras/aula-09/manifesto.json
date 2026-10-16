@@ -1,0 +1,42 @@
+{
+  "origem": "/mnt/user-data/uploads/Notas de aula/Introdução às equações ordinárias/txt/Aula 09.tex",
+  "figuras": [
+    {
+      "arquivo": "fig-01.svg",
+      "linha_no_tex": 51,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "0c0370d5a4a3",
+      "candidata_a_applet": true,
+      "pistas": [
+        "laço \\foreach (várias curvas)"
+      ],
+      "inicio_do_codigo": "\\begin{tikzpicture}[scale=0.44] \\draw[->] (-6.2, 0) -- (6.2, 0) node[right] {$x$}; \\draw[->] (0,-6.2) -- (0, 6.2) node[above] {$y$}; \\clip (-6,-6) rectangle (6,"
+    },
+    {
+      "arquivo": "fig-02.svg",
+      "linha_no_tex": 140,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "144fc91f3baa",
+      "candidata_a_applet": true,
+      "pistas": [
+        "laço \\foreach (várias curvas)"
+      ],
+      "inicio_do_codigo": "\\begin{tikzpicture}[scale=0.44] \\draw[->] (-6.2, 0) -- (6.2, 0) node[right] {$x$}; \\draw[->] (0,-6.2) -- (0, 6.2) node[above] {$y$}; \\clip (-6,-6) rectangle (6,"
+    },
+    {
+      "arquivo": "fig-03.svg",
+      "linha_no_tex": 196,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "76dc54ca940b",
+      "candidata_a_applet": true,
+      "pistas": [
+        "laço \\foreach (várias curvas)",
+        "exponencial"
+      ],
+      "inicio_do_codigo": "\\begin{tikzpicture}[xscale=4.5, yscale=0.8] \\draw[->] (-0.4, 0) -- (2.5, 0) node[right] {$t$}; \\draw[->] (0,-4.3) -- (0, 4.3) node[above] {$y$}; \\draw[brown, th"
+    }
+  ]
+}

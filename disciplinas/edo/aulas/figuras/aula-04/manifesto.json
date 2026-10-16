@@ -1,0 +1,29 @@
+{
+  "origem": "/mnt/user-data/uploads/Notas de aula/Introdução às equações ordinárias/txt/Aula 04.tex",
+  "figuras": [
+    {
+      "arquivo": "fig-01.svg",
+      "linha_no_tex": 114,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "6d2b6a12b2c0",
+      "candidata_a_applet": true,
+      "pistas": [
+        "laço \\foreach (várias curvas)"
+      ],
+      "inicio_do_codigo": "\\begin{tikzpicture}[declare function={diff(\\x,\\y) = 1+2*(\\y/\\x);}, scale=0.35] \\draw[->] (-5.2, 0) -- (5.2, 0) node[right] {$x$}; \\draw[->] (0,-6.1) -- (0, 6.1)"
+    },
+    {
+      "arquivo": "fig-02.svg",
+      "linha_no_tex": 128,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "fc84fed58e74",
+      "candidata_a_applet": true,
+      "pistas": [
+        "laço \\foreach (várias curvas)"
+      ],
+      "inicio_do_codigo": "\\begin{tikzpicture}[declare function={diff(\\x,\\w) = (1/\\x)+(\\w/\\x);}, scale=0.35] \\draw[->] (-5.2, 0) -- (5.2, 0) node[right] {$x$}; \\draw[->] (0,-6.1) -- (0, 6"
+    }
+  ]
+}

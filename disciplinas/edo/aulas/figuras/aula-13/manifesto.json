@@ -1,0 +1,17 @@
+{
+  "origem": "/mnt/user-data/uploads/Notas de aula/Introdução às equações ordinárias/txt/Aula 13.tex",
+  "figuras": [
+    {
+      "arquivo": "fig-01.svg",
+      "linha_no_tex": 126,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "77f661780e52",
+      "candidata_a_applet": true,
+      "pistas": [
+        "laço \\foreach (várias curvas)"
+      ],
+      "inicio_do_codigo": "\\begin{tikzpicture}[>=Stealth, scale=1.05] \\def\\rx{1.6} \\def\\ry{0.45} \\def\\hbot{0} \\def\\htop{4.0} \\def\\hliq{3.75} \\def\\vx{0.05} \\def\\vy{2.55} \\pgfmathsetmacro{\\"
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+---
+title: "Aula 5: Equações lineares"
+pdf-aula: pdf/aula-05.pdf
+---
+
+## A transição para as EDOs lineares
+
+Logo no exemplo 06 da Aula 2, tivemos dificuldade em resolver $y'=-y+1$. Agora, podemos desenvolver um procedimento padrão para todas as equações do formato $y'=ay+b$, com $a, b \in \mathbb{R}, a \neq 0$ e $y \neq-\dfrac{b}{a}$, pois todas elas são separáveis.
+
+$$\dfrac{dy}{dx}=ay+b = a\left(y+\frac{b}{a}\right) \implies   
+    \dfrac{dy}{y+\frac{b}{a}}=a \ dx \implies \int \dfrac{dy}{y+\frac{b}{a}}= \int a \ dx$$ $$\ln\left|y+\frac{b}{a}\right|=ax+c \implies y+\frac{b}{a}=\pm e^{ax+c} \xRightarrow[k \neq 0]{k=\pm e^c} y+\frac{b}{a}=k\cdot e^{ax} \implies y=k\cdot e^{ax}-\frac{b}{a}$$ é a família de soluções não constantes para este tipo de EDOs.[^1]
+
+Observemos o valor de $k$. A priori, não pode ser 0 pois é definido a partir de $k=\pm e^c$, que nunca se anula. Por outro lado, se $k=0$, a solução encontrada seria justamente a solução constante do problema, já que a $ay+b=0 \iff y=-\dfrac{b}{a}$.
+
+Sistematizamos esta ideia:
+
+::: {#prp-a05-1}
+([Solução de EDOs lineares de coeficientes constantes]{.smallcaps})
+
+A solução geral de uma EDO da forma $y'=ay+b$ com $a, b \in \mathbb{R}, a \neq 0$ e $y \neq-\dfrac{b}{a}$ é dada por $$y=k\cdot e^{ax}-\frac{b}{a},$$ com $k \in \mathbb{R}$.
+
+Se, além disto, for dada a condição $y_0=y(0)$, então a solução geral do problema de valor inicial é dada por $$\displaystyle y=\left(y_0+\dfrac{b}{a}\right)\cdot e^{ax}-\dfrac{b}{a}.$$
+:::
+
+**Demonstração:** Já verificamos a primeira parte. Caso $x_0=0$, a exponencial resulta em $e^{a\cdot 0}=1$. Portanto, organizando os termos, obtemos $k=y_0-\frac{b}{a}$. 0◻
+
+## EDOs de 1ª ordem lineares
+
+::: {#def-a05-1}
+Uma equação diferencial de 1ª ordem é dita **linear** se sua expressão geral é da forma $$\dfrac{dy}{dx}=f(x)\cdot y + g(x),$$ em que $f(x)$ e $g(x)$ são funções reais contínuas definidas em um intervalo $I$ dado.
+
+Quando $g(x)=0$, dizemos que a equação é **linear homogênea** de primeira ordem.
+:::
+
+::: {#exm-a05-1}
+Sobre as EDOs de primeira ordem a seguir: $$y'=\sin (x) \cdot y + \tan (\ln x) \qquad \qquad y'=\arctan (x) \cdot y \qquad \qquad y'=\ln(x)\cdot y^2 + e^{2x+4}$$ A primeira equação é linear, mas não é homogênea; a segunda é linear e homogênea; a última não é linear e nem homogênea.
+:::
+
+Para desenvolver uma técnica que resolva qualquer equação linear, podemos nos inspirar em duas construções distintas. Na primeira, conhecida como **técnica da variação dos parâmetros**, percebemos padrões existentes nas soluções das equações lineares homogêneas e procuramos estender para as equações lineares.
+
+::: {#exr-a05-1}
+Identifique quais das equações a seguir são lineares em $y$.
+
+a)  $y'=5x+y^2$
+b)  $y'=\sin(x)\cdot y + \cos (x)$
+c)  $\dfrac{dy}{dx}=\dfrac{1}{x+y^2}$
+d)  $y=ln x \cdot y$
+:::
+
+### As soluções das equações lineares homogêneas
+
+Toda equação linear homogênea (ou seja, da forma $y'=f(x)\cdot y$) é, também, separável. Portanto, o passo a passo para resolvê-la é o mesmo:
+
+- Só há uma solução constante, a reta $y=0$.
+- Separamos as variáveis para determinar as soluções: $$\dfrac{dy}{dx}=f(x)\cdot y \implies  
+          \dfrac{dy}{y}=f(x) \ dx \implies \int \dfrac{dy}{y}= \int f(x) \ dx$$ $$\ln\left|y\right|=F(x)+c \implies y=\pm e^{F(x)+c} \xRightarrow[k \neq 0]{k=\pm e^c} y=k\cdot e^{F(x)},$$ em que $F(x)$ representa uma primitiva para $f(x)$, ou seja, $F(x)=\int f(x) \ dx$.
+
+Perceba que a solução constante $y=0$ ocorre exatamente quando $k=0$. A técnica das EDOs separáveis nos dá uma condição $k \neq 0$, mas a solução constante está associada a $k=0$. Por isto, ao juntar as duas soluções, podemos escrever que a solução global deste tipo de equação é $$y'=k\cdot e^{F(x)},$$ com $k \in \mathbb{R}$ e $F(x)$ sendo uma primitiva qualquer de $f(x)$.
+
+### A passagem para as equações lineares quaisquer
+
+Na solução geral de uma equação linear homogênea, a constante $k$ é igual à fração $\dfrac{y}{e{F(x)}}$. A derivação desta expressão se relaciona fortemente com a função $g(x)$ de uma equação linear qualquer.
+
+$$\left(\dfrac{y}{e^{F(x)}}\right)'=\dfrac{y'\cdot e^{F(x)}-y\cdot (e^{F(x)})'}{(e^{F(x)})^2}=\dfrac{y'\cdot e^{F(x)}-f(x) \cdot y\cdot e^{F(x)}}{(e^{F(x)})^2}=\dfrac{e^{F(x)}(y'-f(x)\cdot y)}{(e^{F(x)})^2}=\dfrac{y'-f(x) \cdot y}{e^{F(x)}}.$$
+
+Perceba que a expressão no numerador é algo conhecido! Numa EDO linear, temos $y'=f(x)\cdot y + g(x)$ e, consequentemente, $y'-f(x)\cdot y=g(x)$.
+
+Portanto, organizando os termos e integrando ambos lados, temos
+
+$$\left(\dfrac{y}{e^{F(x)}}\right)'=\dfrac{y'-f(x) \cdot y}{e^{F(x)}}=\dfrac{g(x)}{e^{F(x)}} \implies \dfrac{y}{e^{F(x)}}=\int \dfrac{g(x)}{e^{F(x)}} \ dx$$
+
+Isolando os termos, obtemos a expressão geral $$y=e^{F(x)} \cdot \left( \left( \int \dfrac{g(x)}{e^{F(x)}} \ dx \right)+k\right)$$
+
+Atenção: O Guidorizzi (vol. 4) apresenta a solução geral com a expressão completa e detalhada. Particularmente, considero que é muita informação e com pouco significado claro. $$y=e^{\int f(x) \ dx}\left(\left(\int g(x)e^{-\int f(x) \ dx} \ dx \right) + k\right), \ k \in \mathbb{R}.$$
+
+Particularmente, prefiro considerar uma solução em que o procedimento passo a passo esteja claro, mesmo que sejam feitas várias substituições de termos. Por exemplo, se fizermos as trocas a seguir, temos a solução geral $$y=e^{F(x)} \cdot (H(x)+k),$$ em que $$\displaystyle F(x)=\int f(x) \ dx \qquad \qquad \displaystyle H(x)=\int \dfrac{g(x)}{e^{F(x)}} \ dx \qquad \qquad k \in \mathbb{R}.$$
+
+Este raciocínio fragmentado nos leva a um procedimento em etapas para a resolução de EDOs lineares de primeira ordem.
+
+::: {.callout-note icon="false" appearance="simple"}
+[Algoritmo de resolução de uma EDO de 1ª ordem linear]{.smallcaps}
+
+1.  A primeira integral
+
+    Calcular $\displaystyle F(x)=\int f(x) \ dx$
+
+2.  A segunda integral
+
+    Calcular $\displaystyle H(x)=\int \dfrac{g(x)}{e^{F(x)}} \ dx$
+
+3.  Organizar as informações, substituindo os termos na expressão geral e incluir a constante.
+
+    $$y=e^{F(x)} \cdot (H(x)+k)$$
+:::
+
+::: {#exm-a05-2}
+Resolver $y'=-\dfrac{1}{2}y+\dfrac{e^{x/3}}{2}$.
+
+*Solução 1:* Via fórmula direta.
+
+$$y=e^{\int -1/2 \ dx}\left(\left(\int \dfrac{e^{x/3}}{2} \cdot e^{\int 1/2\ dx} \ dx \right) + k\right)=  
+    e^{-x/2}\left(\left(\dfrac{1}{2} \int e^{x/3} \cdot e^{x/2}  \ dx \right) + k\right)$$ $$= e^{-x/2}\left(\left(\dfrac{1}{2} \int e^{5x/6} \ dx \right) + k\right)  
+    = e^{-x/2}\left(\left(\dfrac{1}{2} \cdot \dfrac{6}{5} \cdot e^{5x/6} \right) + k\right) = \dfrac{3}{5} e^{x/3} + ke^{-x/2}.$$
+
+*Solução 2:* Nosso procedimento passo a passo.
+
+1.  Calcular $\displaystyle F(x) = \int f(x) \ dx$
+
+    $$F(x)=\int -\dfrac{1}{2} \ dx = -\dfrac{x}{2}.$$
+
+2.  Calcular $\displaystyle H(x) = \int \dfrac{g(x)}{e^{F(x)}} \ dx$
+
+    $$H(x) = \int \dfrac{e^{x/3}/2}{e^{-x/2}} \ dx = \int \dfrac{e^{x/3}\cdot e^{x/2}}{2} \ dx =\int \dfrac{e^{x/3}\cdot e^{x/2}}{2} \ dx =\int \dfrac{e^{x/3+x/2}}{2} \ dx =$$ $$\int \dfrac{e^{5x/6}}{2} \ dx = \dfrac{1}{2} \cdot \dfrac{6}{5}e^{5x/6}=\dfrac{3}{5}e^{5x/6}$$
+
+<!-- -->
+
+1.  Juntar todas as partes, incluindo a constante
+
+    $$y=e^{F(x)}\cdot (H(x)+k) \implies y=e^{-x/2}\left(\dfrac{3}{5}e^{5x/6}+k\right)=\dfrac{3}{5}e^{5x/6-x/2}+k\cdot e^{-x/2}$$ $$=\dfrac{3}{5}e^{x/3}+ke^{-x/2}$$
+:::
+
+### Um terceiro método de resolução
+
+Outra técnica que nos dá o mesmo resultado é conhecida como **técnica do fator integrante**. Nela, multiplicamos a EDO linear por uma função $\mu(x)\neq 0$ para obter uma expressão equivalente à derivada de um produto: $$y'=f(x)\cdot y + g(x) \iff y'-yf(x)=g(x) \iff y'\mu(x) + y(-f(x)\mu(x))=g(x)\mu(x)$$
+
+Se escolhermos o fator integrante tal que $\mu'(x)=-f(x)\mu(x)$, então o lado esquerdo da igualdade torna-se $y'\mu(x)+y\mu'(x)=(y\mu(x))'$, que nos ajuda a avançar. Resolvendo rapidamente esta EDO separável, temos que $$\mu'=-f(x)\mu \implies \dfrac{d\mu}{\mu}=-f(x) \ dx \implies \ln |\mu|=-\int f(x) \ dx \implies \mu(x)=e^{\int -f(x) \ dx} = e^{-F(x)}.$$
+
+Na equação separável acima, podemos eliminar a solução $\mu(x)=0$, a solução constante, porque queremos encontrar uma função que não anule a expressão toda. Além disto, perceba que tomamos a constante $k=1$ pois precisamos que qualquer função que satisfaça nosso problema. Em geral, estamos na busca por *um* fator integrante qualquer. Logo, podemos escolher as constantes convenientes para obter um fator integrante mais simples possível.
+
+Retornando à equação diferencial e usando a definição de fator integrante e o valor da $\mu(x)$ acima, temos que $$y'\mu(x) + y(-f(x)\mu(x))=g(x)\mu(x) \iff (y \cdot \mu(x))'=g(x)\mu(x) \iff (y \cdot e^{-F(x)})'=g(x)e^{-F(x)}$$
+
+Assim, integrando novamente e isolando os termos adequados, temos
+
+$$(y \cdot e^{-F(x)})'=g(x)e^{-F(x)} \implies y \cdot e^{-F(x)} = \int g(x)e^{-F(x)} \ dx \implies y = e^{F(x)} \left( H(x)+k \right),$$ em que $\displaystyle H(x)=\int \dfrac{g(x)}{e^{F(x)}}$ e $k \in \mathbb{R}$.
+
+Chegamos ao mesmo resultado, mas com uma abordagem diferente!
+
+::: {.callout-note icon="false" appearance="simple"}
+[Algoritmo de resolução de uma EDO de 1ª ordem linear - fator integrante]{.smallcaps}
+
+1.  Isolar as partes da EDO com $y'$ e $y$ do lado esquerdo da igualdade e multiplicar por $\mu$.
+2.  Escolher $\mu$ de modo que o lado esquerdo da igualdade possa ser escrito como a derivada de um produto.
+3.  Substituir o valor de $\mu$ na expressão anterior, considerando o lado esquerdo como a derivada de um produto.
+4.  Integrar ambos lados (não esquecer a constante!) e isolar $y$.
+:::
+
+::: {.callout-note title="Ainda com o Exemplo 02"}
+*Solução 3:* A técnica de fatores integrantes.
+
+- Isolar as partes da EDO com $y'$ e $y$ do lado esquerdo da igualdade, multiplicar por $\mu$.
+
+  $$y'+\dfrac{1}{2}y=\dfrac{e^{x/3}}{2} \implies y'\cdot \mu+y \cdot \left(\dfrac{1}{2}\mu\right)=\dfrac{e^{x/3}\mu}{2}$$
+
+- Escolher $\mu$ de modo que o lado esquerdo da igualdade possa ser escrito como a derivada de um produto (ou seja, $(fg)'=f'g+fg'$). Neste caso, $\mu'=\dfrac{1}{2}\mu$.
+
+  $$\mu'=\dfrac{1}{2}\mu \implies \dfrac{d\mu}{\mu}=\dfrac{dx}{2} \implies \int \dfrac{d\mu}{\mu}=\int \dfrac{dx}{2} \implies \ln|\mu|=\dfrac{x}{2} \xRightarrow{c=1} \mu = e^{x/2}.$$
+
+- Substituir o valor de $\mu$ na expressão anterior, considerando o lado esquerdo como a derivada de um produto.
+
+  $$(y\cdot \mu)'=\dfrac{e^{x/3}\mu}{2} \iff (y\cdot  e^{x/2})'=\dfrac{e^{x/3}\cdot  e^{x/2}}{2} = \dfrac{e^{5x/6}}{2}$$
+
+- Integrar ambos lados (não esquecer a constante!) e isolar $y$.
+
+  $$(y\cdot  e^{x/2})'= \dfrac{e^{5x/6}}{2} \implies y\cdot  e^{x/2} = \int \dfrac{e^{5x/6}}{2} \ dx = \dfrac{1}{2} \cdot \dfrac{6}{5}e^{5x/6}+k=\dfrac{3}{5}e^{5x/6}+k$$ $$\implies y=\dfrac{3}{5}e^{5x/6-x/2}+ke^{-x/2}=\dfrac{3}{5}e^{x/3}+ke^{-x/2}.$$
+:::
+
+::: {#exm-a05-3}
+Resolver $y'=2y-x+4$.
+
+Neste caso, $f(x)=2$ e $g(x)=-x+4=4-x$.
+
+*Solução 1:* Via fórmula direta.
+
+$$y=e^{\int 2 \ dx}\left(\left(\int (4-x) \cdot e^{\int -2\ dx} \ dx \right) + k\right)=  
+        e^{2x}\left(\left( \int (4-x)\cdot e^{-2x} \ dx \right) + k\right)$$
+
+Resolvemos esta integral por partes, tomando $u=4-x$ (logo, $du=-dx$) e $dv=e^{-2x}$ (e, consequentemente, $v=-\dfrac{e^{-2x}}{2}$). Com isto, obtemos
+
+$$y = e^{2x}\left(\left( -\dfrac{(4-x)e^{-2x}}{2} - \int \dfrac{e^{-2x}}{2} \ dx \right) + k\right)  
+= e^{2x}\left( -\dfrac{(4-x)e^{-2x}}{2} +\dfrac{e^{-2x}}{4}+ k\right)$$
+
+$$\implies y = e^{2x} \left( e^{-2x} \cdot \dfrac{-8+2x+1}{4}+k \right) = \dfrac{2x-7}{4} + ke^{2x}.$$
+
+*Solução 2:* Nosso procedimento passo a passo.
+
+1.  Calcular $\displaystyle F(x) = \int f(x) \ dx$
+
+    $$F(x)=\int 2 \ dx = 2x.$$
+
+2.  Calcular $\displaystyle H(x) = \int \dfrac{g(x)}{e^{F(x)}} \ dx$
+
+    $$H(x) = \int \dfrac{4-x}{e^{2x}} \ dx.$$
+
+Como esta integral já está respondida acima, já pularemos esta etapa para afirmar que $$H(x)=e^{-2x} \cdot \dfrac{2x-7}{4} + k$$
+
+1.  Juntar todas as partes, incluindo a constante
+
+    $$y=e^{F(x)}\cdot (H(x)+k) \implies y=e^{2x}\left(e^{-2x} \cdot \dfrac{2x-7}{4} + k\right)=\dfrac{2x-7}{4} + ke^{2x}.$$
+
+*Solução 3:* A técnica de fatores integrantes.
+
+- Isolar as partes da EDO com $y'$ e $y$ do lado esquerdo da igualdade, multiplicar por $\mu$.
+
+  $$y'-2y=4-x \implies y'\cdot \mu+y\cdot(-2\mu)=(4-x)\mu$$
+
+- Escolher $\mu$ de modo que o lado esquerdo da igualdade possa ser escrito como a derivada de um produto. Neste caso, $\mu'=-2\mu$, ou seja, $\mu=e^{-2x}$.
+
+<!-- -->
+
+- Substituir o valor de $\mu$ na expressão anterior, considerando o lado esquerdo como a derivada de um produto.
+
+  $$(y \cdot \mu)'=(4-x)\mu \implies (y\cdot e^{-2x})'=(4-x)e^{-2x}$$
+
+- Integrar ambos lados (não esquecer a constante!) e isolar $y$.
+
+  $$y\cdot e^{-2x}=\int (4-x)e^{-2x} \ dx = e^{-2x} \cdot \dfrac{2x-7}{4} + k \implies y=\dfrac{2x-7}{4}+ke^{2x}.$$
+:::
+
+::: {#exr-a05-2}
+Determine a solução geral das EDOs a seguir explicitamente (quando possível).
+
+a)  $y'=2y-1$
+b)  $y'=y+\sin x$
+c)  $\displaystyle \dfrac{dy}{dx}+y=xe^{-x}+1$
+d)  $y'=\dfrac{y}{x}+x, \ x > 0$
+e)  $y'=\dfrac{y}{x}+x, \ x < 0$
+f)  $xy'-y=x^2e^{-x}, \ x > 0$
+g)  $xy'-y=x^2e^{-x}, \ x <0$
+:::
+
+## Mais um pouco sobre o intervalo de validade
+
+Nas questão acima, especialmente nos itens d) a g), a equação é a mesma, mas os intervalos em que $x$ está definido, mudam.
+
+Em geral, se quisermos analisar o intervalo de validade de uma equação linear, é necessário, primeiramente, escrevê-la na forma padrão $y'=f(x)\cdot y + g(x)$. Após resolver completamente a equação, observamos o comportamento de $f(x), g(x)$ e da própria solução.
+
+Quaisquer pontos em que as funções $f(x), g(x)$ ou a própria solução $\phi(x)$ não estejam definidos são pontos que recortam o domínio de validade da solução. Caso o problema seja de valor inicial, o intervalo único de validade deve ser aquele que contém o ponto.
+
+::: {#exm-a05-4}
+Para resolver a equação $x^2y'+(x^2+2x)y=e^x$, começamos por deixá-la no formato padrão $y'=\left(-\dfrac{x^2+2x}{x^2}\right)y+\dfrac{e^x}{x^2}$.
+
+Uma primitiva $F(x)$ para $f(x)-=\dfrac{x^2+2x}{x^2}=1+\dfrac{2}{x}$ é $F(x)=-x-2\ln|x|$.
+
+Com isto, $e^{F(x)}=e^{-x-2\ln|x|}=e^{-x} \cdot e^{\ln x^{-2}}=x^{-2}e^{-x}$.
+
+Na próxima etapa, calculamos $\dfrac{g(x)}{e^{F(x)}}=\dfrac{e^x}{x^2} \cdot x^2e^x=e^{2x}$. Como $H(x)$ é uma primitiva para esta função, então $\displaystyle H(x)=\int e^{2x} \ dx = \dfrac{e^{2x}}{2}$.
+
+Juntando todas as etapas, obtemos a solução geral $$\phi(x)=e^{F(x)}(H(x)+c)=x^{-2}e^{-x}\left(\dfrac{e^{2x}}{2}+c\right)=\dfrac{e^x}{2x^2}+\dfrac{c}{x^2e^x},$$ em que $c$ é uma constante real qualquer.
+
+O intervalo de validade da solução depende dos pontos de descontinuidade (também chamados de **singularidades**) das funções. Neste caso, tanto $f(x)$ quanto $g(x)$ quanto a solução $\phi(x)$ são descontínuas apenas em $x=0$. Assim, este ponto separa os possíveis intervalos de validade:
+
+- $I_1=]-\infty, 0[$ ou
+- $I_2=]0, +\infty[$.
+:::
+
+::: {#exr-a05-3}
+Resolva os problemas de valor inicial a seguir, determinando o intervalo em que a solução apresentada é válida.[^2]
+
+a)  $y'=2y+x(e^{3x}-e^{2x})$, com $y(0)=2$;
+b)  $y'=\tan(x)\cdot y + \cos^2 (x)$, com $y(0)=-1$
+c)  $(x+1)\dfrac{dy}{dx}+y=\ln x$, dado $y(1)=10$
+d)  $\dfrac{dy}{dx}=\dfrac{y}{y-x}$, com $y(5)=2$
+:::
+
+::: {#exr-a05-4}
+Encontre o valor de $y_0$ para o qual a solução do problema de valor inicial $y'-y=1+3\sin x, y(0)=y_0$, permanece finita quando $x$ cresce indefinidamente.
+:::
+
+::: {#exr-a05-5}
+Considere o problema de valor inicial $y'-\dfrac{3}{2}y=3x+2e^x, y(0)=y_0$. Encontre o valor de $y_0$ que separa as soluções que crescem positivamente quando $x \to \infty$ das que crescem em módulo com sinal negativo. Como a solução correspondente a esse valor crítico de $y_0$ se comporta quando $x \to \infty$?
+:::
+
+::: {#exr-a05-6}
+Mostre que se $\alpha$ e $\gamma$ são constantes positivas e $\beta$ é qualquer número real, então toda solução da equação $y'+\alpha y=\beta e^{-\gamma x}$ tem a propriedade que $y \to 0$ quando $x \to \infty$.
+:::
+
+Boyce & DiPrima (2006) discutem o caso especial de equações cujos coeficientes são descontínuos, aqui adaptados a nossa notação:
+
+> Muitas vezes aparecem equações diferenciais lineares com uma ou ambas as funções $f$ e $g$ contendo descontinuidades do tipo salto. Se $x_0$ é um ponto de descontinuidade, então é preciso resolver a equação separadamente para $x<x_0$ e $x>x_0$. Depois as duas soluções podem ser combinadas de modo a $y$ ser contínua em $x_0$; isto é feito através de uma escolha apropriada das constantes arbitrárias. Os dois problemas a seguir ilustram esta situação. Observe que, em cada caso, é impossível fazer com que $y'$ também seja contínua em $x_0$. (p. 43)
+
+::: {#exr-a05-7}
+Resolva o problema de valor inicial $y'+2y=g(x), y(0)=0$, onde $\displaystyle g(x)=\begin{cases}1, \quad 0 \leq x \leq 1\\ 0, \quad x > 1. 
+\end{cases}$
+:::
+
+::: {#exr-a05-8}
+Resolva o problema de valor inicial $y'+f(x)y=g(x), y(0)=1$, onde $\displaystyle f(x)=\begin{cases}2, \quad 0 \leq x \leq 1\\ 1, \quad x > 1. 
+    \end{cases}$
+:::
+
+[^1]: Atenção! Ao consultar o Boyce e DiPrima, perceba que a equação resolvida na página 18 é, na verdade, $y'=-ax+b$. Por isto, a equação solução para o problema é diferente da proposta aqui.
+
+[^2]: Dica para o item d): resolva o problema a partir da função inversa, ou seja, considerando que $x=x(y)$. Esta equação é linear.

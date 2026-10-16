@@ -47,10 +47,14 @@ def sem_comentarios(texto: str) -> str:
     return "\n".join(linhas)
 
 
-def lugar(texto: str) -> str:
+VAZIAS = {"a", "as", "o", "os", "e", "de", "da", "do", "das", "dos", "em", "na", "no", "ao", "aos", "para", "por", "um", "uma"}
+
+
+def lugar(texto: str, palavras: int = 5) -> str:
     s = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode()
     s = re.sub(r"[^a-zA-Z0-9]+", "-", s.lower()).strip("-")
-    return "-".join(s.split("-")[:5])
+    partes = [p for p in s.split("-") if p and p not in VAZIAS]
+    return "-".join(partes[:palavras])
 
 
 def ler_grupo(texto: str, inicio: int):
@@ -65,6 +69,65 @@ def ler_grupo(texto: str, inicio: int):
             if nivel == 0:
                 return texto[inicio + 1 : i], i + 1
     raise ValueError("chave sem fechamento")
+
+
+PREFIXOS = {"definition": "def", "theorem": "thm", "proposicao": "prp", "corolario": "cor", "lema": "lem",
+            "axiom": "def", "question": "exr", "problem": "exr", "example": "exm", "caixa": "exm"}
+NOMES_REF = r"(?:Teorema|Definição|Definicão|Proposição|Corolário|Lema|Exemplo|Exercício|Questão)"
+
+
+def trocar_systeme(texto: str) -> str:
+    """\\systeme{a=b, c=d} (pacote systeme, sem equivalente no MathJax) -> chave + aligned."""
+    while True:
+        m = re.search(r"\\systeme\*?\{", texto)
+        if not m:
+            return texto
+        corpo, fim = ler_grupo(texto, m.end() - 1)
+        partes, nivel, atual = [], 0, ""
+        for ch in corpo:
+            if ch in "{(":
+                nivel += 1
+            elif ch in "})":
+                nivel -= 1
+            if ch == "," and nivel == 0:
+                partes.append(atual)
+                atual = ""
+            else:
+                atual += ch
+        partes.append(atual)
+        linhas = [p.strip().replace("=", "&=", 1) for p in partes if p.strip()]
+        novo = "\\left\\{\\begin{aligned}" + " \\\\ ".join(linhas) + "\\end{aligned}\\right."
+        texto = texto[: m.start()] + novo + texto[fim:]
+
+
+def rotulos_e_referencias(texto: str, numero: int) -> str:
+    """\\label dentro de teoremas/exemplos vira id estável; \\ref vira referência cruzada do Quarto."""
+    nn = f"{numero:02d}"
+    pilha, mapa, trocas = [], {}, []
+    for m in re.finditer(r"\\begin\{([a-zA-Z*]+)\}|\\end\{([a-zA-Z*]+)\}|\\label\{([^}]*)\}", texto):
+        if m.group(1):
+            pilha.append(m.group(1))
+        elif m.group(2):
+            if pilha and pilha[-1] == m.group(2):
+                pilha.pop()
+        else:
+            rotulo = m.group(3)
+            amb = next((a for a in reversed(pilha) if a in PREFIXOS), None)
+            if amb:
+                slug = lugar(rotulo) or "r"
+                mapa[rotulo] = f"{PREFIXOS[amb]}-a{nn}-{slug}"
+                trocas.append((m.start(), m.end(), f"\n\nROTULO⟦{slug}⟧\n\n"))
+            else:
+                trocas.append((m.start(), m.end(), ""))
+    for ini, fim, novo in reversed(trocas):
+        texto = texto[:ini] + novo + texto[fim:]
+
+    def ref(m):
+        alvo = mapa.get(m.group(2))
+        return f"REFX⟦{alvo}⟧" if alvo else (m.group(1) or "")
+
+    texto = re.sub(r"(" + NOMES_REF + r"(?:~|\s)+)?\\ref\{([^}]*)\}", ref, texto)
+    return texto
 
 
 def preprocessar(texto: str):
@@ -124,6 +187,9 @@ def preprocessar(texto: str):
     texto = re.sub(r"(\\begin\{enumerate\}\[[^\]]*\])\s*\\item", lambda m: m.group(1) + "\n\\item", texto)
     texto = re.sub(r"\\item\[(?:[a-z]|\([a-z]\)|[ivx]+)\)\]", r"\\item", texto)
     texto = re.sub(r"\\item\[\([a-z]\)\]", r"\\item", texto)
+
+    texto = trocar_systeme(texto)
+    texto = rotulos_e_referencias(texto, info.get("numero", 0))
 
     for padrao in REMOVER:
         texto = re.sub(padrao, "", texto)

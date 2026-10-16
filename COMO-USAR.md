@@ -10,11 +10,9 @@ Guia curto para Windows. Na prática, você pode pedir quase tudo isto ao Claude
 
 ## 1. Publicar (ativar uma vez)
 
-1. Abra o repositório no GitHub e vá em **Settings → Pages**.
-2. Em **Build and deployment → Source**, escolha **GitHub Actions**.
-3. Vá em **Actions**, abra o último "Publicar site" e clique em **Re-run all jobs**. Em um ou dois minutos o site está no ar.
+No repositório do GitHub, em **Settings → Pages → Build and deployment → Source**, deve estar marcado **GitHub Actions**. Com isso, cada alteração enviada ao GitHub é publicada sozinha em um ou dois minutos.
 
-Depois disso, cada alteração enviada ao GitHub é publicada sozinha.
+Para acompanhar: aba **Actions** do repositório. Cada envio aparece como "Publicar site", com um sinal verde quando termina.
 
 **Endereço do site:** com o repositório chamado `wanderson.github.io`, o site fica em
 `https://wandersonufrpe.github.io/wanderson.github.io/`.

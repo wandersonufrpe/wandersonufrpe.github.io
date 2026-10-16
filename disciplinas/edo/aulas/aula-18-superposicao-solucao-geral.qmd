@@ -1,0 +1,124 @@
+---
+title: "Aula 18: Superposição e solução geral"
+subtitle: "Princípio da superposição e a solução geral de EDOs homogêneas"
+description: "Princípio da superposição e a solução geral de EDOs homogêneas"
+pdf-aula: pdf/aula-18.pdf
+---
+
+## Equações homogêneas de ordem superior
+
+::: {#def-a18-1}
+Uma EDO linear de ordem $n$ é dita **homogênea** se é escrita como $$a_n(x)\cdot y^{(n)}(x)+a_{n-1}(x)\cdot y^{(n-1)}(x)+\ldots+a_1(x)\cdot y'+a_0(x)\cdot y(x)=0,$$ com $a_n(x) \neq 0$ para todo $x \in I$, o intervalo de validade da solução.
+:::
+
+Comparando com a expressão da EDO do início deste tema, equivale a dizer que a expressão do lado direito da igualdade é zero, ou seja, $g(x)=0$.
+
+Para resolver uma EDO de ordem superior qualquer será necessário, frequentemente, resolver a EDO homogênea associada. Isto acontece porque determinar um conjunto maximal de funções linearmente independentes é bem mais simples com estas equações.
+
+E a justificativa mais interessante pra isto tem tudo a ver com Álgebra Linear!
+
+::: {#prp-a18-1}
+[Princípio da superposição para EDOs homogêneas]{.smallcaps}
+
+Sejam $\phi_1(x), \phi_2(x), \ldots, \phi_k(x)$ soluções para uma EDO homogênea $$a_n(x)\cdot y^{(n)}(x)+a_{n-1}(x)\cdot y^{(n-1)}(x)+\ldots+a_1(x)\cdot y'(x)+a_0(x)\cdot y(x)=0.$$ Então a combinação linear $$\phi(x)=c_1\phi_1(x)+c_2\phi_2(x)+\ldots+c_k\phi_k(x)$$ também é uma solução, para quaisquer constantes reais $c_1, c_2, \ldots, c_k$.
+:::
+
+::: proof
+*Proof.* Se $\phi_1, \phi_2, \ldots, \phi_k$ são soluções da EDO, então $$\begin{cases} a_n(x)\cdot \phi_1^{(n)}+a_{n-1}(x)\cdot \phi_1^{(n-1)}+\ldots+a_1(x)\cdot \phi_1'+a_0(x)\cdot \phi_1=0 \\ a_n(x)\cdot \phi_2^{(n)}+a_{n-1}(x)\cdot \phi_2^{(n-1)}+\ldots+a_1(x)\cdot \phi_2'+a_0(x)\cdot \phi_2=0 \\ \vdots \\ a_n(x)\cdot \phi_k^{(n)}+a_{n-1}(x)\cdot \phi_k^{(n-1)}+\ldots+a_1(x)\cdot \phi_k'+a_0(x)\cdot \phi_k=0 \end{cases}$$
+
+Agora, substituindo $\phi$ na equação e usando a combinação linear $\phi=c_1\phi_1+c_2\phi_2+\ldots+c_k\phi_k$, tem-se: $$a_n(x)\cdot \phi^{(n)}+a_{n-1}(x)\cdot \phi^{(n-1)}+\ldots+a_1(x)\cdot \phi'+a_0(x)\cdot \phi=$$ $$a_n(x)\cdot (c_1\phi_1+c_2\phi_2+\ldots+c_k\phi_k)^{(n)}+a_{n-1}(x)\cdot (c_1\phi_1+c_2\phi_2+\ldots+c_k\phi_k)^{(n-1)}+\ldots$$ $$+a_1(x)\cdot (c_1\phi_1+c_2\phi_2+\ldots+c_k\phi_k)'+a_0(x)\cdot (c_1\phi_1+c_2\phi_2+\ldots+c_k\phi_k)=$$ $$c_1(a_n(x)\cdot \phi_1^{(n)}+a_{n-1}(x)\cdot \phi_1^{(n-1)}+\ldots+a_1(x)\cdot \phi_1'+a_0(x)\cdot \phi_1)+$$ $$c_2(a_n(x)\cdot \phi_2^{(n)}+a_{n-1}(x)\cdot \phi_2^{(n-1)}+\ldots+a_1(x)\cdot \phi_2'+a_0(x)\cdot \phi_2)+\ldots+$$ $$c_k(a_n(x)\cdot \phi_k^{(n)}+a_{n-1}(x)\cdot \phi_k^{(n-1)}+\ldots+a_1(x)\cdot \phi_k'+a_0(x)\cdot \phi_k)=c_1\cdot 0+c_2\cdot 0+\ldots+c_k\cdot 0=0.$$ Logo, $\phi$ também é uma solução. ◻
+:::
+
+## As soluções de uma EDO homogênea
+
+Há mais interseções entre o estudo das equações homogêneas e Álgebra Linear, principalmente com respeito às soluções. Vimos até agora que a combinação linear de soluções é, também, uma solução.
+
+Vimos também que um conjunto de funções, em geral, podem ser classificadas como linearmente dependentes ou independentes.
+
+É natural, neste momento, analisar o comportamento das funções que dão origem à solução geral.
+
+::: {#def-a18-2}
+Dada uma equação diferencial homogênea de ordem $n$, o conjunto $\phi_1, \phi_2, \ldots, \phi_n$ de $n$ soluções linearmente independentes desta equação no intervalo $I \subset \mathbb{R}$ é chamado de **conjunto fundamental de soluções** neste intervalo.
+:::
+
+Duas observações importantes sobre este conjunto fundamental falam sobre sua existência e da sua importância para delimitar todas as soluções da equação diferencial homogênea. Comecemos por esta última.
+
+::: {#prp-a18-2}
+[Um CFS gera todas as soluções]{.smallcaps}
+
+Sejam $\phi_1, \phi_2, \ldots, \phi_n$ soluções linearmente independentes para a equação diferencial homogênea de ordem $n$ em um intervalo $I \subset \mathbb{R}$.
+
+Então toda solução $\phi(x)$ é uma combinação linear das funções do conjunto fundamental de soluções dado.
+:::
+
+::: proof
+*Proof.* Como o conjunto fundamental de soluções é linearmente independente, então $$W(\phi_1, \phi_2, \ldots, \phi_n) \neq 0.$$
+
+O Teorema de existência e unicidade garante que há uma correspondência biunívoca entre as condições de valor inicial e a solução única da EDO que satisfaz as condições: para cada condição inicial teremos uma solução única e vice-versa. Sendo assim, se tomarmos todas as possíveis combinações para $y_0, y_0', \ldots, y_0^{(n-1)}$, teremos todas as soluções desta EDO.
+
+Isto quer dizer que existe ponto $x_0 \in I$ tal que a função $\phi(x)$ é a única solução para o problema de valor inicial com as condições $$\phi(x_0)=y_0 \qquad \qquad \phi'(x_0)=y_0' \qquad \qquad \ldots \qquad \qquad \phi^{(n-1)}(x_0)=y_0^{(n-1)}.$$ Considere agora o sistema a seguir. $$\begin{cases} c_1\phi_1+c_2\phi_2+\ldots+c_n\phi_n=y_0 \\ c_1\phi_1'+c_2\phi_2'+\ldots+c_n\phi_n'=y_0' \\ c_1\phi_1''+c_2\phi_2''+\ldots+c_n\phi_n''=y_0'' \\ \vdots \\ c_1\phi_1^{(n-1)}+c_2\phi_2^{(n-1)}+\ldots+c_n\phi_n^{(n-1)}=y_0^{(n-1)} \end{cases}$$
+
+Dado que o determinante da matriz dos coeficientes é exatamente o wronskiano, que é não nulo, então o sistema é possível e determinado, ou seja, há somente uma solução.
+
+Construindo a função $y(x)=c_1\phi_1+c_2\phi_2+\ldots+c_n\phi_n$ satisfazendo o sistema, temos que:
+
+- $y(x)$ é solução da equação homogênea, pois é combinação linear de soluções da mesma equação (Princípio da superposição);
+- $y(x)$ satisfaz cada uma das condições iniciais, pois basta calcular $y(x_0)$ em cada linha do sistema;
+- $y(x)$ e $\phi(x)$ satisfazem a mesma equação e possuem as mesmas condições iniciais.
+
+Portanto, pelo Teorema de existência e unicidade, $\phi(x)=y(x)$ e, consequentemente, é combinação linear de soluções. ◻
+:::
+
+Sempre é possível determinar um conjunto fundamental de soluções?
+
+::: {#prp-a18-3}
+[Existência de CFS]{.smallcaps} Dada uma equação diferencial homogênea de ordem $n$ em um intervalo $I \subset \mathbb{R}$, sempre existe um conjunto fundamental de soluções para ela.
+:::
+
+::: proof
+*Proof.* Na verdade, existem muitos conjuntos fundamentais de soluções. Em particular, podemos pensar no equivalente a uma "base canônica" de $n$ "vetores". Necessariamente, são linearmente independentes.
+
+Considere $\phi_1(x)$ como a solução da EDO homogênea dada tal que, para algum ponto $x_0 \in I$ é tal que $\phi_1(x_0)=1$ e todas suas derivadas neste ponto sejam 0. Esta função existe graças ao Teorema de existência e unicidade (e do fato de todas as funções $a_n(x), \ldots, a_0(x)$, coeficientes na equação homogênea, serem contínuas).
+
+De modo análogo, tomamos outras soluções tais que $\phi_2'(x_0)=1, \phi_3''(x_0)=1$ e, mais geralmente, $\phi_{i+1}^{(i)}(x_0)=1$ e as demais derivadas, para cada uma, sejam nulas no ponto $x_0$, ou seja, $$\phi_j^{(i)}(x_0)=\begin{cases} 1, \mbox{ se } j=i+1 \\ 0, \mbox{ se } j \neq i+1 \end{cases}$$ O wronskiano destas funções é dado por $$W(x_0)=\begin{vmatrix} \phi_1(x_0) & \phi_2(x_0) & \ldots & \phi_n(x_0) \\ \phi_1'(x_0) & \phi_2'(x_0) & \ldots & \phi_n'(x_0) \\ \vdots & \vdots & \ddots & \vdots \\ \phi_1^{(n-1)}(x_0) & \phi_2^{(n-1)}(x_0) & \ldots & \phi_n^{(n-1)}(x_0) \end{vmatrix}=\begin{vmatrix} 1 & 0 & \ldots & 0 \\ 0 & 1 & \ldots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \ldots & 1 \end{vmatrix}=1.$$ Logo, estas funções são linearmente independentes. ◻
+:::
+
+Mas é importante ressaltar: embora exista, não é elementar apontar quem são as $n$ funções acima que satisfazem as condições desejadas.
+
+E o que tudo isso nos ajuda a concluir?
+
+As $n$ soluções linearmente independentes formam uma base para o espaço vetorial de soluções da equação homogênea, já que multiplicar por um escalar e tomar combinações lineares também geram novas soluções. Inclusive, toda solução da equação homogênea é uma combinação linear de $\phi_1, \phi_2, \ldots, \phi_n$.
+
+Isto nos permite pensar no operador linear $$D=a_n(x)\cdot y^{(n)}+a_{n-1}(x)\cdot y^{(n-1)}+\ldots+a_1(x)\cdot y'+a_0(x)\cdot y.$$ As soluções da EDO são, portanto, o conjunto de funções tais que $D(\phi)=0$, ou seja, o conjunto das soluções são o núcleo deste operador linear $D$ e formam um espaço vetorial de dimensão $n$, em que $n$ é a ordem da equação homogênea!
+
+Em breve, será possível utilizar as propriedades dos operadores lineares para resolver EDOs. Mas, por enquanto, comecemos com formas mais simples de encontrar soluções.
+
+## Exercícios {#exercícios .unnumbered}
+
+::: {#exr-a18-1}
+Considere a equação $y''=2y^3$ no intervalo $]0, +\infty[$. Verifique que $y=1/x$ é uma solução para a equação, mas $y=c/x$ não é uma solução quando $c \neq 0, \pm 1$. Por que isto acontece?
+:::
+
+::: {#exr-a18-2}
+a)  Verifique que $y_1=1$ e $y_2=\ln x$ são soluções para a equação diferencial não linear $y''+(y')^2=0$ no intervalo $]0, +\infty[$.
+b)  $y_1+y_2$ é uma solução para a equação? $ay_1+by_2$, com $a, b$ constantes arbitrárias, é uma solução para a equação? Por que?
+:::
+
+::: {#exr-a18-3}
+Considere que $\phi_1$ e $\phi_2$ são soluções da equação $y''+p(x)y'+q(x)y=0$ em um intervalo $I \subset \mathbb{R}$.
+
+a)  Prove que se $\phi_1$ e $\phi_2$ se anulam em um mesmo ponto de $I$, então não podem formar um conjunto fundamental de soluções nesse intervalo.
+b)  Prove que se $\phi_1$ e $\phi_2$ atingem máximo ou mínimo em um mesmo ponto de $I$, então não podem formar um conjunto fundamental de soluções nesse intervalo.
+c)  Prove que se $\phi_1$ e $\phi_2$ têm um ponto de inflexão comum $x_0$ em $I$, então não podem formar um conjunto fundamental de soluções nesse intervalo.
+:::
+
+::: {#exr-a18-4}
+Verifique que as funções dadas formam um conjunto fundamental de soluções para a equação diferencial no intervalo indicado. Forme a solução geral.
+
+a)  $y''-y'-12y=0 \qquad f_1(x)=e^{-3x} \qquad f_2(x)=e^{4x} \qquad I=\mathbb{R}$
+b)  $y''-2y'+5y=0 \qquad f_1(x)=e^x\sin 2x \qquad f_2(x)=e^x\cos 2x \qquad I=\mathbb{R}$
+c)  $4y''-4y'+y=0 \qquad f_1(x)=e^{x/2} \qquad f_2(x)=xe^{x/2} \qquad I=\mathbb{R}$
+d)  $x^2y''-6xy'+12y=0 \qquad f_1(x)=x^3 \qquad f_2(x)=x^4 \qquad I=\ ]0, +\infty[$
+e)  $x^2y''+xy'+y=0 \qquad f_1(x)=\cos(\ln x) \qquad f_2(x)=\sin(\ln x) \qquad I=\ ]0, +\infty[$
+f)  $x^3y'''+6x^2y''+4xy'-4y=0 \quad f_1(x)=x \quad f_2(x)=x^{-2} \quad f_3(x)=x^{-2}\ln x \quad I=\ ]0, +\infty[$
+:::

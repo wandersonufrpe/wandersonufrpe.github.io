@@ -1,0 +1,29 @@
+{
+  "origem": "/mnt/user-data/uploads/Notas de aula/Introdução às equações ordinárias/txt/Aula 07.tex",
+  "figuras": [
+    {
+      "arquivo": "fig-01.svg",
+      "linha_no_tex": 15,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "f841881ef223",
+      "candidata_a_applet": true,
+      "pistas": [
+        "várias curvas pgfplots"
+      ],
+      "inicio_do_codigo": "\\begin{tikzpicture}[scale=1] \\begin{axis}[ view={115}{25}, xlabel=$x$, ylabel=$y$, zlabel=$z$, xmin=-2, xmax=2, ymin=-1, ymax=4, zmin=-1, zmax=6, axis lines=cen"
+    },
+    {
+      "arquivo": "fig-02.svg",
+      "linha_no_tex": 289,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "3993f3813c76",
+      "candidata_a_applet": true,
+      "pistas": [
+        "várias curvas pgfplots"
+      ],
+      "inicio_do_codigo": "\\begin{tikzpicture} \\begin{axis}[ axis equal, axis lines=middle, xlabel=$x$, ylabel=$y$, xlabel style={anchor=north west}, ylabel style={anchor=south west}, xmi"
+    }
+  ]
+}

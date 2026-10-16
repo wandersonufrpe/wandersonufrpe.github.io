@@ -26,12 +26,13 @@ Fases combinadas com o Wanderson. Ao terminar cada fase: mostrar o resultado, re
 
 ### Fase 2: aula piloto
 - [x] Aulas 01 e 02 convertidas (a 01 não tem teoria nem figuras; a 02 mostra todos os tipos de bloco). Campo de direções da Aula 02 virou applet.
-- [ ] Revisão do Wanderson e ajustes no padrão de conversão.
+- [x] Formato aprovado pelo Wanderson.
 
 ### Fase 3: restante de EDO
-- [ ] Converter as demais aulas em lotes, com resumo por lote do que não converteu bem.
+- [x] Aulas 03 a 13 e 16 a 18 convertidas (16/10), com PDFs. Aulas 14 e 15 foram revisão e prova (aviso na página da disciplina).
+- [ ] Aulas 19 a 24: esperar o Wanderson organizar as notas.
+- [ ] Anexos da disciplina (futuro): começar pela demonstração de Abel-Liouville ("Aula 17 - demonstração de Abel-Liouville.tex").
 - [x] Página-modelo movida para `_modelo-de-aula.qmd` (não é publicada).
-- [ ] Decidir onde entra "Aula 17 - demonstração de Abel-Liouville.tex".
 
 ### Fase 4: interatividade
 - [ ] Trocar figuras de famílias de soluções e campos de direções por applets (ver `candidata_a_applet` nos manifestos).
@@ -47,7 +48,7 @@ Fases combinadas com o Wanderson. Ao terminar cada fase: mostrar o resultado, re
 
 ### Fase 7: publicação
 - [x] Repositório criado e site enviado.
-- [ ] Ativar o Pages (Settings → Pages → Source: GitHub Actions) e conferir o site no ar.
+- [x] Site no ar em https://wandersonufrpe.github.io/wanderson.github.io/
 - [ ] Decidir se renomeia o repositório para `wandersonufrpe.github.io` (endereço curto).
 - [ ] Se a UFRPE ceder um subdomínio, configurar o domínio próprio.
 

@@ -1,0 +1,157 @@
+---
+title: "Aula 16: Introdução às EDOs de ordem superior"
+pdf-aula: pdf/aula-16.pdf
+---
+
+Na segunda metade de nossa disciplina, vamos estudar equações e aplicações envolvendo derivadas de mais de uma ordem das funções. A construção do método mais geral tem a vantagem de não precisarmos separar cada tipo de equação; por outro lado, por ser muito geral, apenas conseguimos um método de resolução em ocasiões muito específicas.
+
+::: {#def-a16-1}
+Uma **equação diferencial de ordem** $n$ é uma equação nas formas $$E(x, y, y', \ldots, y^{(n-1)}, y^{(n)})=0 \qquad \text{ ou } y^{(n)}=F(x, y, y', \ldots, y^{(n-1)})$$, ou seja, uma equação qualquer na qual $y^{(n)}$ aparece e os demais termos podem conter $x, y, y', y'',\ldots, y^{(n-1)}$.
+:::
+
+::: {#exm-a16-1}
+As equações
+
+(a) $y'''+xy'\ln y+\tan (xy) = 0$
+(b) $y''+xy'-\arctan(y)=\pi$
+
+são EDOs de ordem 3 e 2, respectivamente.
+:::
+
+Infelizmente, não existem métodos gerais que valham para quaisquer equações envolvendo derivadas de ordem $n$ com $n>1$, porque há muitas formas diferentes de construir uma equação satisfazendo as condições gerais acima.
+
+Em compensação, os métodos para a resolução de equações lineares de ordem superior são bem consolidados. Isto não garante que vamos *sempre* conseguir resolver uma equação de ordem superior, mas, pelo menos, existem boas estratégias.
+
+::: {#def-a16-2}
+Sejam $a_0(x), a_1(x), \ldots, a_{n-1}(x), a_n(x), g(x)$ funções reais na variável $x$ e deriváveis em um intervalo $I \subset \mathbb{R}$.
+
+Uma **equação diferencial linear de ordem** $n$ é uma equação da forma $$a_n(x)\dfrac{d^ny}{dx^n}+a_{n-1}(x)\dfrac{d^{n-1}y}{dx^{n-1}}+\ldots+a_1(x)\dfrac{dy}{dx}+a_0(x)\cdot y=g(x)$$ ou, na notação de Lagrange, $$a_n(x)\cdot y^{(n)}+a_{n-1}(x)\cdot y^{(n-1)}+\ldots+a_1(x)\cdot y'+a_0(x)\cdot y=g(x)$$
+:::
+
+::: {#exm-a16-2}
+A equação $5y''+\cos x \cdot y=\ln x$ é uma EDO de segunda ordem em que $a_2(x)=5, a_0(x)=\cos x$ e $g(x)=\ln x$.
+
+As equações do Exemplo 01 não são equações lineares porque, em (a), o coeficiente de $y'$ não depende apenas de $x$ e $y$ aparece dentro da função $\tan(xy)$; em (b), $y$ aparece na função $\arctan y$.
+:::
+
+## Problemas de valor inicial (PVIs) e problemas de valores de contorno (PVC)
+
+Para EDOs de ordem superior, existem dois tipos de problemas adicionais que podemos resolver além da determinação de soluções gerais.
+
+::: {#def-a16-3}
+Um **problema de valor inicial** é uma EDO de ordem $n$ em que são dadas condições para certo ponto $x_0 \in I$: $$y(x_0)=y_0 \qquad \qquad y'(x_0)=y_0' \qquad \qquad \ldots \qquad \qquad y^{(n-1)}(x_0)=y_0^{(n-1)}$$
+:::
+
+As informações dadas, necessariamente, envolvem o valor da função no ponto e as derivadas até ordem $n-1$ neste mesmo ponto.
+
+::: {.callout-note title="Modificando o Exemplo 02"}
+A EDO $5y''+\cos x \cdot y=\ln x$, juntamente com as condições $y(2)=5$ e $y'(2)=0$, formam um problema de valor inicial.
+:::
+
+::: {#def-a16-4}
+Um **problema de valores de contorno** é uma EDO de ordem $n$ em que são dadas condições sobre pontos que devem pertencer à curva solução. $$y(x_0)=y_0 \qquad \qquad y(x_1)=y_1 \qquad \qquad \ldots \qquad \qquad y(x_{n-1})=y_{n-1}$$
+:::
+
+::: {.callout-note title="Modificando outra vez o Exemplo 02"}
+A EDO $5y''+\cos x \cdot y=\ln x$, juntamente com as condições $y(0)=5$ e $y(3)=-1$, formam um problema de valores de contorno.
+:::
+
+Geralmente, problemas de valores de contorno aparecem em modelos aplicados com restrições nos extremos de uma região de validade da solução específica. Por exemplo, uma solução que satisfaça as condições $y(a)=1$ e $y(b)=4$, extremos de um intervalo $]a,b[$ onde a solução deve estar bem definida.
+
+## Algumas soluções que já conhecemos
+
+Embora possa parecer uma nova teoria que construiremos do início, é importante ressaltar que já utilizamos o comportamento das classes de funções que satisfazem algumas EDOs de segunda ordem e, com isto, determinamos suas soluções (embora seja necessário demonstrar quando avançarmos na teoria).
+
+::: {#exm-a16-3}
+A equação $y''=-y$ tem, dentre suas soluções, $\phi_1(x)=\sin x$ e $\phi_2(x)=\cos x$. Entretanto, tem como solução geral $$\phi=a\sin x+b\cos x \qquad \qquad a, b \in \mathbb{R}.$$
+
+Podemos verificar esta solução rapidamente a partir da derivação: $$\phi'=a\cos x-b\sin x \implies \phi''=-a\sin x-b\cos x=-(a\sin x+b\cos x)=-\phi.$$
+:::
+
+::: {#exm-a16-4}
+A equação $y''=4y$ tem, dentre suas soluções, $\phi_1(x)=e^{2x}$ e $\phi_2(x)=e^{-2x}$. Entretanto, tem como solução geral $$\phi=ae^{2x}+be^{-2x} \qquad \qquad a, b \in \mathbb{R}.$$
+
+Podemos verificar esta solução rapidamente a partir da derivação: $$\phi'=2ae^{2x}-2be^{-2x} \implies \phi''=4ae^{2x}+4be^{-2x}=4(ae^{2x}+be^{-2x})=4\phi.$$
+:::
+
+## O Teorema de existência e unicidade II
+
+Será que toda equação linear de ordem superior sempre admite solução? Se não, quando falha? É natural fazermos um paralelo entre o Teorema de existência e unicidade (TEU) das EDOs de primeira ordem com a versão do teorema par equações de ordem superior.
+
+::: {#thm-a16-1}
+[Teorema de existência e unicidade]{.smallcaps}
+
+Se as funções $a_0(x)$, $a_1(x)$, $\ldots$, $a_{n-1}(x)$, $a_n(x)$, $g(x)$ são funções reais na variável $x$ deriváveis em um intervalo $I \subset \mathbb{R}$, $a_n(x) \neq 0$ para todo $x \in I$, e são dadas condições iniciais $$y(x_0)=y_0 \qquad y'(x_0)=y_0' \qquad \ldots \qquad y^{(n-1)}(x_0)=y_0^{(n-1)},$$ então a equação diferencial $$a_n(x)\cdot y^{(n)}+a_{n-1}(x)\cdot y^{(n-1)}+\ldots+a_1(x)\cdot y'+a_0(x)\cdot y=g(x)$$ tem uma e somente uma solução $\phi(x)$ neste intervalo $I$.
+:::
+
+Note que a principal alteração do texto é com relação às condições iniciais, no plural. Ainda é válido que uma solução geral envolve famílias de funções, ao mesmo tempo que também permanece verdade que a solução é única quando são consideradas $n$ condições iniciais na resolução de uma EDO de ordem $n$.
+
+Assim como antes, a demonstração desta versão do teorema considera pré-requisitos mais avançados do que o escopo desta disciplina e não faremos a demonstração.
+
+Entretanto, é importantíssimo ressaltar que o Teorema de Existência e unicidade não fala e nem garante nenhuma informação sobre problemas de valor de contorno. Via de regra, um problema de valor de contorno pode ter
+
+- uma única solução;
+- infinitas soluções;
+- nenhuma solução.
+
+A partir do exemplo a seguir, discutiremos como isto se relaciona a outros temas matemáticos já estudados anteriormente.
+
+::: {.callout-note title="Retorno ao Exemplo 01"}
+Já vimos que a EDO $y''=-y$ possui como solução geral $\phi=a\sin x+b\cos x$, com $a, b \in \mathbb{R}$. Em cada um dos sub-exemplos abaixo de condições de contorno teremos um problema enquadrado em cada um dos casos desejados.
+
+a)  Soluções para a EDO que satisfazem $y\left(\dfrac{\pi}{2}\right)=4$ e $y\left(\pi\right)=3$.
+
+Substituindo os valores dados na solução da equação, temos o sistema
+
+$$\begin{cases} a\sin \dfrac{\pi}{2}+b\cos \dfrac{\pi}{2}=4 \\ a\sin \pi+b\cos \pi=3 \end{cases} \implies \begin{cases} a=4 \\ -b=3 \end{cases} \implies \begin{cases} a=4 \\ b=-3 \end{cases}$$
+
+Portanto, a única solução para este problema de valor de contorno é a função $\phi=4\sin x-3\cos x$, já que o sistema resolvido é possível e determinado.
+
+a)  Soluções para a EDO que satisfazem $y\left(\dfrac{\pi}{2}\right)=0$ e $y\left(\dfrac{3\pi}{2}\right)=0$.
+
+Novamente, substituímos os valores dados na solução da equação e obtemos o sistema $$\begin{cases} a\sin \dfrac{\pi}{2}+b\cos \dfrac{\pi}{2}=0 \\ a\sin \dfrac{3\pi}{2}+b\cos \dfrac{3\pi}{2}=0 \end{cases} \implies \begin{cases} -a=0 \\ a=0 \end{cases} \implies \begin{cases} a=0 \\ b \in \mathbb{R} \end{cases}$$
+
+Qualquer função da forma $\phi=b\cos x$, com $b \in \mathbb{R}$, é uma solução do problema de valor de contorno dado, uma vez que este sistema é possível e indeterminado. Este problema possui, portanto, infinitas soluções.
+
+a)  Soluções para a EDO que satisfazem $y(0)=-4$ e $y(\pi)=5$.
+
+Ao substituirmos os valores dados na solução da equação, obtemos o sistema $$\begin{cases} a\sin 0+b\cos 0=-4 \\ a\sin \pi+b\cos \pi=5 \end{cases} \implies \begin{cases} b=-4 \\ -b=5 \end{cases} \implies \begin{cases} b=-4 \\ b=-5 \end{cases}$$
+
+A condição sobre $b$ é impossível de ser satisfeita. Como o sistema é impossível, não há solução para este problema de valor de contorno.
+:::
+
+Perceba que a similaridade dos três tipos de casos de problemas de valores de contorno tem a mesma nomenclatura dos sistemas lineares estudados em Álgebra Linear M1/N1. Na verdade, a estrutura geral das soluções de uma EDO de qualquer ordem tem *muito mais* semelhanças. Por isto, será necessário fazer uma "pausa" para entendermos como a Álgebra linear contribui para a construção dos métodos de resolução de uma EDO de ordem qualquer, que será o tema dos próximos encontros.
+
+::: {#exr-a16-1}
+A família (a três parâmetros) de equações $y=a+b\cos x+c\sin x$ é solução para a equação $y'''+y'=0$ em $\mathbb{R}$. Determine a função que satisfaz as condições iniciais $y(\pi)=0, y'(\pi)=2$ e $y''(\pi)=-1$.
+:::
+
+::: {#exr-a16-2}
+Considere a equação $xy''-y'=0$ e a família de funções $y=a+bx^2$.
+
+a)  Mostre que todas funções desta família também são soluções da EDO.
+b)  Mostre que não existem valores para $a$ e $b$ para que uma das funções da família satisfaça as condições iniciais $y(0)=0$ e $y'(0)=1$.
+c)  Verifique as condições do Teorema de Existência e Unicidade para explicar por que o problema de valor inicial pode não ter solução.
+d)  Determine duas funções que satisfazem as condições iniciais $y(0)=0$ e $y'(0)=0$.
+e)  Determine uma função que satisfaz as condições de contorno $y(0)=1$ e $y'(1)=6$.
+:::
+
+::: {#exr-a16-3}
+Sabe-se que $\phi=ax^2+bx^4+3$ é uma família de soluções para $x^2y''-5xy'+8y=24$ em $\mathbb{R}$. Encontre, se existir, um membro dessa família que satisfaça as condições
+
+a)  $y(-1)=0$ e $y(1)=4$
+b)  $y(0)=-1$ e $y(1)=2$
+c)  $y(0)=3$ e $y(1)=0$
+d)  $y(0)=3$ e $y(2)=15$
+:::
+
+::: {#exr-a16-4}
+Determine um intervalo em torno de $x=0$ no qual o problema de valor inicial dado tenha uma única solução.
+
+a)  $(x-2)y''+3y=x$, com $y(0)=0$ e $y'(0)=1$
+b)  $y''+(\tan x)y=e^x$, com $y(0)=1$ e $y'(0)=0$
+:::
+
+::: {#exr-a16-5}
+Determine os valores do parâmetro $\lambda$ para os quais o problema de valor de contorno $y''+\lambda^2y=0$, com $y(0)=0$ e $y(\pi)=0$, tenha soluções não triviais, sabendo que sua família de soluções tem o formato $\phi=a\cos \lambda x+b\sin \lambda x$.
+:::

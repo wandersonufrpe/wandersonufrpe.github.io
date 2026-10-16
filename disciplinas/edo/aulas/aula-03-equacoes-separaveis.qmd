@@ -1,0 +1,229 @@
+---
+title: "Aula 3: Equações separáveis"
+pdf-aula: pdf/aula-03.pdf
+---
+
+Para desenvolver as técnicas de resolução das EDOs de primeira ordem, seguiremos uma sequência progressiva de dificuldade e de pré-requisitos. Assim, aquela que mais se aproxima ao feito nas disciplinas que envolvem derivação a uma variável é a seguir.
+
+::: {#def-a03-1}
+Uma equação diferencial ordinária de 1ª ordem é dita **separável** se, ao escrevermos $\displaystyle \dfrac{dy}{dx}=E(x,y)$, for possível separar a expressão em duas partes multiplicativas, uma apenas envolvendo $x$ e outra envolvendo apenas $y$, ou seja, escrever na forma $$\dfrac{dy}{dx}=g(x)h(y).$$ Neste cenário, as soluções $y=\phi(x)$ devem estar definidas num intervalo aberto contendo o domínio de $g(x)$.
+:::
+
+::: {#exm-a03-1}
+$$\displaystyle \dfrac{dy}{dx}=\dfrac{\ln x}{5y} \qquad \qquad \qquad y'=\sin^2 x +y^2$$
+
+A primeira é separável pois é possível escrever $\displaystyle \dfrac{dy}{dx}=\ln x \cdot\dfrac{1}{5y}$, com $g(x)=\ln x$ e $h(y)=\dfrac{1}{5y}$. Por outro lado, isto não pode ser feito com a segunda equação.
+:::
+
+Nem sempre uma EDO separável está pronta como esperado. Também é bastante comum que possamos manipular uma expressão para deixá-la no formato padrão. Saber reconhecer este tipo de equação deste tipo é fundamental para que, caso tenhamos uma EDO classificável em mais de um tipo, possamos organizar a expressão e resolver do jeito que acharmos mais fácil e mais conveniente.
+
+::: {#exm-a03-2}
+As equações $\displaystyle y'=y^3+y$ e $3y \ dx - x \ dy=0$ são equações separáveis, mesmo que escritas em outro formato. Reescrevendo-as, temos: $$\dfrac{dy}{dx}=y^3+y \iff \dfrac{dy}{y^3+y}=1 \ dx \qquad \qquad x \ dy = 3y \ dx \iff \dfrac{dy}{3y}=\dfrac{dx}{x}.$$
+
+Observação: Em breve, veremos que estas equações podem ser classificadas como equação de Bernoulli e redutível a uma equação exata, respectivamente.
+:::
+
+::: {#exr-a03-1}
+Para cada uma das equações abaixo, decida se ela é separável, justificando sua resposta.
+
+a)  $\dfrac{dy}{dx}=x^2y^3$
+b)  $\dfrac{dy}{dx}=x+y$
+c)  $\dfrac{dy}{dx}=e^{x+y}$
+d)  $\dfrac{dy}{dx}=\dfrac{x^2+1}{y^2-3}$
+e)  $\dfrac{dy}{dx}=xy+x+y+1$
+f)  $\dfrac{dy}{dx}=\sin(x+y)$
+:::
+
+::: {#exr-a03-2}
+Para cada uma das equações abaixo, escreva-as como uma equação separável.
+
+a)  $y'+e^xy=3e^x$
+b)  $(x^2y+y^3) \ dx + (x^3+xy^2) \ dy = 0$
+c)  $y'+\tan x \cdot y = \tan x \cdot y^3$
+d)  $(2xy^2+2x) \ dx + (2x^2y+2y) \ dy = 0$
+:::
+
+Ao analisar uma EDO de 1ª ordem separável, é possível encontrar soluções constantes sem a necessidade de resolvê-la.
+
+$$\dfrac{dy}{dx}=g(x)h(y).$$
+
+Toda vez que a função $\phi(x)$ (a solução para o problema) for uma constante, sua derivada é nula; por outro lado, se conseguirmos identificar quais constantes $y=k$ fazem $h(k)=0$, então o lado direito da igualdade da EDO também é nulo, ou seja, a função $\phi(x)=k$ é uma solução para o problema.
+
+::: {#def-a03-2}
+Uma **solução constante** (ou **solução de equilíbrio**) para uma EDO separável é uma função constante $\phi(x)=k$, com $k \in \mathbb{R}$ que satisfaz, simultaneamente, $$\dfrac{d\phi}{dx}=g(x)h(y) \qquad \mbox{e} \qquad h(k)=0.$$
+:::
+
+Os exemplos iniciais do Guidorizzi, vol. 4, são bem simples e representativos para este ponto.
+
+::: {#exm-a03-3}
+- Em $\displaystyle \dfrac{dy}{dx}=x(1-y^2)$, tem-se que $h(y)=  1-y^2$, que tem como raízes $-1$ e $1$. Portanto, as soluções constantes desta EDO são as funções $y(x)=-1$ e $y(x)=1$.
+- A equação $y'=4+x^2$ não admite soluções constantes porque, neste cenário, $h(y)=1$ e, consequentemente, não pode ser anulada.
+:::
+
+::: {.callout-note title="Retorno ao Exemplo 6 da Aula 2"}
+Quando estudamos o campo de direções de uma EDO, já tínhamos falado sobre soluções de equilíbrio. A reta horizontal identificada em aula representa justamente o valor para a função que é uma constante. Naquele exemplo, o gráfico apresentava a função $y'=0,5y+1$, cujo campo era a figura a seguir.
+
+```{ojs}
+//| echo: false
+import { campoDirecoes } from "../../../assets/js/campo-direcoes.js"
+
+campoDirecoes({
+  f: (x, y) => 0.5 * y + 1,
+  t: [-5, 5],
+  y: [-6, 6],
+  largura: width,
+  solucoes: [[0, -2]],
+  chave: "a03-campo",
+  rotulos: { t: "x", y: "y" },
+  descricao: "Campo de direções de y' = 0,5y + 1, com a solução de equilíbrio y = −2",
+  legenda: "A reta y = −2 é a solução de equilíbrio. Toque no campo para traçar outras soluções."
+})
+```
+
+Perceba que esta solução significa, na verdade, tomar a função $\phi(x)=-2$, solução constante do problema.
+:::
+
+Para determinar [todas]{.underline} as soluções de uma EDO de 1ª ordem separável, é necessário, primeiramente, identificar suas soluções constantes. Em seguida, aplicamos o procedimento de separação das variáveis e, por fim, utilizamos o Teorema Fundamental do Cálculo.
+
+Considere $\dfrac{dy}{dx}=g(x)h(y)$, com $g$ e $h$ contínuas nos intervalos $I_1, I_2 \subset \mathbb{R}$. Uma solução da EDO é uma função $\phi=y(x)$ que satisfaz a equação acima para todo $x \in I \subset I_1$.
+
+Se as soluções constantes $\phi=k$ tais que $h(k)=0$ já foram identificadas, podemos supor que $h(y)\neq 0$ para todos os valores da função $y$, ou seja, $h(y(x))\neq 0$ para todos $x \in I$.
+
+O procedimento de separação das variáveis significa isolar, através de multiplicações e divisões, os termos envolvendo $y$ e $y'$ e um lado da igualdade e os termos que envolvem $x$ do outro.
+
+$$\dfrac{dy}{dx}=g(x)h(y) \quad \iff \quad \dfrac{dy/dx}{h(y)}=g(x) \quad \implies \quad \int \dfrac{dy/dx}{h(y)} \ dx= \int g(x) \ dx.$$
+
+Agora podemos aplicar o Teorema Fundamental do Cálculo e integrar ambos lados com relação à variável $x$. Lembre-se que se duas funções são iguais, suas integrais são a mesma, a menos de uma constante.
+
+O lado direito da igualdade já está praticamente organizado. Para organizar o lado esquerdo, retomamos a regra da cadeia da integração para fazer $dy = \dfrac{dy}{dx} \ dx$. Com isto, obtemos:
+
+$$\int \dfrac{dy/dx}{h(y)} \ dx= \int g(x) \ dx \qquad \iff \qquad \int \dfrac{dy}{h(y)}= \int g(x) \ dx.$$
+
+Se $F(y)$ e $G(x)$ são primitivas para $f(y)=\dfrac{1}{h(y)}$ e $g(x)$, respectivamente, então as soluções não constantes satisfazem $$F(y)=G(x)+c, \mbox{para algum } c \in \mathbb{R}.$$
+
+::: {.callout-note icon="false" appearance="simple"}
+[Algoritmo de resolução de uma EDO de 1ª ordem separável]{.smallcaps}
+
+1.  Soluções constantes
+
+    Identificar se há soluções constantes para a equação diferencial.
+
+2.  Aplicar a separação de variáveis
+
+    Isolar as expressões envolvendo $y'$ e $y$ de um lado da equação e os que envolvem $x$ do outro. Lembre-se que devemos apenas utilizar multiplicações e divisões!
+
+3.  Aplicar a integral a ambos lados e resolvê-las
+
+    Uma integral envolverá apenas $y$, enquanto a outra envolve apenas $x$. Não esqueça a constante!
+
+4.  Se houver condição inicial, determine o valor correto da constante.
+
+5.  Isolar a função $y(x)$
+
+    Descrever explicitamente as soluções não constantes.
+
+6.  Organizar todas as soluções
+
+    Listar todas as soluções possíveis, constantes e não constantes.
+:::
+
+::: {#exm-a03-4}
+Resolva $y'=xy^2$.
+
+- A única solução constante é $y=0$;
+- Separando as variáveis, obtemos
+
+$$\dfrac{y'(x)}{y^2(x)}=x \implies \int \dfrac{y'(x)}{y^2(x)} \ dx = \int x \ dx \xRightarrow[du= y'(x) \ dx]{u=y(x)} \int \dfrac{1}{u^2} \ du = \int x \ dx$$ $$\implies -\dfrac{1}{u}=\dfrac{x^2}{2}+c \implies y(x)=u=-\dfrac{1}{\frac{x^2}{2}+c}=-\dfrac{2}{x^2+2c}, c \in \mathbb{R}.$$ Logo, as soluções desta EDO são a função constante $y=0$ e todas as funções reais no formato $\displaystyle y(x)=u=-\dfrac{1}{\frac{x^2}{2}+c}=-\dfrac{2}{x^2+2c}, c \in \mathbb{R}.$
+
+Sigamos os passos para determinar todas as soluções de $\dfrac{dy}{dx}=\dfrac{\ln x}{5y}$.
+
+Esta EDO não possui solução constante, pois não há valores de $y$ que satisfaçam $\displaystyle \dfrac{1}{5y}=0$. Ao separar as variáveis e aplicar a integral, temos $$\int 5y \ dy = \int \ln x \ dx \implies \dfrac{5y^2}{2}=x \ln x - x + c \implies y = \pm \sqrt{\dfrac{2(x \ln x - x + c)}{5}}$$
+:::
+
+::: {.callout-note title="Retorno ao Exemplo 01 de hoje"}
+As duas famílias de funções acima dão origem a todas as soluções possíveis (a menos da verificação do sinal da função e dos diferentes valores da constante real $c$). Correto?
+
+Não exatamente! Para termos uma solução completa, é importante observamos o domínio das funções envolvidas e as regras de integração.
+
+Na equação a ser resolvida, a função logaritmo está escrita como $\ln x$, ou seja, está definida apenas no conjunto dos reais positivos ($x>0$). Em Cálculo M2, aprendemos a "validade" de $\displaystyle \int \frac{1}{x} \ dx =\ln |x|$. Entretanto, esta igualdade apenas é válida se estamos considerando o caso em que o valor de $x$ no integrando pode ser qualquer real não nulo.
+
+Assim, para o problema que realmente foi proposto, a solução está correta. Se o problema for um pouco diferente, como em $\dfrac{dy}{dx}=\dfrac{\ln |x|}{5y}$, a solução também muda porque temos de analisar dois casos (por conta do domínio da função).
+
+Em $\dfrac{dy}{dx}=\dfrac{\ln |x|}{5y}$, o domínio da função logarítmica é $\mathfrak{D}=]-\infty, 0[ \ \cup \ ]0, +\infty[.$
+
+Recordemos o desenvolvimento do método: lá, registramos a condição $\dfrac{dy}{dx}=g(x)h(y)$, com $g$ e $h$ contínuas nos intervalos $I_1, I_2 \subset \mathbb{R}$.
+
+Neste intervalo $\mathfrak{D}$, a função logarítmica do novo problema proposto não é contínua. Assim, durante a resolução, temos de considerar dois tipos de intervalos apenas:
+
+- O intervalo $I_1$ é um subconjunto de $]-\infty, 0[$; OU
+- O intervalo $I_1$ é um subconjunto de $]0,+\infty[$.
+
+Nesta disciplina, **sempre** que houver ambiguidade o intervalo será especificado. Se, por exemplo, tivéssemos o primeiro caso, em que $x \ \in ]-\infty, 0[$, a solução seria $\displaystyle y = \pm \sqrt{\dfrac{2(x \ln (-x) - x + c)}{5}}$.
+:::
+
+::: {.callout-note title="Retorno ao Exemplo 03 de hoje"}
+Sigamos os passos para determinar todas as soluções de $\dfrac{dy}{dx}=x(1-y^2)$.
+
+Já vimos que $y=-1$ e $y=-1$ são soluções constantes. Ao separar as variáveis e aplicar a integral, temos
+
+$$\int \dfrac{dy}{1-y^2} = \int x \ dx   
+    \implies \int \dfrac{dy}{1-y^2} = \dfrac{x^2}{2} +c$$
+
+Resolvemos a integral do lado esquerdo utilizando frações parciais, uma vez que $\dfrac{1}{1-y^2}=\dfrac{1/2}{1+y}+\dfrac{1/2}{1-y}$.
+
+$$\int \dfrac{dy}{1-y^2}=\int \left(\dfrac{1/2}{1+y}+\dfrac{1/2}{1-y}\right) \ dy = \dfrac{1}{2} \left(\ln |1+y|-\ln|1-y|\right)=\dfrac{1}{2}\ln\left|\dfrac{1+y}{1-y}\right|.$$
+
+Com isto, obtemos
+
+$$\int \dfrac{dy}{1-y^2} = \dfrac{x^2}{2} +c \implies \dfrac{1}{2}\ln\left|\dfrac{1+y}{1-y}\right| = \dfrac{x^2}{2} +c$$
+:::
+
+::: caixa
+As próximas operações são necessárias para isolarmos o(s) valor(es) de $y$, sendo necessário utilizarmos exponenciais, logaritmos e nossos conhecimentos de fatoração.
+
+$$\implies \ln\left|\dfrac{1+y}{1-y}\right| = x^2 +2c \implies \left|\dfrac{1+y}{1-y}\right|=e^{x^2+2c} \implies \dfrac{1+y}{1-y} = \pm e^{x^2+2c}$$
+
+Como $e^{x^2+2c}=e^{x^2}\cdot e^{2c}$ e usando que $e^{2c}>0$ para qualquer valor de $c$, podemos substituir esta parte da expressão, juntamente com o sinal $\pm$, para escrever $\dfrac{1+y}{1-y} = k\cdot e^{x^2}$, com $k \in \mathbb{R^\ast}$.
+
+Seguindo o procedimento de isolar $y$, temos $$\dfrac{1+y}{1-y} = k\cdot e^{x^2} \iff (1-y)k\cdot e^{x^2}=1+y \iff k\cdot e^{x^2}-1=y(k\cdot e^{x^2}+1) \implies y=\dfrac{k\cdot e^{x^2}-1}{k\cdot e^{x^2}+1}$$ Logo, as soluções desta EDO são:
+
+- As retas horizontais $y=-1$ e $y=1$ são soluções constantes (ou de estabilidade);
+- Todas as curvas no formato $\displaystyle y=\dfrac{k\cdot e^{x^2}-1}{k\cdot e^{x^2}+1}$, com $k \neq 0$.
+:::
+
+::: {#exr-a03-3}
+Determine a solução geral das EDOs a seguir (explícita ou implicitamente):
+
+a)  $y'=x^2/y$
+b)  $y'+y^2\sin x = 0$
+c)  $xy'=(1-y^2)^{1/2}$
+d)  $\dfrac{dy}{dx}=\dfrac{x^2}{1+y^2}$
+:::
+
+::: {#exr-a03-4}
+Encontre a solução do problema de valor inicial em forma explícita.
+
+a)  $y'=(1-2x)/y, \qquad y(1)=-2$
+b)  $\sin(2x) \ dx+\cos (3y) \ dy=0, \qquad y(\pi/2)=\pi/3$
+c)  $\dfrac{dy}{dx}=\dfrac{\arcsin x}{y^2 \sqrt{1-x^2}}, \qquad y(0)=1$
+:::
+
+::: {#exr-a03-5}
+Resolva o problema de valor inicial $$\dfrac{dy}{dx}=\dfrac{1+3x^2}{3y^2-6y}, \qquad y(0)=1$$ e determine o intervalo de validade da solução. Para isto, procure por pontos onde a curva integral tem uma tangente vertical. Há mais de uma possibilidade de intervalo de validade da solução? Justifique sua resposta.
+:::
+
+::: {#exr-a03-6}
+Resolva os problemas de valor inicial a seguir, indicando o intervalo maximal de validade.
+
+a)  $y'=y \cos x$, dado $y(0)=1$
+b)  $\dfrac{dy}{dx}=-\dfrac{x}{y}$, com $y(0)=4$
+c)  $y'=y^2$, com $y(0)=1$
+d)  $\dfrac{dy}{dx}=\dfrac{3x^2+4x+2}{2(y-1)}$, sendo $y(0)=-1$.
+:::
+
+::: {#exr-a03-7}
+Seja $\dfrac{dy}{dx}=g(x)h(y)$ com $g$ contínua e $h$ com derivada contínua. Suponha que $h(y_0)=0$.
+
+a)  Prove que $\phi(y)=0$ é solução em qualquer intervalo.
+b)  Use o Teorema de Existência e Unicidade para provar que nenhuma outra solução pode assumir o valor $y_0$ em ponto algum. Isto é conhecido como propriedade de barreira de uma solução constante de uma EDO.
+:::

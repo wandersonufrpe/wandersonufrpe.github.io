@@ -60,6 +60,20 @@ local function extrair_titulo(div)
   return nil
 end
 
+local function extrair_rotulo(div)
+  for i = 1, math.min(3, #div.content) do
+    local b = div.content[i]
+    if b.t == "Para" or b.t == "Plain" then
+      local r = pandoc.utils.stringify(b):match("^ROTULO⟦(.-)⟧%s*$")
+      if r then
+        div.content:remove(i)
+        return r
+      end
+    end
+  end
+  return nil
+end
+
 local function limpar_nome(titulo, palavras)
   if not titulo then return nil end
   for _, p in ipairs(palavras) do
@@ -83,6 +97,9 @@ local TEOREMAS = {
 
 local function vazio(bloco)
   if bloco.t ~= "Para" and bloco.t ~= "Plain" then return false end
+  for _, x in ipairs(bloco.content) do
+    if x.t == "Image" or x.t == "Math" or x.t == "Cite" then return false end
+  end
   local s = pandoc.utils.stringify(bloco):gsub("[%s\194\160]", "")
   return s == ""
 end
@@ -91,10 +108,13 @@ local function converter_div(div)
   for env, info in pairs(TEOREMAS) do
     if tem(div, env) then
       local titulo = extrair_titulo(div)
+      local rotulo = extrair_rotulo(div)
       local attrs = {}
       local nome = limpar_nome(titulo, info[2])
       if nome and nome ~= "" then attrs.name = nome end
-      return pandoc.Div(div.content, pandoc.Attr(proximo(info[1]), {}, attrs))
+      local id = proximo(info[1])
+      if rotulo then id = string.format("%s-a%s-%s", info[1], AULA, rotulo) end
+      return pandoc.Div(div.content, pandoc.Attr(id, {}, attrs))
     end
   end
   if tem(div, "demonstration") or tem(div, "proof") then
@@ -115,7 +135,7 @@ local function converter_div(div)
   if tem(div, "figuratikz") then
     local n = pandoc.utils.stringify(div):match("(%d+)")
     local caminho = string.format("figuras/aula-%s/fig-%02d.svg", AULA, tonumber(n))
-    local img = pandoc.Image({ pandoc.Str("[A PREENCHER: descrição da figura " .. n .. "]") }, caminho, "", pandoc.Attr("", { "tikz" }))
+    local img = pandoc.Image({}, caminho, "", pandoc.Attr("", { "tikz" }, { ["fig-alt"] = "DESCREVER: figura " .. n }))
     table.insert(avisos, "figura " .. n .. ": confira a imagem e escreva a descrição (texto alternativo)")
     return pandoc.Para({ img })
   end
@@ -125,12 +145,19 @@ end
 -- Caixas (tcolorbox): título "Exemplo ..." vira exemplo; caixa sem título continua a anterior.
 local function converter_caixas(blocos)
   local saida = pandoc.List()
-  local ultimo_exemplo = nil
+  local ultimo_exemplo, ultimo_titulo = nil, nil
   for _, b in ipairs(blocos) do
     if b.t == "Div" and tem(b, "caixa") then
       local titulo = extrair_titulo(b)
-      if titulo and titulo:match("^Exemplo") then
-        local ex = pandoc.Div(b.content, pandoc.Attr(proximo("exm"), {}))
+      local rotulo = extrair_rotulo(b)
+      if titulo and ultimo_exemplo and titulo == ultimo_titulo then
+        -- mesma caixa repetida logo em seguida (quebra de página no PDF): é continuação
+        ultimo_exemplo.content:extend(b.content)
+      elseif titulo and titulo:match("^Exemplo") then
+        ultimo_titulo = titulo
+        local id = proximo("exm")
+        if rotulo then id = string.format("exm-a%s-%s", AULA, rotulo) end
+        local ex = pandoc.Div(b.content, pandoc.Attr(id, {}))
         saida:insert(ex)
         ultimo_exemplo = ex
       elseif titulo then
@@ -171,6 +198,17 @@ return {
     end,
   },
   { RawInline = bruto, RawBlock = bruto },
+  {
+    Str = function(el)
+      local antes, id, depois = el.text:match("^(.-)REFX⟦(.-)⟧(.*)$")
+      if not id then return nil end
+      local saida = pandoc.List()
+      if antes ~= "" then saida:insert(pandoc.Str(antes)) end
+      saida:insert(pandoc.Cite({ pandoc.Str("@" .. id) }, { pandoc.Citation(id, "AuthorInText") }))
+      if depois ~= "" then saida:insert(pandoc.Str(depois)) end
+      return saida
+    end,
+  },
   {
     Header = function(h)
       h.level = h.level + 1

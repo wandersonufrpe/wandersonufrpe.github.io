@@ -1,0 +1,78 @@
+{
+  "origem": "/mnt/user-data/uploads/Notas de aula/Introdução às equações ordinárias/txt/Aula 10.tex",
+  "figuras": [
+    {
+      "arquivo": "fig-01.svg",
+      "linha_no_tex": 77,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "f1b06b3f69a4",
+      "candidata_a_applet": false,
+      "pistas": [],
+      "inicio_do_codigo": "\\begin{tikzpicture}[scale=1.6, declare function={diff(\\x,\\y) = 0.5*\\y+1;}, scale=0.4] \\draw[->] (-6.2, 0) -- (6.2, 0) node[right] {$t$}; \\draw[->] (-6,-0.2) -- "
+    },
+    {
+      "arquivo": "fig-02.svg",
+      "linha_no_tex": 100,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "1d5fb04c7527",
+      "candidata_a_applet": false,
+      "pistas": [],
+      "inicio_do_codigo": "\\begin{tikzpicture}[scale=0.7] \\draw (-0.2,0) -- (6,0); \\filldraw (0,0) circle (2pt) node[above] {$0$}; \\filldraw (4,0) circle (2pt) node[above] {$K$}; \\draw (2"
+    },
+    {
+      "arquivo": "fig-03.svg",
+      "linha_no_tex": 122,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "9aeb501922dc",
+      "candidata_a_applet": false,
+      "pistas": [],
+      "inicio_do_codigo": "\\begin{tikzpicture}[scale=1.6, declare function={diff(\\x,\\y) = 0.5*\\y+1;}, scale=0.4] \\draw[->] (-6.2, 0) -- (6.2, 0) node[right] {$t$}; \\draw[->] (-6,-0.2) -- "
+    },
+    {
+      "arquivo": "fig-04.svg",
+      "linha_no_tex": 145,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "9db384f48403",
+      "candidata_a_applet": false,
+      "pistas": [],
+      "inicio_do_codigo": "\\begin{tikzpicture}[scale=0.7] \\draw (-0.2,0) -- (6,0); \\filldraw (0,0) circle (2pt) node[above] {$0$}; \\filldraw (2,0) circle (2pt) node[above] {$K/2$}; \\filld"
+    },
+    {
+      "arquivo": "fig-05.svg",
+      "linha_no_tex": 171,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "3f745d6667e2",
+      "candidata_a_applet": false,
+      "pistas": [],
+      "inicio_do_codigo": "\\begin{tikzpicture}[scale=0.8] \\draw[->] (-6.2, 0) -- (6.2, 0) node[right] {$t$}; \\draw[->] (-6,-0.2) -- (-6, 6.2) node[above] {$y$}; \\draw[brown, thick] (6.2,0"
+    },
+    {
+      "arquivo": "fig-06.svg",
+      "linha_no_tex": 192,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "22fcce3bf62f",
+      "candidata_a_applet": false,
+      "pistas": [],
+      "inicio_do_codigo": "\\begin{tikzpicture}[scale=0.8] \\draw (2cm, 0cm) arc (0:90:2cm and 1cm); \\draw (6.5cm, 1cm) arc (90:180:2cm and 1cm); \\draw (9cm, 1cm) arc (180:270:2cm and 1cm);"
+    },
+    {
+      "arquivo": "fig-07.svg",
+      "linha_no_tex": 216,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "13f25d9ccc63",
+      "candidata_a_applet": true,
+      "pistas": [
+        "laço \\foreach (várias curvas)",
+        "exponencial"
+      ],
+      "inicio_do_codigo": "\\def\\aconst{0.5} \\begin{tikzpicture}[scale=0.9] \\pgfmathsetmacro{\\LimiteSup}{2*\\aconst} \\pgfmathsetmacro{\\CoefE}{2 - \\aconst} \\draw[->] (-0.2, 0) -- (12.2, 0) n"
+    }
+  ]
+}

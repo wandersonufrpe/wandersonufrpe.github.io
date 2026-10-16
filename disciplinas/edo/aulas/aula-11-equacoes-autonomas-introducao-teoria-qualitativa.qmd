@@ -1,0 +1,51 @@
+---
+title: "Aula 11: Equações autônomas e introdução à teoria qualitativa (II)"
+pdf-aula: pdf/aula-11.pdf
+---
+
+Continuando os estudos sobre as equações autônomas, veremos hoje como o outro lado da moeda -- a resolução completa e explícita --, é muito mais precisa, mas admite uma interpretação geométrica mais complexa.
+
+Retomemos nosso estudo sobre a equação logística $$y'=r\left(1-\dfrac{y}{K}\right)y,$$ em que $r$ e $a$ são constantes positivas. Esta equação, assim como toda equação autônoma, é separável.
+
+$$y'=r\left(1-\dfrac{y}{K}\right)y \iff y=0, y=K, \mbox{ ou } \dfrac{1}{(1-y/K)y} \ dy = r \ dt , y\neq 0, K.$$
+
+Aplicando a técnica de frações parciais, temos que $$\dfrac{1}{(1-y/K)y}=\dfrac{a}{1-y/K}+\dfrac{b}{y}=\dfrac{ay+b-by/K}{(1-y/K)y} \implies \begin{cases}a-b/K=0 \\ b=1\\ \end{cases} \implies a=1/K.$$
+
+Portanto, nosso problema pode ser resolvido a partir de $$\dfrac{1}{(1-y/K)y} \ dy = r \ dt \iff \dfrac{1}{y} + \dfrac{1/K}{1-y/K} \ dy = r \ dt \implies \int \dfrac{1}{y} + \dfrac{1/K}{1-y/K} \ dy = \int  r \ dt$$
+
+$$\implies \ln |y| - \ln \left|1-\dfrac{y}{K}\right|=rt + c$$
+
+Como $y$ representa uma população, então é sempre um número positivo[^1]. Assim, podemos escrever $\ln |y|=\ln y$. Por outro lado, o segundo logaritmo depende de uma análise mais detalhada.
+
+- Se $0<y<K$, a expressão $1-\dfrac{y}{K}$ é positiva e, portanto, $\ln \left|1-\dfrac{y}{K}\right|=\ln \left( 1-\dfrac{y}{K}\right)$;
+- Por outro lado, se $y > K$, a expressão $1-\dfrac{y}{K}$ é negativa e, consequentemente, $\ln \left|1-\dfrac{y}{K}\right|=\ln \left(\dfrac{y}{K}-1\right)$.
+
+Assim, separamos em dois casos: $0<y<K$ e $y>K$. É importante lembrarmos que, da análise feita anteriormente, o gráfico jamais cruza a reta $y=K$. Esta informação é importantíssima para termos a certeza que os logaritmandos não pulam do Caso 1 para o Caso 2 e vice-versa; além disso, os valores iniciais $y_0$ também satisfazem as desigualdades que caracterizam cada um dos casos.
+
+Nosso objetivo nesta análise será determinar a expressão (ou as expressões) para o problema de valor inicial $y(0)=y_0$.
+
+#### *Caso 1:* $0<y<K$
+
+Neste cenário, a equação pode ser escrita como $$\ln y - \ln \left(1-\dfrac{y}{K}\right)=rt + c \implies \ln \left(\dfrac{y}{1-y/K}\right)=rt+c \implies \dfrac{y}{1-y/K} = Ce^{rt},$$ em que $C=e^c$ é constante não nula. Daí, obtemos $$y=Ce^{rt}-\dfrac{y}{K}Ce^{rt} \implies Ky=KCe^{rt}-yCe^{rt} \implies y(Ce^{rt}+K)=KCe^{rt} \implies y=\dfrac{KCe^{rt}}{Ce^{rt}+K}$$ $$=\dfrac{KC}{C+Ke^{-rt}}$$
+
+Incluindo a condição inicial, analisamos o valor da constante $C$. $$y=\dfrac{KC}{C+Ke^{-rt}} \implies y_0=\dfrac{KC}{C+Ke^{-r\cdot 0}}=\dfrac{KC}{C+K} \implies y_0C+y_0K=KC \implies C=\dfrac{y_0\cdot K}{K-y_0}.$$
+
+Substituindo na expressão da solução geral, obtemos $$y=\dfrac{KC}{C+Ke^{-rt}} \implies y=\dfrac{K\left(\dfrac{y_0\cdot K}{K-y_0}\right)}{\left(\dfrac{y_0\cdot K}{K-y_0}\right)+Ke^{-rt}}=\dfrac{\dfrac{y_0\cdot K}{K-y_0}}{\left(\dfrac{y_0}{K-y_0}\right)+e^{-rt}}=\dfrac{y_0K}{y_0+(K-y_0)e^{-rt}}.$$
+
+#### *Caso 2:* $y>K$
+
+Neste cenário, a equação pode ser escrita como $$\ln y - \ln \left(\dfrac{y}{K}-1\right)=rt + c \implies \ln \left(\dfrac{y}{y/K-1}\right)=rt+c \implies \dfrac{y}{y/K-1} = Ce^{rt},$$ em que $C=e^c$ é constante não nula. Daí, obtemos, similarmente, $$y=\dfrac{y}{K}Ce^{rt}-Ce^{rt} \implies Ky=yCe^{rt}-KCe^{rt} \implies y=\dfrac{KCe^{rt}}{Ce^{rt}-K}=\dfrac{KC}{C-Ke^{-rt}}.$$
+
+Utilizando a condição inicial, obtemos $C$: $$y=\dfrac{KC}{C-Ke^{-rt}} \implies y_0=\dfrac{KC}{C-Ke^{-r\cdot 0}}=\dfrac{KC}{C-K} \implies y_0C-y_0K=KC \implies C=\dfrac{y_0\cdot K}{y_0-K}.$$
+
+Substituindo na expressão da solução geral do caso 2, obtemos
+
+$$y=\dfrac{KC}{C-Ke^{-rt}} \implies y=\dfrac{K\left(\dfrac{y_0\cdot K}{y_0-K}\right)}{\left(\dfrac{y_0\cdot K}{y_0-K}\right)-Ke^{-rt}}=
+\dfrac{\dfrac{y_0\cdot K}{y_0-K}}{\left(\dfrac{y_0}{y_0-K}\right)-e^{-rt}}=
+\dfrac{y_0K}{y_0-(y_0-K)e^{-rt}}$$ $$=\dfrac{y_0K}{y_0+(K-y_0)e^{-rt}}.$$
+
+Ao observar atentamente, podemos perceber que ambos casos retornam a mesma solução geral $$y=\dfrac{y_0K}{y_0+(K-y_0)e^{-rt}}.$$
+
+Toda a análise qualitativa realizada antes é bastante mais simples que determinar a equação da EDO. A lição a registrarmos é que, no caso das equações autônomas, é possível compreender o comportamento geral das soluções sem que seja necessário resolver explicitamente a equação.
+
+[^1]: Ainda assim, caso esta equação modele um problema cujo resultado pode ser um valor negativo, a análise a seguir também pode ser estendida para aceitar $y$ negativo ou $t$ negativo.

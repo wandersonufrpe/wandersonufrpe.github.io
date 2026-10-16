@@ -1,0 +1,193 @@
+---
+title: "Aula 17: Independência linear de funções"
+pdf-aula: pdf/aula-17.pdf
+---
+
+O objetivo desta aula e da próxima é conectar o estudo das equações diferenciais à Álgebra linear como forma de facilitar a construção de métodos de resolução de equações mais gerais. O principal problema, talvez, seja associar o que estudamos usando vetores do $\mathbb{R}^n$ (ou seja, as $n$-uplas) a funções, que são nosso objeto básico de análise.
+
+## Dependência e independência linear de funções
+
+::: {#def-a17-1}
+Sejam $f_1(x), f_2(x), \ldots, f_n(x)$ funções reais definidas em um intervalo $I \subset \mathbb{R}$. Dizemos que o conjunto dessas funções é **linearmente dependente** se existirem constantes $c_1$, $c_2$, $\ldots$, $c_n$ não todas nulas tais que $$c_1f_1(x)+c_2f_2(x)+\ldots+c_nf_n(x)=0$$ para todo $x \in I$.
+
+Caso contrário, ou seja, caso a afirmação acima não valha para todos $x$ em $I$ ou todos os coeficientes sejam, necessariamente, nulos, então dizemos que o conjunto de funções é **linearmente independente**.
+:::
+
+::: {#exm-a17-1}
+As funções $f_1(x)=\sin 2x$ e $f_2(x)=\sin x\cos x$ são linearmente dependentes ou independentes?
+
+Escrevemos $c_1\sin 2x+c_2\sin x\cos x=0$ e utilizamos $\sin 2x=2\sin x\cos x$ (uma das identidades trigonométricas de arcos duplos) para obter $$c_1\sin 2x+c_2\sin x\cos x=0 \iff c_1(2\sin x\cos x)+c_2\sin x\cos x=0$$ $$\iff (2c_1+c_2)\sin x\cos x=0$$ Para que este produto seja **sempre** nulo, a única forma possível é que $2c_1+c_2=0$. Como há solução não nula para esta igualdade (pois, por exemplo, podemos tomar $c_1=1$ e $c_2=-2$), então as funções $f_1$ e $f_2$ são linearmente dependentes.
+:::
+
+::: {#exm-a17-2}
+As funções $f_1(x)=x$ e $f_2(x)=|x|$ são linearmente dependentes ou independentes?
+
+Novamente, escrevemos a combinação linear $c_1x+c_2|x|=0$. Da definição de módulo, temos o sistema de equações
+
+$$\begin{cases} c_1x+c_2x=0, \mbox{ se } x \geqslant 0 \\ c_1x-c_2x=0, \mbox{ se } x<0. \end{cases} \iff \begin{cases} c_1=-c_2, \mbox{ se } x \geqslant 0 \\ c_1=c_2, \mbox{ se } x<0. \end{cases} \implies c_1=c_2=-c_2$$ $$\implies c_1=c_2=0.$$ Portanto, não existem valores para $c_1$ e $c_2$ nem todos nulos satisfazendo as condições.
+
+Ainda poderíamos argumentar que, por exemplo, poderíamos tomar $c_1=1$ e $c_2=-1$ para valores positivos de $x$ e $c_1=c_2=1$ para valores negativos. Neste instante, lembramos que é fundamental que os mesmos valores para $c_1$ e $c_2$ devem deixar $c_1x+c_2|x|=0$ para todo $x$ real, coisa que não acontece.
+
+Portanto, $f_1$ e $f_2$ são linearmente independentes.
+:::
+
+::: {#exm-a17-3}
+As funções $f_1(x)=\cos^2 x, f_2(x)=\sin^2 x, f_3(x)=\sec^2 x$ e $f_4(x)=\tan^2(x)$ são linearmente dependentes ou independentes?
+
+Da identidade $\sin^2 x+\cos^2 x=1$ obtemos $\tan^2 x+1=\sec^2 x$. Organizando as funções do lado esquerdo em uma única igualdade, obtemos $$(\cos^2 x+\sin^2 x)+(-\sec^2 x+\tan^2 x)=1-1=0.$$ Portanto, se tomarmos $c_1=c_2=c_4=1$ e $c_3=-1$ em $$c_1\cos^2 x+c_2\sin^2 x+c_3\sec^2 x+c_4\tan^2 x=0,$$ temos uma solução não trivial e, consequentemente, as funções são linearmente dependentes.
+:::
+
+::: {#exm-a17-4}
+As funções $f_1(x)=\sqrt{x}+5, f_2(x)=\sqrt{x}+5x, f_3(x)=x-1$ e $f_4(x)=x^2$ são linearmente dependentes ou independentes?
+
+Escrevemos a combinação linear e organizamos os coeficientes de acordo com as potências de $x$. $$c_1(\sqrt{x}+5)+c_2(\sqrt{x}+5x)+c_3(x-1)+c_4(x^2)=0$$ $$\iff c_4x^2+(5c_2+c_3)x+(c_1+c_2)\sqrt{x}+(5c_1-c_3)=0$$ Um polinômio é nulo se e somente se todos os seus coeficientes é nulo. Assim, a única forma deste "polinômio" ser sempre nulo é que
+
+$$\left\{\begin{aligned}c_4&=0 \\ 5c_2+c_3&=0 \\ c_1+c_2&=0 \\ 5c_1-c_3&=0\end{aligned}\right. \iff \left\{\begin{aligned}c_4&=0 \\ c_3&=-5c_1 \\ c_2&=-c_1\end{aligned}\right.$$
+
+Assim, uma solução não trivial é $c_1=1, c_2=-1, c_3=5$ e $c_4=0$ e, consequentemente, a conjunto de funções é linearmente dependente.
+:::
+
+## Dependência linear a partir de determinantes
+
+Embora o procedimento da classificação de um conjunto de vetores como linearmente dependente ou independente seja muito similar ao que já tínhamos aprendido em Álgebra Linear, é fundamental repetir o acréscimo da regra de que os valores para as constantes $c_1, c_2, \ldots, c_n$ devem ser válidos para todo o intervalo $I\subset \mathbb{R}$ em que analisamos.
+
+Assim como ocorria na outra disciplina, existe uma alternativa sem a utilização direta de um sistema linear. Também é possível avaliar se um conjunto de funções é linearmente dependente ou independente utilizando determinantes. Na demonstração, será necessário utilizar o Teorema de Cramer, que pode ser revisado em livros como *Álgebra linear e aplicações*, de Callioli, Domingues e Costa (pp. 214-216) ou *Álgebra linear* de Boldrini, Costa, Figueiredo e Wetzler (pp. 77-80).
+
+::: {#prp-a17-1}
+[Dependência linear e o wronskiano]{.smallcaps}
+
+Sejam $f_1(x), f_2(x), \ldots, f_n(x)$ funções reais definidas em um intervalo $I \subset \mathbb{R}$ e diferenciáveis pelo menos $n-1$ vezes. Se o conjunto dessas funções é linearmente dependente, então o determinante $$W(f_1, f_2, \ldots, f_n)=\begin{vmatrix} f_1 & f_2 & \ldots & f_n \\ f_1' & f_2' & \ldots & f_n' \\ \vdots & \vdots & \ddots & \vdots \\ f_1^{(n-1)} & f_2^{(n-1)} & \ldots & f_n^{(n-1)} \end{vmatrix}$$ é igual a zero para todos $x \in I$.
+:::
+
+::: {#def-a17-2}
+O determinante $W(f_1, f_2, \ldots, f_n)$ é chamado de **wronskiano** das funções.
+:::
+
+::: proof
+*Proof.* Como as funções são linearmente dependentes em $I$, existem constantes reais $c_1, c_2, \ldots, c_n$, não todas nulas, tais que $$c_1f_1(x) + c_2f_2(x) + \ldots + c_nf_n(x) = 0$$ para todo $x \in I$. Por se tratar de uma equação válida em todo o intervalo e com coeficientes constantes, podemos derivá-la $n-1$ vezes.
+
+Assim, para cada $x \in I$, temos o sistema linear homogêneo $$\left\{\begin{array}{ccccccccc} c_1f_1(x) & + & c_2f_2(x) & + & \ldots & + & c_nf_n(x) & = & 0 \\ c_1f_1'(x) & + & c_2f_2'(x) & + & \ldots & + & c_nf_n'(x) & = & 0 \\ \vdots & & \vdots & & \ddots & & \vdots & & \\ c_1f_1^{(n-1)}(x) & + & c_2f_2^{(n-1)}(x) & + & \ldots & + & c_nf_n^{(n-1)}(x) & = & 0 \end{array}\right.$$
+
+Fixado $x \in I$, os valores $c_1, c_2, \ldots, c_n)$, não todos nulos definidos anteriormente, formam uma solução deste sistema de $n$ equações e $n$ incógnitas. O determinante da sua matriz dos coeficientes é $W(f_1, \ldots, f_n)(x)$.
+
+Suponhamos, por absurdo, que $W(f_1, \ldots, f_n)(x) \neq 0$. Pela regra de Cramer, o sistema teria uma única solução, dada por $c_i = D_i / W(f_1, \ldots, f_n)(x)$. Como a coluna dos termos independentes é nula, cada $D_i$ é o determinante de uma matriz com uma coluna nula, e portanto $D_i = 0$ para todo $i$. A única solução seria, então, $c_1 = c_2 = \cdots = c_n = 0$, o que contradiz a escolha de que nem todos os $c_i$'s são nulos.
+
+Logo $W(f_1, \ldots, f_n)(x) = 0$. Como $x \in I$ é arbitrário, o wronskiano se anula em todo o intervalo $I$. ◻
+:::
+
+::: {#cor-a17-1}
+[Wronskiano e independência linear]{.smallcaps}
+
+Sejam $f_1(x), f_2(x), \ldots, f_n(x)$ funções reais definidas em um intervalo $I \subset \mathbb{R}$ e diferenciáveis pelo menos $n-1$ vezes. Se o determinante $W(f_1, f_2, \ldots, f_n)$ for diferente de zero em pelo menos um ponto de $I$, então as funções são linearmente independentes.
+:::
+
+Esta afirmação é a contrapositiva da Proposição anterior.
+
+::: {#exm-a17-5}
+As funções $f_1(x)=\sin^2 x$ e $f_2(x)=1-\cos 2x$ são linearmente dependentes ou independentes?
+
+Como as funções são deriváveis, calculamos o wronskiano. No desenvolver dos cálculos, utilizamos as igualdades $\cos 2x=1-2\sin^2 x$ e $\sin 2x=2\sin x\cos x$: $$W=\begin{vmatrix} \sin^2 x & 1-\cos 2x \\ 2\sin x\cos x & 2\sin 2x \end{vmatrix}=2\sin^2 x(\sin 2x)-(\sin 2x)(1-\cos 2x)$$ $$=\sin 2x(2\sin^2 x-1+(1-2\sin^2 x))=0.$$
+
+O wronskiano é identicamente nulo. Esse resultado é compatível com a dependência linear, mas não a demonstra: a Proposição garante apenas que funções linearmente dependentes têm wronskiano nulo, e a recíproca é falsa em geral. Para decidir a questão, procuramos uma combinação linear explícita. Da identidade $\cos 2x = 1-2\sin^2 x$, temos $$f_2(x) = 1-\cos 2x = 2\sin^2 x = 2f_1(x) \quad \text{para todo } x \in \mathbb{R},$$ isto é, $2f_1(x) - f_2(x) = 0$ para todo $x$, com coeficientes $c_1 = 2$ e $c_2 = -1$ não nulos. Logo, as funções são linearmente dependentes.
+:::
+
+Neste Exemplo 05, a afirmação que o wronskiano nulo não implica um conjunto de funções linearmente dependente merece mais detalhamentos: $W \equiv 0$ não implica dependência linear. Um exemplo, devido a Peano, são as funções $f_1(x) = x^2$ e $f_2(x) = x|x|$ em $\mathbb{R}$. Ambas são deriváveis, com $f_2'(x) = 2|x|$, e $$W = x^2 \cdot 2|x| - 2x \cdot x|x| = 0 \quad \text{para todo } x.$$
+
+No entanto, elas são linearmente independentes e a verifição é similar à do Exemplo 02: se tivermos $c_1x^2 + c_2x|x| = 0$ para todo $x$, tomando $x = 1$ e $x = -1$ obtemos $c_1 + c_2 = 0$ e $c_1 - c_2 = 0$, logo $c_1 = c_2 = 0$.
+
+## Exemplos fundamentais
+
+Os próximos exemplos são de casos típicos presentes na resolução de equações diferenciais ordinárias. Assim, toda vez que obtivermos uma solução envolvendo algum deles, poderemos utilizar os resultados diretamente.
+
+::: {#exm-a17-6}
+Sejam $m, n \in \mathbb{R}$, com $m \neq n$. As funções $f_1(x)=e^{mx}$ e $f_2(x)=e^{nx}$ são linearmente independentes. $$W=\begin{vmatrix} e^{mx} & e^{nx} \\ me^{mx} & ne^{nx} \end{vmatrix}=ne^{(m+n)x}-me^{(m+n)x}=(n-m)e^{(m+n)x}.$$
+
+Como uma função exponencial nunca se anula em todos seus pontos e $m \neq n \implies n-m \neq 0$, então o produto acima nunca é sempre zero e, consequentemente, as funções são linearmente independentes.
+:::
+
+::: {#exm-a17-7}
+Sejam $m, n \in \mathbb{R}$, com $n \neq 0$. As funções $f_1(x)=e^{mx}\cos nx$ e $f_2(x)=e^{mx}\sin nx$ são linearmente independentes. $$W=\begin{vmatrix} e^{mx}\cos nx & e^{mx}\sin nx \\ me^{mx}\cos nx-ne^{mx}\sin nx & me^{mx}\sin nx+ne^{mx}\cos nx \end{vmatrix}$$ $$=e^{2mx}(\cancel{m\sin nx\cos nx}+n\cos^2 nx)-e^{2mx}(\cancel{m\sin nx\cos nx}-n\sin^2 nx)$$ $$=e^{2mx}(n\cos^2 nx+n\sin^2 nx)=ne^{2mx}(\sin^2 nx+\cos^2 nx)=ne^{2mx}.$$ Como $n \neq 0$ e a exponencial não se anula em todos os pontos, então o conjunto das duas funções é linearmente independente.
+:::
+
+::: {#exm-a17-8}
+As funções $f_1(x)=e^x, f_2(x)=xe^x$ e $f_3(x)=x^2e^x$ são linearmente independentes. $$W=\begin{vmatrix} e^x & xe^x & x^2e^x \\ e^x & e^x+xe^x & 2xe^x+x^2e^x \\ e^x & 2e^x+xe^x & 2e^x+4xe^x+x^2e^x \end{vmatrix}=\begin{vmatrix} e^x & xe^x & x^2e^x \\ e^x & (x+1)e^x & (x^2+2x)e^x \\ e^x & (x+2)e^x & (x^2+4x+2)e^x \end{vmatrix}$$ $$=e^{3x}\left(x(x^2+2x)+(x+1)(x^2+4x+2)+x^2(x+2)\right)$$ $$-e^{3x}\left(x(x^2+4x+2)+x^2(x+1)+(x+2)(x^2+2x)\right)$$ $$=e^{3x}\left((3x^3+9x^2+6x+2)-(3x^3+9x^2+6x)\right)=2e^{3x}.$$ Como a exponencial não se anula em todos seus pontos, então o conjunto das três funções é linearmente independente.
+:::
+
+::: {#exr-a17-1}
+Determine se as funções dadas são linearmente dependentes ou independentes em $\mathbb{R}$.
+
+a)  $f_1(x)=x \qquad f_2(x)=x^2 \qquad f_3(x)=4x-3x^2$
+b)  $f_1(x)=5 \qquad f_2(x)=\sin^2 x \qquad f_3(x)=\cos^2 x$
+c)  $f_1(x)=\cos 2x \qquad f_2(x)=1 \qquad f_3(x)=\cos x$
+d)  $f_1(x)=x+1 \qquad f_2(x)=x \qquad f_3(x)=x^2$
+e)  $f_1(x)=x+1 \qquad f_2(x)=x+2 \qquad f_3(x)=x+3$
+f)  $f_1(x)=0 \qquad f_2(x)=x \qquad f_3(x)=e^x$
+:::
+
+::: {#exr-a17-2}
+Observe que, para as funções $f_1(x)=2$ e $f_2(x)=e^x$, tem-se $1 \times f_1(0)-2 \times f_2(0)=0$. Isso implica que as funções $f_1$ e $f_2$ são linearmente dependentes em qualquer intervalo contendo $x=0$? Justifique.
+:::
+
+::: {#exr-a17-3}
+Calcule o Wronskiano das funções a seguir para determinar se as funções dadas são linearmente dependentes ou independentes nos intervalos $I$ dados.
+
+a)  $f_1(x)=\sqrt{x} \qquad f_2(x)=x^2 \qquad I=\ ]0, +\infty[$
+b)  $f_1(x)=\sin x \qquad f_2(x)=\operatorname{cossec} x \qquad I=\ ]0, \pi[$
+c)  $f_1(x)=e^x \qquad f_2(x)=e^{-x} \qquad f_3(x)=e^{4x} \qquad I=\mathbb{R}$
+d)  $f_1(x)=x+1 \qquad f_2(x)=x^3 \qquad I=\mathbb{R}$
+e)  $f_1(x)=\tan x \qquad f_2(x)=\operatorname{cotg} x \qquad I=\ ]0, \pi/2[$
+f)  $f_1(x)=x \qquad f_2(x)=x\ln x \qquad f_3(x)=x^2\ln x \qquad I=\ ]0, +\infty[$
+:::
+
+## A fórmula de Abel-Liouville
+
+Outra abordagem para a análise do wronskiano, importante para estudantes que desejem se aprofundar na área das equações diferenciais, utiliza a relação entre os coeficientes das derivadas das funções. Considerando que este tema avança numa direção diferente de nossa disciplina, apresentaremos apenas os conceitos e proposições chave.
+
+::: {#thm-a17-teo-abel}
+[EDOs e wronskianos]{.smallcaps}
+
+Sejam $a_0(x), a_1(x), \ldots, a_n(x)$ funções contínuas em um intervalo $I \subset \mathbb{R}$, com $a_n(x) \neq 0$ para todo $x \in I$, e sejam $f_1(x), f_2(x), \ldots, f_n(x)$ soluções em $I$ da equação $$a_n(x)\cdot y^{(n)}+a_{n-1}(x)\cdot y^{(n-1)}+\ldots+a_1(x)\cdot y'+a_0(x)\cdot y=0.$$ Então $W=W(f_1, f_2, \ldots, f_n)$ é solução da equação $$W'+\frac{a_{n-1}(x)}{a_n(x)}\cdot W=0,$$ ou seja, $W(x)=ce^{-A(x)}$, em que $c \in \mathbb{R}$ e $A(x)$ é uma primitiva de $\dfrac{a_{n-1}(x)}{a_n(x)}$ em $I$. Equivalentemente, fixado $x_0 \in I$, $$W(x)=W(x_0)^{-A(x)},$$ em que $$\displaystyle A(x)= \int_{x_0}^{x}\frac{a_{n-1}(t)}{a_n(t)}\,dt \quad \text{para todo } x \in I.$$
+:::
+
+A demonstração, embora não seja complicada, é longa. Por se tratar de um tema paralelo às discussões principais, seus detalhes serão deixados de fora deste material.
+
+::: {#def-a17-3}
+A **fórmula de Abel-Liouville** é a expressão do wronskiano dada pelo teorema anterior: $$W(x)=\left(W(x_0)\right)^{-A(x)},$$ em que $\displaystyle A(x)= \int_{x_0}^{x}\frac{a_{n-1}(t)}{a_n(t)}\,dt$.
+:::
+
+::: {#exm-a17-9}
+A equação $x^2y''-2xy'+2y=0$, no intervalo $I=(0,\infty)$, tem as soluções $f_1(x)=x$ e $f_2(x)=x^2$, cujo wronskiano é $$W=\begin{vmatrix} x & x^2 \\ 1 & 2x \end{vmatrix}=2x^2-x^2=x^2.$$ Pela fórmula de Abel-Liouville, temos $\dfrac{a_1(x)}{a_2(x)}=\dfrac{-2x}{x^2}=-\dfrac{2}{x}$, cuja primitiva é $A(x)=-2\ln x$. Logo, $W=c\,e^{2\ln x}=c\,x^2$, de acordo com o cálculo direto e tomando $c=1$.
+:::
+
+::: {#cor-a17-2}
+Sejam $f_1(x), f_2(x), \ldots, f_n(x)$ soluções da equação $$a_n(x)\cdot y^{(n)}+a_{n-1}(x)\cdot y^{(n-1)}+\ldots+a_1(x)\cdot y'+a_0(x)\cdot y=0$$ e seja $W=W(f_1, f_2, \ldots, f_n)$. Nestas condições, se $W(x_0) \neq 0$ para algum $x_0 \in I$, então, para todo $x \in I$, tem-se $W(x) \neq 0$.
+:::
+
+::: proof
+*Proof.* A fórmula de Abel-Liouville nos dá que $W(x)=ce^{-A(x)}$. A exponencial nunca é igual a zero. Por outro lado, como $W(x_0)$ é não nulo, então, substituindo nesta solução, tem-se $c \neq 0$. Portanto, para qualquer ponto no intervalo de validade da solução, tem-se que o wronskiano é o produto de dois números não nulos, ou seja, $W \neq 0 \ \forall \ x \in I$. ◻
+:::
+
+::: {#thm-a17-teo-wronskiano-solucoes}
+[Wronskiano e independência de soluções]{.smallcaps}
+
+Nas condições do @thm-a17-teo-abel, as seguintes afirmações são equivalentes:
+
+(a) as soluções $f_1, f_2, \ldots, f_n$ são linearmente dependentes em $I$;
+(b) $W(x)=0$ para todo $x \in I$;
+(c) $W(x_0)=0$ para algum $x_0 \in I$.
+:::
+
+::: proof
+*Proof.* A implicação (a) $\Rightarrow$ (b) é a Proposição [Wronskiano e dependência linear]{.smallcaps}, e a implicação (b) $\Rightarrow$ (c) é imediata. Resta provar que (c) $\Rightarrow$ (a).
+
+Suponhamos que $W(x_0)=0$. Então a matriz wronskiana em $x_0$ tem determinante nulo e, portanto, suas colunas são linearmente dependentes: existem constantes $c_1, c_2, \ldots, c_n$, não todas nulas, tais que
+
+$$\left\{\begin{array}{ccccccccc} c_1f_1(x) & + & c_2f_2(x) & + & \ldots & + & c_nf_n(x) & = & 0 \\ c_1f_1'(x) & + & c_2f_2'(x) & + & \ldots & + & c_nf_n'(x) & = & 0 \\ \vdots & & \vdots & & \ddots & & \vdots & & \\ c_1f_1^{(n-1)}(x) & + & c_2f_2^{(n-1)}(x) & + & \ldots & + & c_nf_n^{(n-1)}(x) & = & 0 \end{array}\right.$$
+
+Considere a função $y(x)=c_1f_1(x)+c_2f_2(x)+\cdots+c_nf_n(x)$. Por ser combinação linear de soluções de uma equação linear homogênea, $y$ é solução da equação, e as igualdades acima dizem que $$y(x_0)=y'(x_0)=\cdots=y^{(n-1)}(x_0)=0.$$ A função identicamente nula também é solução da equação e satisfaz essas mesmas condições iniciais. Pelo teorema de existência e unicidade, $y(x)=0$ para todo $x \in I$, isto é, $$c_1f_1(x)+c_2f_2(x)+\cdots+c_nf_n(x)=0 \quad \text{para todo } x \in I,$$ com coeficientes não todos nulos. Logo, as funções são linearmente dependentes. ◻
+:::
+
+Perceba que estes resultados permitem interpretar a fórmula de Abel-Liouville com respeito às funções do cálculo do wronskiano. Na expressão $W(x)=c\,e^{-A(x)}$, a constante $c$ decide a questão da dependência linear.
+
+- Se as soluções $f_1, f_2, \ldots, f_n$ são linearmente dependentes, então $W(x)=0$ para todo $x \in I$, isto é, $c=0$. Esta é a solução nula da EDO $$W'+\frac{a_{n-1}(x)}{a_n(x)}\cdot W=0.$$
+- Se as soluções $f_1, f_2, \ldots, f_n$ são linearmente independentes, então, pelo @thm-a17-teo-wronskiano-solucoes, $W$ não se anula em nenhum ponto de $I$, isto é, $$W(x)=c\,e^{-A(x)}, \quad c \neq 0.$$

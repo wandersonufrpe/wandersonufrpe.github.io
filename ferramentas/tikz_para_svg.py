@@ -71,11 +71,14 @@ def sem_comentarios(texto: str) -> str:
 
 
 def figuras(texto: str):
+    """Cada tikzpicture, precedida dos \\def soltos que aparecem antes dela na aula (ex.: \\def\\aconst{0.5})."""
     texto = sem_comentarios(texto)
     padrao = re.compile(r"\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}", re.S)
+    defs_soltos = re.compile(r"^[ \t]*(\\def\\[a-zA-Z]+\{[^{}\n]*\})", re.M)
     for m in padrao.finditer(texto):
         linha = texto.count("\n", 0, m.start()) + 1
-        yield linha, m.group(0)
+        anteriores = "\n".join(d.group(1) for d in defs_soltos.finditer(texto, 0, m.start()))
+        yield linha, (anteriores + "\n" if anteriores else "") + m.group(0)
 
 
 def conversor():

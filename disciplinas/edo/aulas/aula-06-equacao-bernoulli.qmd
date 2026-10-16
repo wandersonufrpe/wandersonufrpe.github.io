@@ -1,0 +1,92 @@
+---
+title: "Aula 6: Equação de Bernoulli"
+pdf-aula: pdf/aula-06.pdf
+---
+
+Assim como na nossa quarta aula, as equações que vamos estudar hoje podem ser transformadas em um tipo já conhecido. No caso de hoje, vamos aprender como transformar equações de Bernoulli em lineares.
+
+::: {#def-a06-1}
+Uma **equação de Bernoulli** é qualquer EDO de primeira ordem no formato $$\displaystyle y'=f(x)\cdot y + g(x) \cdot y^n, n \neq 0 \mbox{ constante}$$
+:::
+
+Estas equações se parecem bastante com as lineares. O que as diferencia é o fator $y^n$ que multiplica $g(x)$.
+
+::: {#exm-a06-1}
+$$y'=\arctan(x^2-1)\cdot y + \ln(x^2+1)\cdot y^{3} \qquad \qquad y'=x^4y+\dfrac{\sin x}{\sqrt{y}} \qquad \qquad y'=y+e^xy^{\pi}$$ Todas as equações acima são de Bernoulli, com $n=3, n=-\dfrac{1}{2}$ e $n=\pi$, respectivamente.
+:::
+
+Para determinar a solução geral da equação de Bernoulli, devemos, primeiramente, perceber que se $n>0$ então existe solução constante $y=0$. Registramos isto para seguir a resolução.
+
+Uma vez que, a partir de agora, $y \neq 0$, podemos multiplicar a equação por $y^{-n}$ para obter $$y^{-n}\cdot y' = f(x)\cdot y^{1-n}+g(x).$$
+
+Ao aplicar a mudança de variáveis $w=y^{1-n}$, temos que
+
+$$w'=(1-n)\cdot y^{-n} \cdot y'\mbox{, ou seja, } y^{-n} \cdot y'=\dfrac{w'}{1-n}.$$
+
+Consequentemente, a equação é reescrita como $$y^{-n}\cdot y' = f(x)\cdot y^{1-n}+g(x) \iff \dfrac{w'}{1-n} = f(x) \cdot w + g(x)$$ $$\iff w'=\left((1-n)\cdot f(x) \right)\cdot w+\left((1-n)\cdot g(x)\right).$$
+
+Perceba que este formato é exatamente o de uma equação de primeira ordem linear! Assim, é possível resolver este problema e retornar à função $y$ ao final do procedimento.
+
+::: {#exm-a06-2}
+Determinar todas as soluções de $y'=y-y^3$.
+
+Primeiramente, observamos que $y=0, y=-1$ e $y=1$ são soluções constantes, pois basta fatorar $y-y^3=y(y-1)(y+1)=0$. Para determinar as não constantes, multiplicamos toda a equação por $y^{-3}$ e aplicamos a mudança de variáveis $w=y^{1-3}=y^{-2}$.
+
+$$y'=y-y^3 \iff y^{-3}\cdot y'=y^{-2}-1$$
+
+Como $w=y^{-2}$, segue que $w'=(-2)\cdot y^{-3}\cdot y'$. Logo, nossa equação torna-se: $$y^{-3} \cdot y'=y^{-2}-1 \iff \dfrac{w'}{-2}=w-1 \iff w'=-2w+2.$$
+
+Como esta equação é linear, a resolvemos:
+
+$$F(x)=\int -2 \ dx = -2x$$ $$H(x)=\int \dfrac{2}{e^{-2x}}\ dx = \int 2e^{2x}\ dx = e^{2x}$$ $$w=e^{-2x}\left(e^{2x}+k\right)=k\cdot e^{-2x}+1$$
+
+Por fim, retornamos a $y$ substituindo de volta $w=y^{-2}$: $$w=y^{-2}=k\cdot e^{-2x}+1 \implies y^2=\dfrac{1}{k\cdot e^{-2x}+1} \implies y=\pm \dfrac{1}{\sqrt{k\cdot e^{-2x}+1}}$$
+
+Uma observação importante: A equação original, além de ser de Bernoulli, também é uma EDO separável. Também poderíamos ter resolvido esta questão considerando que $$y'=y-y^3 \iff \dfrac{dy}{y(y+1)(y-1)}=1 \ dx.$$
+:::
+
+::: {.callout-note appearance="simple" icon="false"}
+[Algoritmo de resolução da equação de Bernoulli]{.smallcaps} Dada uma EDO da forma $y'=f(x)\cdot y+g(x) \cdot y^n, n\neq 0$ constante, seguimos os passos:
+
+1.  Multiplicamos todos termos da EDO por $y^{-n}$, obtendo a equação $$y^{-n}\cdot y' = f(x)\cdot y^{1-n}+g(x).$$
+2.  Aplicamos a mudança de variável $w=y^{1-n}$ e, consequentemente, $y^{-n}\cdot y'=\dfrac{w'}{1-n}$, para obter uma nova equação diferencial.
+3.  Organizar a nova EDO de modo a deixá-la linear.
+4.  Resolver a equação linear resultante.
+5.  Após encontrar a solução, substituir $w$ de volta para retornar a $y$ e $x$.
+:::
+
+::: {#exr-a06-1}
+Determine a solução geral para cada uma das equações a seguir.
+
+a)  $y'=\dfrac{y}{2}-\dfrac{y^2}{4}$
+b)  $x^2y'+2xy-y^3=0, \ x>0$
+c)  $\dfrac{dy}{dx}=5y-\dfrac{4x}{y}$
+d)  $x^2 \dfrac{dy}{dx}+y^2=xy$
+e)  $3(1+x^2) \dfrac{dy}{dx}=2xy(y^3-1)$
+:::
+
+::: {#exr-a06-2}
+Determine a solução dos problemas de valor inicial a seguir.
+
+a)  $x^2 \dfrac{dy}{dx}-2xy=3y^4,$ satisfazendo $y(1)=\dfrac{1}{2}$.
+b)  $2y'=\dfrac{y}{x}-\dfrac{x}{y^2}$ tal que $y(1)=1$.
+c)  $\sqrt{y} \cdot y'+ \sqrt{y^3}=1$ de modo que $y(0)=4$.
+:::
+
+Guidorizzi (2002), na seção sobre as equações de Bernoulli, propõe várias aplicações ao crescimento populacional. Embora tenhamos uma aula específica para tratar da modelagem deste conteúdo, é possível estudar estes problemas desde já caso já tenhamos explicitamente uma equação a ser resolvida -- no nosso cenário, as questões a seguir são bastante completas.
+
+::: {#exr-a06-3}
+Considerando fatores inibidores para a variação da população, foi proposta uma modificação para o modelo clássico, onde se supõe então um nível máximo $\displaystyle \gamma=\lim_{t \to \infty} p(t)$ que a população possa atingir e que há um fator inibidor proporcional ao quadrado da população e com coeficiente $\varepsilon = \dfrac{\lambda}{\gamma}$. Então, neste modelo, a variação da população é regida pela equação de Bernoulli $$\dfrac{dp}{dt}=\lambda p - \varepsilon p^2,$$ onde se supõe $\lambda > 0$. Suponha que a população no instante $t=0$ seja $p_0$.
+
+a)  Resolva a equação.
+b)  Suponho $p_0<\gamma$, para que valor de $p$ a taxa de variação $\dfrac{dp}{dt}$ é máxima? Qual o valor máximo para esta taxa de variação?
+c)  Em que instante $t$ o valor da taxa de variação é máximo?
+:::
+
+::: {#exr-a06-4}
+Um outro modelo para a variação populacional e dado, também, por uma equação de Bernoulli é $\dfrac{dp}{dt}=\lambda p - \varepsilon p^{\alpha}, \alpha > 1$ e $\varepsilon = \dfrac{\lambda}{\gamma^{\alpha - 1}}$, onde se supõe que $\displaystyle \gamma = \lim_{t \to \infty} p(t)$ é o valor máximo para a população. Suponho $p(0)=p_0$, resolva a equação.
+:::
+
+::: {#exr-a06-5}
+(Equação de von Bertalanffy) A equação de Bernoulli $\dfrac{dp}{dt}=\alpha p^{2/3}-\beta p$ é um modelo usado para a variação do peso $p=p(t)$ de uma espécie de peixe, onde $\alpha$ e $\beta$ são constantes positivas e que dependem da espécie em estudo. Suponha $p(0)=0$ (O peixe ao nascer é tão pequeno que o o seu peso é quase zero). Resolva a equação. Esboce o gráfico da solução destacando o intervalo onde o peso está variando a taxa crescente e aquele em que o peso está variando a taxa decrescente. Interprete os resultados.
+:::

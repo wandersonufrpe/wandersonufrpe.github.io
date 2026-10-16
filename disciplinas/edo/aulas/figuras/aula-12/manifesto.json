@@ -1,0 +1,25 @@
+{
+  "origem": "/mnt/user-data/uploads/Notas de aula/Introdução às equações ordinárias/txt/Aula 12.tex",
+  "figuras": [
+    {
+      "arquivo": "fig-01.svg",
+      "linha_no_tex": 43,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "474a4accc12c",
+      "candidata_a_applet": false,
+      "pistas": [],
+      "inicio_do_codigo": "\\begin{tikzpicture}[scale=1.3] \\draw[->] (-3.2, 0) -- (3.2, 0) node[right] {$x$}; \\draw[->] (0,-2.2) -- (0, 2.2) node[above] {$y$}; \\clip (-2.5,-2) rectangle (2"
+    },
+    {
+      "arquivo": "fig-02.svg",
+      "linha_no_tex": 69,
+      "ok": true,
+      "mensagem": "ok (com preâmbulo reduzido)",
+      "assinatura": "7074db30b09a",
+      "candidata_a_applet": false,
+      "pistas": [],
+      "inicio_do_codigo": "\\begin{tikzpicture}[scale=1.3] \\draw[->] (-3.2, 0) -- (3.2, 0) node[right] {$x$}; \\draw[->] (0,-2.2) -- (0, 2.2) node[above right] {$y$}; \\draw[thick, blue] plo"
+    }
+  ]
+}

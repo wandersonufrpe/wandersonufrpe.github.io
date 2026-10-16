@@ -3,20 +3,20 @@
 Marque com [x] quando resolver. No site, cada lacuna aparece destacada em amarelo com "A PREENCHER".
 
 ## Publicação
-- [ ] Ativar o GitHub Pages: Settings → Pages → Source: **GitHub Actions** (passo a passo em `COMO-USAR.md`)
+- [x] Site no ar. Confirmar em Settings → Pages que Source está em **GitHub Actions**
 - [ ] Endereço: manter `wandersonufrpe.github.io/wanderson.github.io/` ou renomear o repositório para `wandersonufrpe.github.io` (endereço curto)
 
-## Conferir nas notas de EDO (possíveis erros de digitação, mantidos como estão no site)
+## Conferir nas notas de EDO (possíveis erros, mantidos como estão no site)
 - [ ] Aula 02, Teorema de Existência e Unicidade: "Suponha $f$ e $\partial f/\partial x$ contínuas". O usual é $\partial f/\partial y$.
 - [ ] Aula 02, último exercício, item b): "$x^2y-x$, dado $y(0)=0$" está sem o "$y'=$".
 - [ ] Aula 02: "Por agora, sabemos resolver alguns problemas simples)" tem um parêntese solto.
-- [ ] Aula 02: o PDF tem "Exemplo 04" e "Exemplo 05" repetidos; no site a numeração é automática (1 a 9).
+- [ ] Aula 03: na figura do "Retorno ao Exemplo 04 da Aula 2", a reta vermelha "solução de equilíbrio" está na diagonal ($y=x$), mas a solução de equilíbrio é $y=-2$ (como diz o texto logo abaixo). No site, a figura virou o campo de direções interativo, que mostra $y=-2$.
+- [ ] Numeração de exemplos repetida nos PDFs: Aula 02 (Exemplos 04 e 05 aparecem duas vezes), Aula 09 (Exemplo 02) e Aula 12 (Exemplo 03). No site a numeração é automática e sequencial; por isso, na Aula 03, "Retorno ao Exemplo 04 da Aula 2" virou "Retorno ao Exemplo 6 da Aula 2".
 
 ## Aulas de EDO
-- [ ] Aulas 14 e 15 não existem na pasta. São avaliações? Devem aparecer no cronograma?
-- [ ] "Aula 17 - demonstração de Abel-Liouville.tex": é parte da Aula 17 (ex.: um apêndice no fim) ou uma página separada?
 - [ ] Objetivos e pré-requisitos de cada aula (opcional; aparecem numa caixa no topo da aula)
 - [ ] PDFs das aulas: os do site foram compilados sem a fonte Euler (não disponível aqui). Se quiser, substitua pelos seus em `disciplinas/edo/aulas/pdf/`, com o mesmo nome.
+- [ ] Aulas 19 a 24: converter quando as notas estiverem organizadas.
 
 ## Página inicial e Currículo
 - [ ] Minibiografia (duas ou três frases)

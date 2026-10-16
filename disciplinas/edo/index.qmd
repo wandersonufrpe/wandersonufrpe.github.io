@@ -35,5 +35,7 @@ listing:
 
 Cada aula traz a teoria, exemplos resolvidos e a lista de exercícios correspondente. Nos exercícios, abra as dicas uma de cada vez antes de olhar a resposta.
 
+As Aulas 14 e 15 foram de revisão e prova e não têm notas.
+
 ::: {#lista-aulas}
 :::
