@@ -1,0 +1,7 @@
+---
+title: "Projetos de extensão"
+body-classes: area-projetos
+toc: false
+---
+
+[A PREENCHER: um bloco por projeto, no mesmo formato de [Projetos de ensino](ensino.qmd).]{.a-preencher}

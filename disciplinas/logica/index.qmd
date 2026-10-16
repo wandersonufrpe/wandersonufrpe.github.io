@@ -1,0 +1,17 @@
+---
+title: "Elementos de Lógica Matemática"
+body-classes: area-ensino
+toc: false
+---
+
+[Em construção]{.status}
+
+As notas de aula desta disciplina serão publicadas aqui.
+
+## Ementa
+
+[A PREENCHER]{.a-preencher}
+
+## Bibliografia
+
+[A PREENCHER]{.a-preencher}

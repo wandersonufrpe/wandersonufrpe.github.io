@@ -1,0 +1,17 @@
+---
+title: "Currículo"
+body-classes: area-pesquisa
+---
+
+- Currículo Lattes: [A PREENCHER: link]{.a-preencher}
+- ORCID: [A PREENCHER: link]{.a-preencher}
+
+## Formação
+
+[A PREENCHER]{.a-preencher}
+
+## Atuação profissional
+
+Professor da Universidade Federal Rural de Pernambuco (UFRPE) desde 2013.
+
+[A PREENCHER: departamento, cargos e atividades administrativas, se quiser listar.]{.a-preencher}

@@ -1,0 +1,39 @@
+---
+title: "Introdução às Equações Diferenciais Ordinárias"
+description: "Apresentação, ementa, bibliografia, cronograma e aulas."
+body-classes: area-ensino
+listing:
+  id: lista-aulas
+  contents: aulas/*.qmd
+  type: table
+  sort: "filename"
+  fields: [title, description]
+  field-display-names:
+    title: "Aula"
+    description: "Assunto"
+  sort-ui: false
+  filter-ui: false
+---
+
+## Sobre a disciplina
+
+[A PREENCHER: em que curso e período a disciplina é oferecida, carga horária e um parágrafo sobre o que o estudante vai aprender.]{.a-preencher}
+
+## Ementa
+
+[A PREENCHER: ementa oficial.]{.a-preencher}
+
+## Bibliografia
+
+[A PREENCHER: bibliografia básica e complementar.]{.a-preencher}
+
+## Cronograma
+
+[A PREENCHER: sequência das aulas e datas das avaliações. As datas do período atual também aparecem em [Semestre](../../semestre/index.qmd).]{.a-preencher}
+
+## Aulas
+
+Cada aula traz a teoria, exemplos resolvidos e a lista de exercícios correspondente. Nos exercícios, abra as dicas uma de cada vez antes de olhar a resposta.
+
+::: {#lista-aulas}
+:::

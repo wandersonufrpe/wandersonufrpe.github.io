@@ -1,0 +1,11 @@
+# Vale para todas as aulas de EDO.
+body-classes: area-ensino
+
+# Espaço de dúvidas no fim de cada aula (Giscus, usa as Discussions do GitHub).
+# Para ativar: siga "Comentários dos alunos" em COMO-USAR.md e tire os # das linhas abaixo.
+# comments:
+#   giscus:
+#     repo: SEU-USUARIO/SEU-REPOSITORIO
+#     category: "Dúvidas"
+#     mapping: pathname
+#     language: pt

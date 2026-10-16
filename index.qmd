@@ -1,0 +1,62 @@
+---
+title: "Wanderson Aleksander Oliveira"
+pagetitle: "Wanderson Oliveira"
+page-layout: full
+toc: false
+body-classes: area-inicio
+---
+
+::::: {.hero}
+
+:::: {.hero-texto}
+Professor da Universidade Federal Rural de Pernambuco (UFRPE) desde 2013.
+
+[A PREENCHER: minibiografia em duas ou três frases, com áreas de atuação e interesses de pesquisa.]{.a-preencher}
+
+::: {.atalhos}
+::: {.atalho .area-ensino}
+[Disciplinas](disciplinas/index.qmd)
+
+Notas de aula, exercícios com dicas e gráficos interativos.
+:::
+
+::: {.atalho .area-admin}
+[Semestre atual](semestre/index.qmd)
+
+Turmas, horários, avisos e calendário.
+:::
+
+::: {.atalho .area-projetos}
+[Projetos](projetos/index.qmd)
+
+Ensino, pesquisa e extensão.
+:::
+
+::: {.atalho .area-pesquisa}
+[Publicações](publicacoes.qmd)
+
+Artigos e trabalhos publicados.
+:::
+:::
+::::
+
+:::: {.hero-campo}
+```{ojs}
+//| echo: false
+import { campoDirecoes } from "./assets/js/campo-direcoes.js"
+
+campoDirecoes({
+  f: (t, y) => Math.sin(t) - y / 2,
+  t: [-6, 6],
+  y: [-3, 3],
+  largura: width,
+  solucoes: [[-6, 2.6], [-6, -2.6], [-6, 0.4], [-3.5, -2.9]],
+  chave: "inicio",
+  rotulos: { t: "t", y: "y" },
+  descricao: "Campo de direções da equação y' = sen t − y/2 com quatro soluções desenhadas",
+  legenda: "Campo de direções de y′ = sen t − y/2: toda solução acaba no mesmo ritmo periódico. Toque para traçar outra."
+})
+```
+::::
+
+:::::

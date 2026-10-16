@@ -1,0 +1,11 @@
+---
+title: "Semestres anteriores"
+body-classes: area-admin
+toc: false
+---
+
+Os períodos encerrados aparecem aqui, do mais recente para o mais antigo.
+
+<!-- O comando /novo-semestre do Claude Code move o conteúdo de semestre/index.qmd para cá. -->
+
+Ainda não há semestres arquivados.

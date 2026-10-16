@@ -1,0 +1,62 @@
+/*-- scss:defaults --*/
+// Tema escuro: as mesmas quatro áreas em tons claros, para manter o contraste.
+
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap");
+
+$verde: #5CCB8A;
+$verde-tinta: #5CCB8A;
+$azul: #9FD3F2;
+$azul-tinta: #9FD3F2;
+$vinho: #E3A0A9;
+$amarelo: #F0CE5C;
+$amarelo-tinta: #F0CE5C;
+$tinta: #E4ECE8;
+$papel: #16201C;
+$papel-2: #1E2A25;
+$linha: #34433C;
+
+$body-bg: $papel;
+$body-color: $tinta;
+$primary: $verde;
+$link-color: $verde;
+$font-family-base: "Literata", Georgia, "Times New Roman", serif;
+$headings-font-family: "Fira Sans", "Segoe UI", system-ui, sans-serif;
+$navbar-bg: $papel;
+$navbar-fg: $tinta;
+$navbar-hl: $verde;
+$footer-bg: $papel-2;
+$footer-fg: #AEBDB5;
+$code-color: $vinho;
+$code-block-bg: $papel-2;
+
+$callout-color-tip: $verde;
+$callout-color-note: $azul;
+$callout-color-important: $vinho;
+$callout-color-warning: $amarelo;
+
+/*-- scss:rules --*/
+:root {
+  --verde: #{$verde};
+  --verde-tinta: #{$verde-tinta};
+  --azul: #{$azul};
+  --azul-tinta: #{$azul-tinta};
+  --vinho: #{$vinho};
+  --amarelo: #{$amarelo};
+  --amarelo-tinta: #{$amarelo-tinta};
+  --tinta: #{$tinta};
+  --tinta-suave: #AEBDB5;
+  --papel: #{$papel};
+  --papel-2: #{$papel-2};
+  --linha: #{$linha};
+
+  --campo-seta: rgba(228, 236, 232, 0.38);
+  --campo-eixo: rgba(228, 236, 232, 0.55);
+  --campo-texto: #AEBDB5;
+  --cor-solucao-1: #{$verde};
+  --cor-solucao-2: #{$azul};
+  --cor-solucao-3: #{$vinho};
+  --cor-solucao-4: #{$amarelo};
+
+  --sel-certo: #1F3B2B;
+  --sel-errado: #3F2529;
+}

@@ -1,0 +1,144 @@
+---
+title: "Aula 0: modelo de página"
+description: "Demonstração dos componentes; será substituída pela Aula 01"
+body-classes: area-ensino
+objetivos:
+  - Reconhecer uma equação diferencial ordinária e identificar sua ordem.
+  - Ler um campo de direções e esboçar soluções a partir dele.
+  - Verificar se uma função dada é solução de uma EDO.
+pre-requisitos:
+  - Derivadas de funções elementares.
+  - Regra da cadeia.
+---
+
+::: {.callout-note appearance="simple"}
+Esta página só mostra como cada aula vai ficar. O conteúdo é ilustrativo e será substituído pela Aula 01 convertida das suas notas.
+:::
+
+## Equações diferenciais
+
+::: {#def-edo}
+## Equação diferencial ordinária
+Uma *equação diferencial ordinária* (EDO) é uma equação que relaciona uma função desconhecida $y(t)$, de uma variável, com suas derivadas. A *ordem* da EDO é a ordem da derivada mais alta que aparece nela.
+:::
+
+::: {#exm-ordem}
+A equação $y'' + 3y' - 4y = e^{t}$ tem ordem 2; já $y' = t\,y^2$ tem ordem 1.
+:::
+
+::: {#thm-existencia}
+## Existência e unicidade
+Se $f$ e $\partial f/\partial y$ são contínuas num retângulo aberto de $\R^2$ que contém $(t_0, y_0)$, então o problema de valor inicial
+$$
+y' = f(t, y), \qquad y(t_0) = y_0
+$$
+tem uma única solução definida em algum intervalo aberto que contém $t_0$.
+:::
+
+## Campo de direções
+
+Numa EDO de primeira ordem $y' = f(t, y)$, cada ponto $(t, y)$ do plano recebe um pequeno segmento com inclinação $f(t, y)$. As soluções são as curvas que seguem esses segmentos. Mova o controle para mudar $k$ na equação $y' = k\,y$ e toque no campo para traçar novas soluções.
+
+```{ojs}
+//| echo: false
+import { campoDirecoes } from "./assets/js/campo-direcoes.js"
+
+viewof k = Inputs.range([-1.5, 1.5], { value: 0.5, step: 0.1, label: "k" })
+
+campoDirecoes({
+  f: (t, y) => k * y,
+  t: [-3, 3],
+  y: [-3, 3],
+  largura: width,
+  solucoes: [[0, 1], [0, -1]],
+  chave: "modelo-k",
+  descricao: `Campo de direções de y' = ${k} y`,
+  legenda: `Campo de direções de y′ = ${k.toFixed(1).replace(".", ",").replace("-", "−")}·y. Toque para traçar uma solução.`
+})
+```
+
+Com $k > 0$ as soluções se afastam de $y = 0$; com $k < 0$ elas se aproximam. Todas têm a forma $y = C e^{kt}$.
+
+## Exercícios
+
+::: {#exr-modelo-1 fonte="[exemplo de referência: Autor, Obra, seção, número da questão]"}
+Resolva o problema de valor inicial $y' = 2y$, $y(0) = 3$.
+
+::: dica
+Que funções têm derivada proporcional a elas mesmas?
+:::
+
+::: dica
+Separe as variáveis: escreva $\dfrac{1}{y}\,\dfrac{dy}{dt} = 2$ e integre os dois lados em relação a $t$.
+:::
+
+::: resposta
+$y(t) = 3e^{2t}$.
+:::
+
+::: solucao
+Para $y \neq 0$, a equação equivale a $\dfrac{y'}{y} = 2$. Integrando, $\ln|y| = 2t + c$, ou seja, $y = C e^{2t}$ com $C \neq 0$; a função $y \equiv 0$ também é solução e corresponde a $C = 0$. A condição $y(0) = 3$ dá $C = 3$, logo
+$$
+y(t) = 3e^{2t}.
+$$
+:::
+:::
+
+::: {#exr-modelo-2}
+Verifique que $y = C e^{-t} + t - 1$ é solução de $y' + y = t$ para qualquer constante $C$.
+
+::: dica
+Derive $y$ e substitua $y$ e $y'$ no lado esquerdo da equação.
+:::
+
+::: {.dica .rascunho}
+Exemplo de dica sugerida pelo Claude Code: ela não aparece no site publicado, só no modo de revisão. Repare que os termos com $e^{-t}$ se cancelam.
+:::
+
+::: resposta
+Sim: $y' + y = t$ para todo $C$.
+:::
+
+::: solucao
+Como $y' = -C e^{-t} + 1$, temos
+$$
+y' + y = \left(-C e^{-t} + 1\right) + \left(C e^{-t} + t - 1\right) = t.
+$$
+:::
+:::
+
+## Revisão rápida
+
+::: quiz
+Qual é a ordem da EDO $y''' + t\,y' = e^{t}$?
+
+- [ ] 1
+- [ ] 2
+- [x] 3
+
+::: explicacao
+A ordem é a da derivada mais alta que aparece: $y'''$, de ordem 3.
+:::
+:::
+
+::: quiz
+A EDO $y' = t\,y^2$ é:
+
+- [ ] linear
+- [x] não linear
+
+::: explicacao
+A função desconhecida aparece ao quadrado. Numa EDO linear, $y$ e suas derivadas aparecem só com expoente 1, multiplicadas por funções de $t$.
+:::
+:::
+
+::: quiz
+A EDO $y'' + \operatorname{sen}(t)\,y = 0$ é:
+
+- [x] linear
+- [ ] não linear
+
+::: explicacao
+O seno é de $t$, não de $y$: ele funciona como um coeficiente. A equação seria não linear se aparecesse $\operatorname{sen}(y)$.
+:::
+:::

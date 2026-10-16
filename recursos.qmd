@@ -1,0 +1,7 @@
+---
+title: "Recursos"
+description: "Programas e materiais de apoio usados nas disciplinas."
+body-classes: area-ensino
+---
+
+[A PREENCHER: programas, sites e materiais que você recomenda aos estudantes, com uma frase sobre para que serve cada um.]{.a-preencher}

@@ -1,0 +1,27 @@
+---
+title: "Semestre atual"
+description: "Turmas, horários, avisos e calendário do período em curso."
+body-classes: area-admin
+---
+
+[A PREENCHER: período letivo, por exemplo 2026.2]{.a-preencher}
+
+[Abrir o calendário](https://exemplo.com/a-preencher){.botao-destaque}
+
+## Turmas
+
+| Disciplina | Turma | Horário | Sala |
+|---|---|---|---|
+| [Introdução às EDOs](../disciplinas/edo/index.qmd) | LM3 | [A PREENCHER]{.a-preencher} | [A PREENCHER]{.a-preencher} |
+
+## Avisos
+
+Nenhum aviso no momento.
+
+## Avaliações
+
+[A PREENCHER: datas das provas e entregas do período.]{.a-preencher}
+
+------------------------------------------------------------------------
+
+O material permanente de cada disciplina está em [Disciplinas](../disciplinas/index.qmd). Os períodos encerrados ficam em [Semestres anteriores](anteriores.qmd).

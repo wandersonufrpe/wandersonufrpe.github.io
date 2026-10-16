@@ -1,0 +1,34 @@
+---
+title: "Disciplinas"
+description: "Material permanente de cada disciplina: ementa, notas de aula, listas e exercícios com dicas."
+body-classes: area-ensino
+toc: false
+---
+
+Aqui fica o material de cada disciplina, organizado por aula. O que muda de um período para outro (turmas, horários, avisos) está em [Semestre](../semestre/index.qmd).
+
+::: {.disciplina}
+### [Introdução às Equações Diferenciais Ordinárias](edo/index.qmd)
+
+[Aulas sendo publicadas]{.status .status-andamento}
+
+Notas de aula, listas de exercícios com dicas graduais e campos de direções interativos.
+:::
+
+::: {.disciplina}
+### [Elementos de Lógica Matemática](logica/index.qmd)
+
+[Em construção]{.status}
+:::
+
+::: {.disciplina}
+### [Cálculo N1](calculo-n1/index.qmd)
+
+[Em construção]{.status}
+:::
+
+::: {.disciplina}
+### [Otimização Combinatória](otimizacao-combinatoria/index.qmd)
+
+[Em construção]{.status}
+:::

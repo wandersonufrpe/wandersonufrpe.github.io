@@ -1,0 +1,62 @@
+/*-- scss:defaults --*/
+// Tema claro. As cores de área seguem a lógica das pastas do Google Drive:
+// ensino = verde-bandeira, projetos = azul-bebê, pesquisa = vinho, administrativo = amarelo.
+
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap");
+
+$verde: #009C3B;
+$verde-tinta: #00753A;
+$azul: #8EC9EA;
+$azul-tinta: #1D5B87;
+$vinho: #7A2633;
+$amarelo: #E9B824;
+$amarelo-tinta: #735800;
+$tinta: #1B2621;
+$papel: #FFFFFF;
+$papel-2: #F2F6F3;
+$linha: #D5DED9;
+
+$body-bg: $papel;
+$body-color: $tinta;
+$primary: $verde-tinta;
+$link-color: $verde-tinta;
+$font-family-base: "Literata", Georgia, "Times New Roman", serif;
+$headings-font-family: "Fira Sans", "Segoe UI", system-ui, sans-serif;
+$navbar-bg: $papel;
+$navbar-fg: $tinta;
+$navbar-hl: $verde-tinta;
+$footer-bg: $papel-2;
+$footer-fg: #4A5852;
+$code-color: $vinho;
+
+$callout-color-tip: $verde;
+$callout-color-note: $azul-tinta;
+$callout-color-important: $vinho;
+$callout-color-warning: $amarelo;
+
+/*-- scss:rules --*/
+:root {
+  --verde: #{$verde};
+  --verde-tinta: #{$verde-tinta};
+  --azul: #{$azul};
+  --azul-tinta: #{$azul-tinta};
+  --vinho: #{$vinho};
+  --amarelo: #{$amarelo};
+  --amarelo-tinta: #{$amarelo-tinta};
+  --tinta: #{$tinta};
+  --tinta-suave: #4A5852;
+  --papel: #{$papel};
+  --papel-2: #{$papel-2};
+  --linha: #{$linha};
+
+  --campo-seta: rgba(27, 38, 33, 0.42);
+  --campo-eixo: rgba(27, 38, 33, 0.55);
+  --campo-texto: #4A5852;
+  --cor-solucao-1: #{$verde};
+  --cor-solucao-2: #{$azul-tinta};
+  --cor-solucao-3: #{$vinho};
+  --cor-solucao-4: #B98A00;
+
+  --sel-certo: #E3F4E9;
+  --sel-errado: #F7E6E8;
+}

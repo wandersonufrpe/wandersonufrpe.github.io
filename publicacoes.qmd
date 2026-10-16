@@ -1,0 +1,18 @@
+---
+title: "Publicações"
+body-classes: area-pesquisa
+---
+
+Somente trabalhos já publicados. A lista completa está no [Currículo Lattes](curriculo.qmd).
+
+## Artigos em periódicos
+
+[A PREENCHER: referências completas, da mais recente para a mais antiga, com link (DOI) quando houver.]{.a-preencher}
+
+## Trabalhos em eventos
+
+[A PREENCHER]{.a-preencher}
+
+## Livros e capítulos
+
+[A PREENCHER]{.a-preencher}

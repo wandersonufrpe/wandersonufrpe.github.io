@@ -1,0 +1,25 @@
+---
+title: "Projetos"
+body-classes: area-projetos
+toc: false
+---
+
+Projetos em andamento e concluídos, separados por tipo.
+
+::: {.item-portfolio}
+### [Ensino](ensino.qmd)
+
+Projetos ligados às disciplinas, material didático e monitoria.
+:::
+
+::: {.item-portfolio}
+### [Pesquisa](pesquisa.qmd)
+
+Projetos de pesquisa com resultados já divulgados.
+:::
+
+::: {.item-portfolio}
+### [Extensão](extensao.qmd)
+
+Ações com a comunidade fora da universidade.
+:::

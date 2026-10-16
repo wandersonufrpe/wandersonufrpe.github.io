@@ -1,0 +1,86 @@
+# Configuração principal do site (Quarto).
+# Guia rápido em COMO-USAR.md; convenções para o Claude Code em CLAUDE.md.
+
+project:
+  type: website
+  output-dir: _site
+  # Só arquivos .qmd viram páginas. Os .md da raiz (CLAUDE.md, PLANO.md...) são documentação interna.
+  render:
+    - "**/*.qmd"
+  resources:
+    - assets/
+    - "disciplinas/**/*.pdf"
+    - "disciplinas/**/*.svg"
+
+website:
+  title: "Wanderson Oliveira"
+  description: "Notas de aula, disciplinas e projetos do professor Wanderson Aleksander Oliveira (UFRPE)."
+  # site-url: https://SEU-USUARIO.github.io   # [A PREENCHER] depois de criar o repositório
+  favicon: assets/img/favicon.svg
+  search:
+    location: navbar
+    type: overlay
+  page-navigation: true
+  back-to-top-navigation: true
+  bread-crumbs: true
+  navbar:
+    left:
+      - href: index.qmd
+        text: Início
+      - href: disciplinas/index.qmd
+        text: Disciplinas
+      - href: semestre/index.qmd
+        text: Semestre
+      - text: Projetos
+        menu:
+          - href: projetos/index.qmd
+            text: Visão geral
+          - href: projetos/ensino.qmd
+            text: Ensino
+          - href: projetos/pesquisa.qmd
+            text: Pesquisa
+          - href: projetos/extensao.qmd
+            text: Extensão
+      - href: publicacoes.qmd
+        text: Publicações
+      - href: orientacoes.qmd
+        text: Orientações
+      - href: recursos.qmd
+        text: Recursos
+    right:
+      - href: curriculo.qmd
+        text: Currículo
+      - href: contato.qmd
+        text: Contato
+  sidebar:
+    - id: edo
+      title: "Introdução às EDOs"
+      style: docked
+      contents:
+        - href: disciplinas/edo/index.qmd
+          text: Apresentação
+        - section: "Aulas"
+          contents: "disciplinas/edo/aulas/*.qmd"
+  page-footer:
+    left: "Wanderson Aleksander Oliveira, UFRPE"
+    right: "Feito com [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme:
+      light: [flatly, estilos/claro.scss, estilos/comum.scss]
+      dark: [darkly, estilos/escuro.scss, estilos/comum.scss]
+    respect-user-color-scheme: true
+    lang: pt
+    toc: true
+    toc-title: "Nesta página"
+    html-math-method: mathjax
+    anchor-sections: true
+    smooth-scroll: true
+    link-external-newwindow: true
+    grid:
+      body-width: 780px
+    # Componentes didáticos (dicas, resposta, solução, rascunhos, quiz, macros LaTeX).
+    filters:
+      - filtros/componentes.lua
+      - quarto

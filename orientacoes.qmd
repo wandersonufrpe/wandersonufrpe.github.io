@@ -1,0 +1,16 @@
+---
+title: "Orientações"
+body-classes: area-pesquisa
+---
+
+## Em andamento
+
+[A PREENCHER: nome do estudante, nível (iniciação científica, TCC, mestrado...), título do trabalho e ano de início.]{.a-preencher}
+
+## Concluídas
+
+[A PREENCHER]{.a-preencher}
+
+## Para interessados
+
+[A PREENCHER: se você aceita novos orientandos, em quais temas e como entrar em contato.]{.a-preencher}

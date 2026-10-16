@@ -1,0 +1,11 @@
+---
+title: "Contato"
+body-classes: area-admin
+toc: false
+---
+
+- E-mail: [A PREENCHER]{.a-preencher}
+- Sala e horário de atendimento: [A PREENCHER]{.a-preencher}
+- Endereço: [A PREENCHER: departamento e campus]{.a-preencher}
+
+Dúvidas sobre o conteúdo de uma aula podem ser deixadas no fim da própria página da aula.

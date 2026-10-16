@@ -1,0 +1,6 @@
+# Perfil de revisão: mostra rascunhos (dicas sugeridas pelo Claude Code ainda não aprovadas).
+# Uso:  quarto preview --profile revisao
+# Nunca publique com este perfil. O GitHub Actions publica sempre sem ele.
+
+website:
+  title: "Wanderson Oliveira (MODO REVISÃO)"

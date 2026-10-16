@@ -1,0 +1,17 @@
+# Gerados pelo Quarto (o GitHub gera de novo ao publicar)
+/_site/
+/_site_revisao/
+/.quarto/
+**/*.quarto_ipynb
+
+# Python
+__pycache__/
+
+# Sistema
+.DS_Store
+*~
+
+# Fontes LaTeX originais ficam FORA deste repositório (veja CLAUDE.md)
+*.aux
+*.log
+*.synctex.gz
