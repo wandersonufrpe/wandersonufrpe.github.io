@@ -4,7 +4,7 @@ Site em Quarto que é ao mesmo tempo o portfólio de professor universitário (U
 
 O Wanderson está aprendendo Quarto e Git agora: explique em português, sem jargão, e mostre o resultado (`quarto preview`) antes de seguir para a próxima etapa. O computador dele é Windows.
 
-Repositório: `wandersonufrpe/wanderson.github.io` (a cópia oficial). Os .tex de EDO ficam em `D:\Coisas no Drive\Aula a aula (1)\Notas de aula\Introdução às equações ordinárias\txt` (um arquivo por aula, `Aula NN.tex`; preâmbulo em `Notas de aula - EDO.tex` e `config.tex`).
+Repositório: `wandersonufrpe/wandersonufrpe.github.io` (a cópia oficial). Site: https://wandersonufrpe.github.io Os .tex de EDO ficam em `D:\Coisas no Drive\Aula a aula (1)\Notas de aula\Introdução às equações ordinárias\txt` (um arquivo por aula, `Aula NN.tex`; preâmbulo em `Notas de aula - EDO.tex` e `config.tex`).
 
 ## Regras que não mudam
 

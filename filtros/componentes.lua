@@ -225,6 +225,27 @@ local function ler_macros()
   return table.concat(linhas, "\n")
 end
 
+-- Converte as linhas \\newcommand/\\renewcommand de macros.tex para o formato do MathJax.
+local function configuracao_mathjax(macros)
+  local itens = {}
+  for linha in (macros or ""):gmatch("[^\n]+") do
+    local nome, args, corpo = linha:match("^%s*\\r?e?n?e?w?command%*?%s*{\\(%a+)}%s*%[?(%d*)%]?%s*{(.*)}%s*$")
+    if nome then
+      local valor = string.format("%q", corpo):gsub("\\\n", "\\n")
+      if args ~= "" then
+        table.insert(itens, string.format("%s: [%s, %s]", nome, valor, args))
+      else
+        table.insert(itens, string.format("%s: %s", nome, valor))
+      end
+    end
+  end
+  return "<script>\nwindow.MathJax = {\n"
+    .. "  tex: { macros: { " .. table.concat(itens, ", ") .. " } },\n"
+    .. '  output: { displayOverflow: "linebreak", linebreaks: { inline: true } },\n'
+    .. '  chtml: { displayOverflow: "linebreak" }\n'
+    .. "};\n</script>"
+end
+
 local function Pandoc(doc)
   local novos, _ = processar_blocos(doc.blocks)
   doc.blocks = novos
@@ -233,8 +254,10 @@ local function Pandoc(doc)
 
   -- Macros LaTeX (bloco oculto lido pelo MathJax).
   local macros = ler_macros()
-  if macros and quarto.doc.is_format("html") then
-    topo:insert(pandoc.Div({ pandoc.Para({ pandoc.Math("DisplayMath", macros) }) }, pandoc.Attr("", { "hidden" })))
+  if quarto.doc.is_format("html") then
+    -- Configuração do MathJax no <head>: macros de macros.tex e quebra de linha automática
+    -- de equações longas no celular. Fica fora do conteúdo da página (busca e listagens não veem).
+    quarto.doc.include_text("in-header", configuracao_mathjax(macros))
   end
 
   -- Ações da aula (PDF).

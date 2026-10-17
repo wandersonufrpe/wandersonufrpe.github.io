@@ -7,10 +7,9 @@ listing:
   contents: aulas/*.qmd
   type: table
   sort: "filename"
-  fields: [title, description]
+  fields: [title]
   field-display-names:
     title: "Aula"
-    description: "Assunto"
   sort-ui: false
   filter-ui: false
 ---

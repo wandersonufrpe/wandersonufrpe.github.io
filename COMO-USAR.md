@@ -5,7 +5,7 @@ Guia curto para Windows. Na prática, você pode pedir quase tudo isto ao Claude
 ## Onde fica cada coisa
 
 - **Seus .tex** continuam em `D:\Coisas no Drive\Aula a aula (1)\Notas de aula`. Nada é alterado lá.
-- **O site** fica no GitHub, em `wandersonufrpe/wanderson.github.io`. Essa é a cópia oficial.
+- **O site** está em https://wandersonufrpe.github.io e o código fica no GitHub, em `wandersonufrpe/wandersonufrpe.github.io`. Essa é a cópia oficial.
 - **No seu computador**, uma cópia do site serve para você abrir, mexer e ver a prévia (passo 2).
 
 ## 1. Publicar (ativar uma vez)
@@ -14,14 +14,11 @@ No repositório do GitHub, em **Settings → Pages → Build and deployment → 
 
 Para acompanhar: aba **Actions** do repositório. Cada envio aparece como "Publicar site", com um sinal verde quando termina.
 
-**Endereço do site:** com o repositório chamado `wanderson.github.io`, o site fica em
-`https://wandersonufrpe.github.io/wanderson.github.io/`.
-Para ter o endereço curto `https://wandersonufrpe.github.io`, renomeie o repositório para `wandersonufrpe.github.io` em **Settings → General → Repository name**. O GitHub só usa o endereço curto quando o nome do repositório é igual ao seu usuário seguido de `.github.io`.
 
 ## 2. Ter o site no seu computador (opcional)
 
 1. Instale o **GitHub Desktop** (<https://desktop.github.com>) e entre com sua conta.
-2. **File → Clone repository**, escolha `wanderson.github.io` e uma pasta **fora** do Google Drive (por exemplo `C:\Users\SeuNome\Documents\GitHub`). Pastas do Git dentro do Drive podem gerar conflitos de sincronização.
+2. **File → Clone repository**, escolha `wandersonufrpe.github.io` e uma pasta **fora** do Google Drive (por exemplo `C:\Users\SeuNome\Documents\GitHub`). Pastas do Git dentro do Drive podem gerar conflitos de sincronização.
 3. Para receber o que o Claude enviou: botão **Fetch origin**, depois **Pull origin**.
 4. Para enviar o que você mudou: escreva um resumo no canto inferior esquerdo, **Commit to main**, depois **Push origin**.
 

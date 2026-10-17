@@ -48,8 +48,8 @@ Fases combinadas com o Wanderson. Ao terminar cada fase: mostrar o resultado, re
 
 ### Fase 7: publicação
 - [x] Repositório criado e site enviado.
-- [x] Site no ar em https://wandersonufrpe.github.io/wanderson.github.io/
-- [ ] Decidir se renomeia o repositório para `wandersonufrpe.github.io` (endereço curto).
+- [x] Site no ar em https://wandersonufrpe.github.io
+- [x] Repositório renomeado para `wandersonufrpe.github.io` (endereço curto).
 - [ ] Se a UFRPE ceder um subdomínio, configurar o domínio próprio.
 
 ### Fase 8: manutenção

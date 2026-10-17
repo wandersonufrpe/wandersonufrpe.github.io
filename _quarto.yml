@@ -15,7 +15,7 @@ project:
 website:
   title: "Wanderson Oliveira"
   description: "Notas de aula, disciplinas e projetos do professor Wanderson Aleksander Oliveira (UFRPE)."
-  # site-url: https://SEU-USUARIO.github.io   # [A PREENCHER] depois de criar o repositório
+  site-url: https://wandersonufrpe.github.io
   favicon: assets/img/favicon.svg
   search:
     location: navbar
@@ -75,15 +75,7 @@ format:
     toc: true
     toc-title: "Nesta página"
     html-math-method: mathjax
-    # Equações longas quebram linha sozinhas no celular, em vez de sair da tela.
-    include-in-header:
-      text: |
-        <script>
-        window.MathJax = {
-          output: { displayOverflow: "linebreak", linebreaks: { inline: true } },
-          chtml: { displayOverflow: "linebreak" }
-        };
-        </script>
+    # A configuração do MathJax (macros e quebra de linha no celular) vem de filtros/componentes.lua.
     anchor-sections: true
     smooth-scroll: true
     link-external-newwindow: true

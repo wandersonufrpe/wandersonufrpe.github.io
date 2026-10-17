@@ -4,7 +4,7 @@ Marque com [x] quando resolver. No site, cada lacuna aparece destacada em amarel
 
 ## Publicação
 - [x] Site no ar. Confirmar em Settings → Pages que Source está em **GitHub Actions**
-- [ ] Endereço: manter `wandersonufrpe.github.io/wanderson.github.io/` ou renomear o repositório para `wandersonufrpe.github.io` (endereço curto)
+- [x] Repositório renomeado: o site está em https://wandersonufrpe.github.io
 
 ## Conferir nas notas de EDO (possíveis erros, mantidos como estão no site)
 - [ ] Aula 02, Teorema de Existência e Unicidade: "Suponha $f$ e $\partial f/\partial x$ contínuas". O usual é $\partial f/\partial y$.
