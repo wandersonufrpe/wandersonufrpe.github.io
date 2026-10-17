@@ -1,12 +1,10 @@
 ---
 title: "Semestre atual"
-description: "Turmas, horários, avisos e calendário do período em curso."
+description: "Turmas, horários, avisos e calendário do período 2026.2."
 body-classes: area-admin
 ---
 
-[A PREENCHER: período letivo, por exemplo 2026.2]{.a-preencher}
-
-[Abrir o calendário](https://exemplo.com/a-preencher){.botao-destaque}
+[Abrir o calendário](https://calendar.google.com/calendar/u/0?cid=d2FuZGVyc29uLmFsZWtzYW5kZXJAdWZycGUuYnI){.botao-destaque}
 
 ## Turmas
 
@@ -21,7 +19,20 @@ Nenhum aviso no momento.
 
 ## Avaliações
 
-[A PREENCHER: datas das provas e entregas do período.]{.a-preencher}
+### Introdução às EDOs
+
+- 1ª VA: 01/10/2026
+- 2ª VA: 26/11/2026
+- 3ª V: 03/12/2026
+- Exame Final: 10/12/2026
+
+### Otimização Combinatória
+
+Conforme combinado na primeira aula, as notas da disciplina estão associadas a atividades realizadas em sala no [cronograma](../disciplinas/otimizacao-combinatoria/avisos/cronograma-3.pdf) disponibilizado. Cada atividade é composta de duas questões, uma teórica e uma prática. Cada um dos temas centrais da disciplina está associado a uma atividade realizada duas vezes, como primeira e segunda chances. A nota de cada atividade é a soma da melhor pontuação na questão teórica e a melhor pontuação na questão prática. 
+
+- 1ª VA: Atividades 1, 2 e 3
+- 2ª VA: Atividades 4, 5 e 6. 
+- 3ª VA: Seminários em duplas em novembro de 2026. 
 
 ------------------------------------------------------------------------
 
