@@ -12,7 +12,8 @@ body-classes: area-admin
 
 | Disciplina | Turma | Horário | Sala |
 |---|---|---|---|
-| [Introdução às EDOs](../disciplinas/edo/index.qmd) | LM3 | [A PREENCHER]{.a-preencher} | [A PREENCHER]{.a-preencher} |
+| [Introdução às EDOs](../disciplinas/edo/index.qmd) | LM1 | Seg 18:30 - Qui 20:10 | CEGEN 207 |
+| [Otimização Combinatória](../disciplinas/otimizacao-combinatoria/index.qmd) | LM2 | Seg 20:10 - Qui 18:30 | CEGEN 207 |
 
 ## Avisos
 
